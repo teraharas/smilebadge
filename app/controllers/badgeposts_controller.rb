@@ -18,7 +18,6 @@ class BadgepostsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @badgepost = current_user.sent_badgeposts.build(badgepost_params)
     if @badgepost.save
       flash[:success] = @badgepost.recept_user.name + "さんに" + @badgepost.badge.name + "バッジを贈りました！"
