@@ -1,0 +1,411 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+/* universal */
+
+
+
+body {
+  padding-top: 60px;
+  background-color: #f5f5f5
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+ol {
+  padding: 0;
+}
+
+.container-fluid {
+  padding: 5;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+h4 {
+  font-size: 1.0em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+
+#logo {
+  max-width: 100%; 
+  height:auto;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.toppage {
+  background-color: white;
+}
+
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+
+/* sidebar */
+
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+
+// バッジ
+.badgeicon_big {
+  float: left;
+  margin-top: 30px;
+  margin-right: 30px;
+  max-width: 100%; 
+  height:auto;
+	position: relative;
+	overflow: hidden;
+
+	.clear{
+    clear: both;
+  }
+  
+  .badge_checked{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  .badgeicon_big:target .badge_checked{
+  	display: none;
+  	pointer-events: none;
+  }
+}
+
+
+.badgeicon_big img {
+      // background : url('light1.png') no-repeat left top;
+      -webkit-animation-duration: 10s;  
+      -webkit-animation-timing-fanction: ease-in-out;  
+      -webkit-animation-iteration-count: infinite;  
+      -webkit-animation-name: flash;
+   }
+  @-webkit-keyframes flash {
+    0% {-webkit-transform: rotate(0deg);}
+    30% {-webkit-transform: rotate(360deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+
+
+
+.badge_explanation {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	width: 100%;
+	height: 100%;
+  // 	透明度0.8
+	background: rgba(255,255,255,0.8);
+	-webkit-transition: .3s;
+	transition: .3s;
+	opacity: 0;
+}
+.badgeicon_big:hover .badge_explanation {
+	opacity: 1;
+}
+
+
+
+/* badgeposts */
+
+.badgeposts {
+  list-style: none;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+  
+  li {
+    background-color: #f5f5f5;
+    padding-top: 10px;
+    border-top: 1px solid #e8e8e8;
+  }
+  
+  span {
+    line-height: 180%;
+  }
+  
+  .badgemove {
+    list-style: none;
+  }
+  
+  .gravatarsent_recept {
+    background-color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 0px;
+    padding-right: 20px;
+  }
+  
+  .gravatarsent_sent {
+    background-color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 0px;
+    padding-right: 20px;
+  }
+  
+  .badgeicon_mini {
+    background-color: white;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 0px;
+    padding-right: 5px;
+  }
+  .badgeicon_mini img {
+      // background : url('light1.png') no-repeat left top;
+      -webkit-animation-duration: 10s;  
+      -webkit-animation-timing-fanction: ease-in-out;  
+      -webkit-animation-iteration-count: infinite;  
+      -webkit-animation-name: flash;
+   }
+  @-webkit-keyframes flash {
+    0% {-webkit-transform: rotate(0deg);}
+    30% {-webkit-transform: rotate(360deg);}
+    100% {-webkit-transform: rotate(360deg);}
+  }  
+   
+  .triangle_recept {
+    float: left;
+  	border:40px solid #A7F1FF;
+  	border-left-color: white;
+  }
+  
+  .triangle_sent {
+    float: left;
+  	border:40px solid #A7F1FF;
+  	border-left-color: white;
+  }
+  
+  .gravatarrecept_recept {
+    position: relative;
+    left: -30px;
+    background-color: #A7F1FF;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 0px;
+    padding-right: 5px;
+  }
+  
+  .gravatarrecept_sent {
+    position: relative;
+    left: -30px;
+    background-color: #A7F1FF;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 0px;
+    padding-right: 5px;
+  }
+  
+  
+  .content {
+    display: block;
+  	background: white;
+    border: 2px outset;
+    width: auto;
+    height: 100px;
+    padding: 5px;
+    }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 5px;
+  }
+  
+  @media(max-width: 1000px) {
+  }
+  
+  @media(max-width: 768px) {
+  }
+  
+  @media(max-width: 479px) {
+    
+    .gravatarsent_sent {
+      display: none;
+    }
+    
+    // 小さい画面のときは三角と送り主を消す
+    .triangle_recept {
+      display: none;
+    }
+    .gravatarrecept_recept {
+      display: none;
+    }
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
+
+
+/* users */
+
+.users {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}

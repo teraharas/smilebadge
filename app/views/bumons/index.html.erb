@@ -1,0 +1,20 @@
+<% provide(:title, '全部門') %>
+
+<h2>部門一覧 (<%= @bumons.count %>)</h2>
+
+<div class="row">
+  <div class="col-md-12">
+    <section>
+      <% if @bumons.any? %>
+        <ol class="bumons">
+          <% @bumons.each do |bumon| %>
+            <li>
+              <span class="bumon"><%= bumon.outputnumber %></span>
+              <span class="bumon"><%= link_to bumon.name, edit_bumon_path(bumon) %></span>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
+    </section>
+  </div>
+</div>

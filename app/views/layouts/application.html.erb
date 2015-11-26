@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <title>SMILE Badge</title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+      　<div class="alert alert-<%= message_type %>"><%= message %></div>
+    　<% end %>
+      <%= yield %>
+      <br/>
+      <br/>
+    </div>
+    <%= render partial: "layouts/footer" %>
+  </body>
+</html>

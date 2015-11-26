@@ -1,0 +1,2 @@
+module BumonsHelper
+end

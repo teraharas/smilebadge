@@ -1,0 +1,50 @@
+<%= javascript_include_tag 'btn' %>
+
+
+
+<%= form_for(@badgepost) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.hidden_field :badge_id, :value => "" %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <section>
+          <% if @badges.any? %>
+            <% @badges.each do |badge| %>
+              <div class="badgeicon_big" id="id_badge_<%= badge.id %>">
+                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>)">
+                  <% if badge.image? %>
+                    <%= image_tag(badge.image.url, {:size => '100x100'}) %>
+                  <% else %>
+                    <%= image_tag('badge_noimage.gif', {:size => '100x100'}) %>
+                  <% end %>
+                  
+                  <div id="badge_checked_<%= badge.id %>" class="badge_checked"><%= image_tag('check_big.png', {:size => '30x30'}) %></div>
+                  <span class="badge_explanation"><%= badge.explanation %></span>
+                </div>
+                <p class="clear"><%= badge.name %></p>
+              </div>
+            <% end %>
+          <% end %>
+        </section>
+      </div>
+    
+    <br/>
+
+    <div class="col-md-4">
+      <div class="field">
+      
+      <%= f.hidden_field :recept_user_id, :value => @recept_user.id %>
+      
+      <p><%= @recept_user.name + "さんにバッジを送る" %></p>
+        
+      <%= f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かった書いてね！", :size => "10x5", :maxlength => "140" %>
+      </div>
+      
+      <%= f.submit "バッジを送る！", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

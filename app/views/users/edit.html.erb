@@ -1,0 +1,63 @@
+<h1>
+  <%= @user.name %>
+</h1>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.present? %>
+    <div class="alert alert-danger">
+      <%= alert %>
+      <ul>
+        <% @user.errors.full_messages.each do |full_message| %>
+          <li>
+            <%= full_message %>
+          </li>
+        <% end %> 
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <% if @user.image? %>
+      <div class="thumbnail">
+        <%= image_tag @user.image.url %>
+      </div>
+    <% end %>
+    <br>
+    <%= f.label :image %>
+    <br>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <div class="field">
+    <% if @user.persisted? && @user.image? %>
+      <label>
+        <%= f.check_box :remove_image %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+
+      <%#= f.label "部門名" %>
+      <%= f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name) %>
+      
+      
+      <%= f.label "氏名" %>
+      <%= f.text_field :name %>
+      
+      <%= f.label "ふりがな" %>
+      <%= f.text_field :kananame %>
+
+      <%= f.label "メールアドレス" %>
+      <%= f.text_field :email %>
+      
+      <%= f.label "好きな言葉・座右の銘" %>
+      <%= f.text_area :myword %>
+      
+      <%= f.label "趣味" %>
+      <%= f.text_area :hobby %>
+      
+      <%= f.label "一言メッセージ" %>
+      <%= f.text_area :message %>
+      
+  <%= f.submit "プロフィールを更新", class: "btn btn-sm btn-primary" %>
+<% end %>

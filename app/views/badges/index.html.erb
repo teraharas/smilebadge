@@ -1,0 +1,35 @@
+<% provide(:title, 'バッジ一覧') %>
+<h1>バッジ一覧</h1>
+
+<h2>全バッジ (<%= @badges.count %>)</h2>
+
+<div class="row">
+  <div class="col-md-12">
+    <section>
+      <% if @badges.any? %>
+            <ol class="users">
+              <% @badges.each do |badge| %>
+                    <li>
+                      <span><%= badge.outputnumber.to_s + "：" %></span>
+                      <span class="gravatar">
+                        <% if badge.image? %>
+                          <%= link_to image_tag(badge.image.url, {:size => '50x50'}), edit_badge_path(badge) %>
+                        <% else %>
+                          <%= link_to image_tag('badge_noimage.gif', {:size => '50x50'}), edit_badge_path(badge) %>
+                        <% end %>
+                      </span>
+                      <span class="user"><strong><%= link_to badge.name, edit_badge_path(badge) %></strong></span>
+                      <br/>
+                      <% if badge.explanation? %>
+                        <p><%= badge.explanation %></p>
+                      <% else%>
+                        <br/>
+                        <br/>
+                      <% end %>
+                    </li>
+              <% end %>
+            </ol>
+      <% end %>
+    </section>
+  </div>
+</div>

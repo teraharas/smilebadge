@@ -1,0 +1,41 @@
+<h1>新しいバッジを登録</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@badge) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+        <div class="field">
+            <% if @badge.image? %>
+                <div class="thumbnail">
+                    <%= image_tag @badge.image.url %>
+                </div>
+            <% end %>
+            <br>
+            <%= f.label :image %>
+            <br>
+            <%= f.file_field :image %>
+            <%= f.hidden_field :image_cache %>
+        </div>
+        <div class="field">
+            <% if @badge.persisted? && @badge.image? %>
+            <label>
+            <%= f.check_box :remove_image %>
+            画像を削除
+            </label>
+            <% end %>
+        </div>
+
+        <%= f.label "出力順" %>
+        <%= f.number_field :outputnumber %>
+        
+        <%= f.label "バッジ名" %>
+        <%= f.text_field :name %>
+        
+        <%= f.label "バッジの説明" %>
+        <%= f.text_field :explanation %>
+        
+        <%= f.submit "新しくバッジを登録する！", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

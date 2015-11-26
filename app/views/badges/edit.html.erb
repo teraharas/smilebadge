@@ -1,0 +1,50 @@
+<h1>
+  <%= @badge.name %>
+</h1>
+
+<%= form_for(@badge) do |f| %>
+  <% if @badge.errors.present? %>
+    <div class="alert alert-danger">
+      <%= alert %>
+      <ul>
+        <% @badge.errors.full_messages.each do |full_message| %>
+          <li>
+            <%= full_message %>
+          </li>
+        <% end %> 
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <% if @badge.image? %>
+      <div class="thumbnail">
+        <%= image_tag @badge.image.url %>
+      </div>
+    <% end %>
+    <br>
+    <%= f.label :image %>
+    <br>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <div class="field">
+    <% if @badge.persisted? && @badge.image? %>
+      <label>
+        <%= f.check_box :remove_image %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+
+      <%= f.label "出力順" %>
+        <%= f.number_field :outputnumber %>
+        
+        <%= f.label "バッジ名" %>
+        <%= f.text_field :name %>
+        
+        <%= f.label "バッジの説明" %>
+        <%= f.text_field :explanation %>
+  
+  <%= f.submit "バッジ情報を更新", class: "btn btn-sm btn-primary" %>
+<% end %>

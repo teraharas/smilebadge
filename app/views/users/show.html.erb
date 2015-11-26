@@ -1,0 +1,59 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <span class="gravatar">
+          <% if @user.image? %>
+            <%= image_tag @user.image.url, :size => '80x80' %>
+          <% else %>
+            <%= image_tag 'user_noimage.gif', :size => '80x80' %>
+          <% end %>
+        </span>
+        <%= @user.name %>
+      </h1>
+    </section>
+  
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.present? %>
+      <div class="alert alert-danger">
+        <%= alert %>
+        <ul>
+          <% @user.errors.full_messages.each do |full_message| %>
+            <li>
+              <%= full_message %>
+            </li>
+          <% end %> 
+        </ul>
+      </div>
+    <% end %>
+    
+    部門名：
+    <%= @user.bumon.name %>
+    <br/>
+    
+    メールアドレス：
+    <%= @user.email %>
+    <br/>
+  
+    好きな言葉・座右の銘：
+    <%= @user.myword %>
+    <br/>
+    
+    趣味：
+    <%= @user.hobby %>
+    <br/>
+    
+    一言メッセージ：
+    <%= @user.message %>
+    <br/>
+    
+  <% end %>
+  
+</div>
+
+<br/>
+
+<h2><%= @maxbagecount %></h2>
+
+<!--グラフ表示-->
+<%= high_chart("radar", @graph) %>

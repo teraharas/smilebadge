@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bumon_id: 
+  name: MyString
+  kananame: MyString
+  activeflg: false
+  adminflg: false
+  email: MyString
+  password_digest: MyString
+  image: MyString
+  remove_image: false
+  image_cache: MyString
+  myword: MyText
+  hobby: MyText
+  message: MyText
+
+two:
+  bumon_id: 
+  name: MyString
+  kananame: MyString
+  activeflg: false
+  adminflg: false
+  email: MyString
+  password_digest: MyString
+  image: MyString
+  remove_image: false
+  image_cache: MyString
+  myword: MyText
+  hobby: MyText
+  message: MyText
