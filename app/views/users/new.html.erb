@@ -5,11 +5,14 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
  
-      <%#= f.label "部門名" %>
-      <%#= f.collection_select(:bumon_id, Bumon.find(:all), :id, :bumon) %>
+      <%= f.label "部門名" %>
+      <%= f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name) %>
       
       <%= f.label "氏名" %>
       <%= f.text_field :name %>
+      
+      <%= f.label "ふりがな" %>
+      <%= f.text_field :kananame %>
 
       <%= f.label "メールアドレス" %>
       <%= f.text_field :email %>
