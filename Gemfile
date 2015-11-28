@@ -70,7 +70,7 @@ end
 gem 'kaminari'
 # CarrierWave
 gem 'carrierwave'
-gem 'mini_magick'
+# gem 'mini_magick'
 # Cloudinary
 gem 'cloudinary'
 
