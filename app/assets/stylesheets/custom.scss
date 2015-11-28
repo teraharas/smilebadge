@@ -342,16 +342,32 @@ aside {
     100% {-webkit-transform: rotate(360deg);}
   }  
    
-  .triangle_recept {
+  .triangle_sent {
+    margin-left: -10px;
     float: left;
   	border: 55px solid #A7F1FF;
   	border-left-color: white;
+    border-left: 30px solid white;
   }
   
-  .triangle_sent {
+  .triangle_recept {
+    margin-left: -10px;
     float: left;
   	border: 55px solid #A7F1FF;
   	border-left-color: white;
+    border-left: 30px solid white;
+  }
+  
+  
+  .gravatarrecept_sent {
+    position: relative;
+    left: -50px;
+    background-color: #A7F1FF;
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 0px;
+    padding-right: 5px;
   }
   
   .gravatarrecept_recept {
@@ -365,16 +381,6 @@ aside {
     padding-right: 5px;
   }
   
-  .gravatarrecept_sent {
-    position: relative;
-    left: -50px;
-    background-color: #A7F1FF;
-    float: left;
-    padding-top: 5px;
-    padding-left: 5px;
-    padding-bottom: 0px;
-    padding-right: 5px;
-  }
   
   
   .content {
