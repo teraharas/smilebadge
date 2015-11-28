@@ -84,8 +84,60 @@ p {
   text-decoration: none;
 }
 
+.logoheader{
+  width: 192px;
+  height: 38px;
+  // overflow: hidden;
+  img{
+    width:192px;
+    height:38px;
+  }
+}
+
 .toppage {
   background-color: white;
+}
+
+
+.smallimage {
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  img{
+    width:20px;
+    height:20px;
+  }
+}
+
+.middleimage {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  img{
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.largeimage {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  img{
+    width:150px;
+    height:150px;
+  }
+}
+
+
+.largebadgeimage {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  img{
+    width:100px;
+    height:100px;
+  }
 }
 
 
@@ -292,19 +344,19 @@ aside {
    
   .triangle_recept {
     float: left;
-  	border:40px solid #A7F1FF;
+  	border: 55px solid #A7F1FF;
   	border-left-color: white;
   }
   
   .triangle_sent {
     float: left;
-  	border:40px solid #A7F1FF;
+  	border: 55px solid #A7F1FF;
   	border-left-color: white;
   }
   
   .gravatarrecept_recept {
     position: relative;
-    left: -30px;
+    left: -50px;
     background-color: #A7F1FF;
     float: left;
     padding-top: 5px;
@@ -315,7 +367,7 @@ aside {
   
   .gravatarrecept_sent {
     position: relative;
-    left: -30px;
+    left: -50px;
     background-color: #A7F1FF;
     float: left;
     padding-top: 5px;
@@ -333,6 +385,7 @@ aside {
     height: 100px;
     padding: 5px;
     }
+    
   .timestamp {
     color: $gray-light;
     display: block;

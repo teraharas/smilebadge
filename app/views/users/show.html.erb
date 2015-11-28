@@ -8,11 +8,13 @@
     <section class="user_info">
       <h1>
         <span class="gravatar">
-          <% if @user.image1? %>
-            <%= image_tag @user.image1.url, :size => '80x80' %>
-          <% else %>
-            <%= image_tag 'user_noimage.gif', :size => '80x80' %>
-          <% end %>
+          <div class="largeimage">
+            <% if @user.image1? %>
+              <%= image_tag @user.image1.url %>
+            <% else %>
+              <%= image_tag 'user_noimage.gif' %>
+            <% end %>
+          </div>
         </span>
       </h1>
     </section>

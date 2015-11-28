@@ -1,12 +1,14 @@
+<div class="largeimage">
 <% if current_user.image1? %>
-    <%= link_to image_tag(current_user.image1.url, {:size => '100x100'}), current_user %>
+    <%= link_to image_tag(current_user.image1.url), current_user %>
 <% else %>
-    <%= link_to image_tag('user_noimage.gif', {:size => '100x100'}), current_user %>
+    <%= link_to image_tag('user_noimage.gif'), current_user %>
 <% end %>
+</div>
 <br/>
 <br/>
 <h1><%= current_user.name %></h1>
 <br/>
 <span><%= link_to "自分のプロフィールを見る", current_user %></span>
-<span><%= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジをあげました。" %></span>
-<span><%= "今までに " + current_user.recept_badgeposts.count.to_s + "個のバッジをもらいました。" %></span>
+<span><%= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジを贈りました。" %></span>
+<span><%= "今までに " + current_user.recept_badgeposts.count.to_s + "個のバッジを獲得しました。" %></span>

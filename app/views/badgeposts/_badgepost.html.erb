@@ -5,39 +5,65 @@
       <div class="col-sm-12">
         <!--送った人のユーザー情報-->
         <span class="gravatarsent_<%= type %>">
-          <% if badgepost.sent_user.image1? %>
-            <%= link_to image_tag(badgepost.sent_user.image1.url, {:size => '50x50'}), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
+          <% if type=="sent" %>
+            <div class="middleimage">
+              <% if badgepost.sent_user.image1? %>
+                <%= image_tag(badgepost.sent_user.image1.url) %>
+              <% else %>
+                <%= image_tag('user_noimage.gif') %>
+              <% end %>
+            </div>
+            <strong><%= badgepost.sent_user.name %></strong>
           <% else %>
-            <%= link_to image_tag('user_noimage.gif', {:size => '50x50'}), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
+            <div class="middleimage">
+              <% if badgepost.sent_user.image1? %>
+                <%= link_to image_tag(badgepost.sent_user.image1.url), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
+              <% else %>
+                <%= link_to image_tag('user_noimage.gif'), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
+              <% end %>
+            </div>
+            <strong><%= link_to badgepost.sent_user.name, new_badgepost_path(recept_user_id: badgepost.sent_user.id) %></strong>
           <% end %>
-          <br/>
-          <strong><%= link_to badgepost.sent_user.name, new_badgepost_path(recept_user_id: badgepost.sent_user.id) %></strong>
         </span>
+      
       
         <!--送られたバッジの情報-->
         <span class="badgeicon_mini">
-          <% if badgepost.badge.image? %>
-            <!--<div style="background-image:url(<%= asset_path badgepost.badge.image.url %>); background-repeat: no-repeat" />-->
-                        <%= image_tag(badgepost.badge.image.url, :size => '50x50') %>
-          <% else %>
-            <%= image_tag('badge_noimage.gif', :size => '50x50') %>
-          <% end %>
-          <br/>
+          <div class="middleimage">
+            <% if badgepost.badge.image? %>
+              <%= image_tag(badgepost.badge.image.url) %>
+            <% else %>
+              <%= image_tag('badge_noimage.gif') %>
+            <% end %>
+          </div>
           <%= badgepost.badge.name %>
         </span>
       
+        <!--三角形を表示-->
         <div class="triangle_<%= type %>"></div>
         
 
         <!--受け取った人のユーザー情報-->
         <span class="gravatarrecept_<%= type %>">
-          <% if badgepost.recept_user.image1? %>
-            <%= link_to image_tag(badgepost.recept_user.image1.url, {:size => '50x50'}), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
+          <% if type=="sent" %>
+            <div class="middleimage">
+              <% if badgepost.recept_user.image1? %>
+                <%= link_to image_tag(badgepost.recept_user.image1.url), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
+              <% else %>
+                <%= link_to image_tag('user_noimage.gif'), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
+              <% end %>
+            </div>
+            <strong><%= link_to badgepost.recept_user.name, new_badgepost_path(recept_user_id: badgepost.recept_user.id) %></strong>
           <% else %>
-            <%= link_to image_tag('user_noimage.gif', {:size => '50x50'}), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
+            <div class="middleimage">
+              <% if badgepost.recept_user.image1? %>
+                <%= image_tag(badgepost.recept_user.image1.url) %>
+              <% else %>
+                <%= image_tag('user_noimage.gif') %>
+              <% end %>
+            </div>
+            <strong><%= badgepost.recept_user.name %></strong>
           <% end %>
-          <br/>
-          <strong><%= link_to badgepost.recept_user.name, new_badgepost_path(recept_user_id: badgepost.recept_user.id) %></strong>
         </span>
       </div>
     </div>
@@ -56,10 +82,10 @@
     <!--タイムスタンプ-->
     <span class="timestamp">
       <%= badgepost.created_at.in_time_zone('Tokyo').to_s(:published_on) %>
-      <% if type="recept" %>
-        にもらいました。
+      <% if type=="sent" %>
+        に贈りました。
       <% else %>
-        にあげました。
+        に獲得しました。
       <% end %>
     </span>
   </footer>

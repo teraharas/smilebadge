@@ -12,11 +12,13 @@
                     <li>
                       <span><%= badge.outputnumber.to_s + "：" %></span>
                       <span class="gravatar">
-                        <% if badge.image? %>
-                          <%= link_to image_tag(badge.image.url, {:size => '50x50'}), edit_badge_path(badge) %>
-                        <% else %>
-                          <%= link_to image_tag('badge_noimage.gif', {:size => '50x50'}), edit_badge_path(badge) %>
-                        <% end %>
+                        <div class="middleimage">
+                          <% if badge.image? %>
+                            <%= link_to image_tag(badge.image.url), edit_badge_path(badge) %>
+                          <% else %>
+                            <%= link_to image_tag('badge_noimage.gif'), edit_badge_path(badge) %>
+                          <% end %>
+                        </div>
                       </span>
                       <span class="user"><strong><%= link_to badge.name, edit_badge_path(badge) %></strong></span>
                       <br/>
