@@ -70,7 +70,7 @@ end
 gem 'kaminari'
 # CarrierWave
 gem 'carrierwave'
-gem 'rmagick', require: 'RMagick'
+gem 'mini_magick'
 # Cloudinary
 gem 'cloudinary'
 
