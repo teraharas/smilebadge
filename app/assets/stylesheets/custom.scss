@@ -75,8 +75,10 @@ p {
 /* header */
 
 #logo {
-  max-width: 100%; 
-  height:auto;
+  img{
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 #logo:hover {
@@ -85,12 +87,9 @@ p {
 }
 
 .logoheader{
-  width: 192px;
-  height: 38px;
-  // overflow: hidden;
   img{
-    width:192px;
-    height:38px;
+    width:169px;
+    height:33px;
   }
 }
 
