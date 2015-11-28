@@ -16,3 +16,4 @@
 !/log/.keep
 /tmp
 /public/mypath/*
+/public/uploads/*
