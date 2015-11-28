@@ -17,46 +17,91 @@
   <% end %>
   
   <div class="field">
-    <% if @user.image? %>
+    <% if @user.image1? %>
       <div class="thumbnail">
-        <%= image_tag @user.image.url %>
+        <%= image_tag @user.image1.url %>
       </div>
     <% end %>
     <br>
-    <%= f.label :image %>
+    <%= f.label :image1 %>
     <br>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
+    <%= f.file_field :image1 %>
+    <%= f.hidden_field :image_cache1 %>
   </div>
   <div class="field">
-    <% if @user.persisted? && @user.image? %>
+    <% if @user.persisted? && @user.image1? %>
       <label>
-        <%= f.check_box :remove_image %>
-        画像を削除
+        <%= f.check_box :remove_image1 %>
+        画像1を削除
+      </label>
+    <% end %>
+    
+    <br/>
+    <br/>
+    
+  <% if @user.image2? %>
+      <div class="thumbnail">
+        <%= image_tag @user.image2.url %>
+      </div>
+    <% end %>
+    <br>
+    <%= f.label :image2 %>
+    <br>
+    <%= f.file_field :image2 %>
+    <%= f.hidden_field :image_cache2 %>
+  </div>
+  <div class="field">
+    <% if @user.persisted? && @user.image2? %>
+      <label>
+        <%= f.check_box :remove_image2 %>
+        画像2を削除
       </label>
     <% end %>
   </div>
+  
+      <% if logged_in_adminuser? %>
+        <%= f.label "ユーザー有効フラグ" %>
+        <%= f.check_box 'activeflg', {:checked => true}, true, false %>
+        
+        <%= f.label "管理者フラグ" %>
+        <%= f.check_box 'adminflg', {:checked => false}, true, false %>
+        
+        <%= f.label "氏名" %>
+        <%= f.text_field :name %>
+        
+        <%= f.label "ふりがな" %>
+        <%= f.text_field :kananame %>
+        
+        <%= f.label "部門名" %>
+        <%= f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name) %>
+        
+        <%= f.label "メールアドレス" %>
+        <%= f.text_field :email %>
+      <% else %>
+        <p><%= f.label "氏名" %></p>
+        <p><%= @user.name %></p>
+        
+        <p><%= f.label "ふりがな" %></p>
+        <p><%= @user.kananame %></p>
+        
+        <p><%= f.label "部門名" %></p>
+        <p><%= @user.bumon.name %></p>
+        
+        <p><%= f.label "メールアドレス" %></p>
+        <p><%= @user.email %></p>
+      <% end %>
+      
+      <%= f.label "ニックネーム" %>
+      <%= f.text_field :nickname %>
 
-      <%= f.label "部門名" %>
-      <%= f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name) %>
-      
-      <%= f.label "氏名" %>
-      <%= f.text_field :name %>
-      
-      <%= f.label "ふりがな" %>
-      <%= f.text_field :kananame %>
-
-      <%= f.label "メールアドレス" %>
-      <%= f.text_field :email %>
-      
-      <%= f.label "好きな言葉・座右の銘" %>
-      <%= f.text_area :myword %>
+      <%= f.label "好きな言葉・座右の銘・マイルール" %>
+      <%= f.text_area :myword, :size => "10x5" %>
       
       <%= f.label "趣味" %>
-      <%= f.text_area :hobby %>
+      <%= f.text_area :hobby, :size => "10x5" %>
       
       <%= f.label "一言メッセージ" %>
-      <%= f.text_area :message %>
+      <%= f.text_field :message %>
       
   <%= f.submit "プロフィールを更新", class: "btn btn-sm btn-primary" %>
 <% end %>

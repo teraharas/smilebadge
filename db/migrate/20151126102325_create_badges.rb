@@ -1,6 +1,7 @@
 class CreateBadges < ActiveRecord::Migration
   def change
     create_table :badges do |t|
+      t.boolean :activeflg
       t.string :name
       t.integer :outputnumber
       t.boolean :optionflg

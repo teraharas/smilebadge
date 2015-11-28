@@ -1,0 +1,399 @@
+make  all-recursive
+make[1]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28'
+Making all in libxslt
+make[2]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/libxslt'
+  CC     attrvt.lo
+  CC     xslt.lo
+  CC     xsltlocale.lo
+xsltlocale.c:210:1: warning: ‘xsltDefaultRegion’ defined but not used [-Wunused-function]
+ xsltDefaultRegion(const xmlChar *localeName) {
+ ^
+  CC     xsltutils.lo
+  CC     pattern.lo
+  CC     templates.lo
+  CC     variables.lo
+  CC     keys.lo
+  CC     numbers.lo
+  CC     extensions.lo
+extensions.c: In function ‘xsltRegisterExtModuleElement’:
+extensions.c:1625:9: warning: variable ‘ret’ set but not used [-Wunused-but-set-variable]
+     int ret;
+         ^
+  CC     extra.lo
+  CC     functions.lo
+functions.c: In function ‘xsltGenerateIdFunction’:
+functions.c:668:15: warning: variable ‘doc’ set but not used [-Wunused-but-set-variable]
+     xmlDocPtr doc;
+               ^
+  CC     namespaces.lo
+  CC     imports.lo
+  CC     attributes.lo
+  CC     documents.lo
+  CC     preproc.lo
+preproc.c: In function ‘xsltElementComp’:
+preproc.c:932:37: warning: variable ‘name’ set but not used [-Wunused-but-set-variable]
+      const xmlChar *prefix = NULL, *name;
+                                     ^
+preproc.c: In function ‘xsltAttributeComp’:
+preproc.c:1056:37: warning: variable ‘name’ set but not used [-Wunused-but-set-variable]
+      const xmlChar *prefix = NULL, *name;
+                                     ^
+  CC     transform.lo
+  CC     security.lo
+  CCLD   libxslt.la
+make[2]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/libxslt'
+Making all in libexslt
+make[2]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/libexslt'
+  CC     exslt.lo
+  CC     common.lo
+  CC     crypto.lo
+  CC     math.lo
+  CC     sets.lo
+  CC     functions.lo
+  CC     strings.lo
+  CC     date.lo
+  CC     saxon.lo
+  CC     dynamic.lo
+  CCLD   libexslt.la
+make[2]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/libexslt'
+Making all in xsltproc
+make[2]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/xsltproc'
+  CC     xsltproc.o
+  CCLD   xsltproc
+  CC     testThreads.o
+  CCLD   testThreads
+make[2]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/xsltproc'
+Making all in doc
+make[2]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/doc'
+I/O error : Attempt to load network entity http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd
+./xsltproc.xml:8: warning: failed to load external entity "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"
+]>
+  ^
+I/O error : Attempt to load network entity http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl
+warning: failed to load external entity "http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl"
+error
+xsltParseStylesheetFile : cannot parse http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl
+compilation error: file ./xsltproc.xml line 10 element refentry
+xsltParseStylesheetProcess : document is not a stylesheet
+make[2]: [xsltproc.1] Error 5 (ignored)
+Rebuilding the HTML Web pages from xslt.html
+Validating the HTML Web pages
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+API.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+API.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+bugs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+bugs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+contribs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+contribs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+FAQ.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+FAQ.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+docs.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+docs.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+downloads.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+downloads.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+help.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+help.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+index.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+index.html:6: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+intro.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+intro.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+news.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+xsltproc2.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+xsltproc2.html:3: validity error : Validation failed: no DTD found !
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type"
+                                          ^
+make[2]: [API.html] Error 4 (ignored)
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+./news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+I/O error : Attempt to load network entity http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+news.html:2: warning: failed to load external entity "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                                                                               ^
+make[2]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/doc'
+Making all in tests
+make[2]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests'
+Making all in docs
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docs'
+ cd ../.. && /bin/bash /home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/missing --run automake-1.11 --gnu tests/docs/Makefile
+/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/missing: line 52: automake-1.11: command not found
+WARNING: `automake-1.11' is missing on your system.  You should only need it if
+         you modified `Makefile.am', `acinclude.m4' or `configure.in'.
+         You might want to install the `Automake' and `Perl' packages.
+         Grab them from any GNU archive site.
+ cd ../.. && /bin/bash ./config.status tests/docs/Makefile 
+config.status: creating tests/docs/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docs'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docs'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docs'
+Making all in REC1
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC1'
+ cd ../.. && /bin/bash ./config.status tests/REC1/Makefile 
+config.status: creating tests/REC1/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC1'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC1'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC1'
+Making all in REC2
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC2'
+ cd ../.. && /bin/bash ./config.status tests/REC2/Makefile 
+config.status: creating tests/REC2/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC2'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC2'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC2'
+Making all in REC
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC'
+ cd ../.. && /bin/bash ./config.status tests/REC/Makefile 
+config.status: creating tests/REC/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/REC'
+Making all in general
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/general'
+ cd ../.. && /bin/bash ./config.status tests/general/Makefile 
+config.status: creating tests/general/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/general'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/general'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/general'
+Making all in namespaces
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/namespaces'
+ cd ../.. && /bin/bash ./config.status tests/namespaces/Makefile 
+config.status: creating tests/namespaces/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/namespaces'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/namespaces'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/namespaces'
+Making all in keys
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/keys'
+ cd ../.. && /bin/bash ./config.status tests/keys/Makefile 
+config.status: creating tests/keys/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/keys'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/keys'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/keys'
+Making all in numbers
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/numbers'
+ cd ../.. && /bin/bash ./config.status tests/numbers/Makefile 
+config.status: creating tests/numbers/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/numbers'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/numbers'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/numbers'
+Making all in documents
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/documents'
+ cd ../.. && /bin/bash ./config.status tests/documents/Makefile 
+config.status: creating tests/documents/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/documents'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/documents'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/documents'
+Making all in extensions
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/extensions'
+ cd ../.. && /bin/bash ./config.status tests/extensions/Makefile 
+config.status: creating tests/extensions/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/extensions'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/extensions'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/extensions'
+Making all in reports
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/reports'
+ cd ../.. && /bin/bash ./config.status tests/reports/Makefile 
+config.status: creating tests/reports/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/reports'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/reports'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/reports'
+Making all in xmlspec
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/xmlspec'
+ cd ../.. && /bin/bash ./config.status tests/xmlspec/Makefile 
+config.status: creating tests/xmlspec/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/xmlspec'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/xmlspec'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/xmlspec'
+Making all in multiple
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/multiple'
+ cd ../.. && /bin/bash ./config.status tests/multiple/Makefile 
+config.status: creating tests/multiple/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/multiple'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/multiple'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/multiple'
+Making all in xinclude
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/xinclude'
+ cd ../.. && /bin/bash ./config.status tests/xinclude/Makefile 
+config.status: creating tests/xinclude/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/xinclude'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/xinclude'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/xinclude'
+Making all in XSLTMark
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/XSLTMark'
+ cd ../.. && /bin/bash ./config.status tests/XSLTMark/Makefile 
+config.status: creating tests/XSLTMark/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/XSLTMark'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/XSLTMark'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/XSLTMark'
+Making all in docbook
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docbook'
+ cd ../.. && /bin/bash ./config.status tests/docbook/Makefile 
+config.status: creating tests/docbook/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docbook'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docbook'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/docbook'
+Making all in exslt
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt'
+ cd ../.. && /bin/bash ./config.status tests/exslt/Makefile 
+config.status: creating tests/exslt/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt'
+Making all in common
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/common'
+ cd ../../.. && /bin/bash ./config.status tests/exslt/common/Makefile 
+config.status: creating tests/exslt/common/Makefile
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/common'
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/common'
+make[4]: Nothing to be done for `all'.
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/common'
+Making all in functions
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/functions'
+ cd ../../.. && /bin/bash ./config.status tests/exslt/functions/Makefile 
+config.status: creating tests/exslt/functions/Makefile
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/functions'
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/functions'
+make[4]: Nothing to be done for `all'.
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/functions'
+Making all in math
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/math'
+ cd ../../.. && /bin/bash ./config.status tests/exslt/math/Makefile 
+config.status: creating tests/exslt/math/Makefile
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/math'
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/math'
+make[4]: Nothing to be done for `all'.
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/math'
+Making all in sets
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/sets'
+ cd ../../.. && /bin/bash ./config.status tests/exslt/sets/Makefile 
+config.status: creating tests/exslt/sets/Makefile
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/sets'
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/sets'
+make[4]: Nothing to be done for `all'.
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/sets'
+Making all in strings
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/strings'
+ cd ../../.. && /bin/bash ./config.status tests/exslt/strings/Makefile 
+config.status: creating tests/exslt/strings/Makefile
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/strings'
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/strings'
+make[4]: Nothing to be done for `all'.
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/strings'
+Making all in dynamic
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/dynamic'
+ cd ../../.. && /bin/bash ./config.status tests/exslt/dynamic/Makefile 
+config.status: creating tests/exslt/dynamic/Makefile
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/dynamic'
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/dynamic'
+make[4]: Nothing to be done for `all'.
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/dynamic'
+Making all in date
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/date'
+ cd ../../.. && /bin/bash ./config.status tests/exslt/date/Makefile 
+config.status: creating tests/exslt/date/Makefile
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/date'
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/date'
+make[4]: Nothing to be done for `all'.
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt/date'
+make[4]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt'
+make[4]: Nothing to be done for `all-am'.
+make[4]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt'
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/exslt'
+Making all in plugins
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/plugins'
+ cd ../.. && /bin/bash ./config.status tests/plugins/Makefile depfiles
+config.status: creating tests/plugins/Makefile
+config.status: executing depfiles commands
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/plugins'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/plugins'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests/plugins'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests'
+ cd .. && /bin/bash ./config.status tests/Makefile 
+config.status: creating tests/Makefile
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests'
+make[3]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests'
+make[3]: Nothing to be done for `all-am'.
+make[3]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests'
+make[2]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28/tests'
+make[2]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28'
+ cd . && /bin/bash ./config.status Makefile 
+config.status: creating Makefile
+make[2]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28'
+make[2]: Entering directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28'
+sed -e 's?\@XSLT_LIBDIR\@?-L/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ports/x86_64-unknown-linux-gnu/libxslt/1.1.28/lib?g' \
+	    -e 's?\@XSLT_INCLUDEDIR\@?-I/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ports/x86_64-unknown-linux-gnu/libxslt/1.1.28/include?g' \
+	    -e 's?\@VERSION\@?1.1.28?g' \
+	    -e 's?\@XSLT_LIBS\@?-lxslt  -L/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ports/x86_64-unknown-linux-gnu/libxml2/2.9.2/lib -lxml2 -lz -lm -ldl -lm ?g' \
+	       < ./xsltConf.sh.in > xsltConf.tmp \
+	&& mv xsltConf.tmp xsltConf.sh
+make[2]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28'
+make[1]: Leaving directory `/home/ubuntu/workspace/smilebadge/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.6.6.4/ext/nokogiri/tmp/x86_64-unknown-linux-gnu/ports/libxslt/1.1.28/libxslt-1.1.28'

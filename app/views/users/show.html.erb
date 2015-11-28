@@ -1,15 +1,19 @@
 <div class="row">
   <aside class="col-md-4">
+
+    <%= @user.bumon.name %>
+    
+    <h3><%= @user.name %></h3>
+    
     <section class="user_info">
       <h1>
         <span class="gravatar">
-          <% if @user.image? %>
-            <%= image_tag @user.image.url, :size => '80x80' %>
+          <% if @user.image1? %>
+            <%= image_tag @user.image1.url, :size => '80x80' %>
           <% else %>
             <%= image_tag 'user_noimage.gif', :size => '80x80' %>
           <% end %>
         </span>
-        <%= @user.name %>
       </h1>
     </section>
   
@@ -27,24 +31,34 @@
       </div>
     <% end %>
     
-    部門名：
-    <%= @user.bumon.name %>
+    ふりがな：
+    <%= @user.kananame %>
+    <br/>
+    <br/>
+    
+    ニックネーム：
+    <%= @user.nickname %>
+    <br/>
     <br/>
     
     メールアドレス：
     <%= @user.email %>
     <br/>
+    <br/>
   
-    好きな言葉・座右の銘：
-    <%= @user.myword %>
+    好きな言葉・座右の銘・マイルール：
+    <%= simple_format(h(@user.myword)) %>
+    <br/>
     <br/>
     
     趣味：
-    <%= @user.hobby %>
+    <%= simple_format(h(@user.hobby)) %>
+    <br/>
     <br/>
     
     一言メッセージ：
     <%= @user.message %>
+    <br/>
     <br/>
     
   <% end %>

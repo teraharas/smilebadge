@@ -1,6 +1,7 @@
 class CreateBumons < ActiveRecord::Migration
   def change
     create_table :bumons do |t|
+      t.boolean :activeflg
       t.string :name
       t.integer :outputnumber
 

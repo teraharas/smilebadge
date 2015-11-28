@@ -69,7 +69,8 @@ end
 # かみなり
 gem 'kaminari'
 # CarrierWave
-gem "carrierwave"
+gem 'carrierwave'
+gem 'rmagick', require: 'RMagick'
 # Cloudinary
 gem 'cloudinary'
 

@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20151126102340) do
   add_index "badgeposts", ["sent_user_id"], name: "index_badgeposts_on_sent_user_id"
 
   create_table "badges", force: :cascade do |t|
+    t.boolean  "activeflg"
     t.string   "name"
     t.integer  "outputnumber"
     t.boolean  "optionflg"
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20151126102340) do
   add_index "badges", ["outputnumber"], name: "index_badges_on_outputnumber", unique: true
 
   create_table "bumons", force: :cascade do |t|
+    t.boolean  "activeflg"
     t.string   "name"
     t.integer  "outputnumber"
     t.datetime "created_at",   null: false
@@ -52,21 +54,25 @@ ActiveRecord::Schema.define(version: 20151126102340) do
   add_index "bumons", ["outputnumber"], name: "index_bumons_on_outputnumber", unique: true
 
   create_table "users", force: :cascade do |t|
+    t.boolean  "activeflg",       default: true
     t.integer  "bumon_id"
     t.string   "name"
     t.string   "kananame"
-    t.boolean  "activeflg"
-    t.boolean  "adminflg"
+    t.string   "nickname"
+    t.boolean  "adminflg",        default: false
     t.string   "email"
     t.string   "password_digest"
-    t.string   "image"
-    t.boolean  "remove_image"
-    t.string   "image_cache"
+    t.string   "image1"
+    t.boolean  "remove_image1"
+    t.string   "image_cache1"
+    t.string   "image2"
+    t.boolean  "remove_image2"
+    t.string   "image_cache2"
     t.text     "myword"
     t.text     "hobby"
-    t.text     "message"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "message"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "users", ["bumon_id"], name: "index_users_on_bumon_id"

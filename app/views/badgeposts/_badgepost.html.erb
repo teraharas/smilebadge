@@ -5,8 +5,8 @@
       <div class="col-sm-12">
         <!--送った人のユーザー情報-->
         <span class="gravatarsent_<%= type %>">
-          <% if badgepost.sent_user.image? %>
-            <%= link_to image_tag(badgepost.sent_user.image.url, {:size => '50x50'}), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
+          <% if badgepost.sent_user.image1? %>
+            <%= link_to image_tag(badgepost.sent_user.image1.url, {:size => '50x50'}), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
           <% else %>
             <%= link_to image_tag('user_noimage.gif', {:size => '50x50'}), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
           <% end %>
@@ -31,8 +31,8 @@
 
         <!--受け取った人のユーザー情報-->
         <span class="gravatarrecept_<%= type %>">
-          <% if badgepost.recept_user.image? %>
-            <%= link_to image_tag(badgepost.recept_user.image.url, {:size => '50x50'}), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
+          <% if badgepost.recept_user.image1? %>
+            <%= link_to image_tag(badgepost.recept_user.image1.url, {:size => '50x50'}), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
           <% else %>
             <%= link_to image_tag('user_noimage.gif', {:size => '50x50'}), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
           <% end %>
@@ -49,13 +49,18 @@
       <% if badgepost.content == "" %>
         <%= badgepost.recept_user.name %>さんへ<%= badgepost.badge.name %>バッジを贈ります！
       <% else %>
-        <%= badgepost.content %>
+        <%= simple_format(h(badgepost.content)) %>
       <% end %>
     </span>
   
     <!--タイムスタンプ-->
-    <!--<span class="timestamp">-->
-    <!--  time_ago_in_words(badgepost.created_at) 前にバッジが送られました。-->
-    <!--</span>-->
+    <span class="timestamp">
+      <%= badgepost.created_at.in_time_zone('Tokyo').to_s(:published_on) %>
+      <% if type="recept" %>
+        にもらいました。
+      <% else %>
+        にあげました。
+      <% end %>
+    </span>
   </footer>
 </li>
