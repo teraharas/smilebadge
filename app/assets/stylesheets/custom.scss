@@ -406,15 +406,16 @@ $badge_backcolor : #B2EBF2;
   }
   
   
-  
   .content {
     display: block;
+    overflow: auto;
   	background: white;
     border: 2px outset;
     width: auto;
+    max-width: 350px;
     height: 100px;
     padding: 5px;
-    }
+  }
     
   .timestamp {
     color: $gray-light;
@@ -428,8 +429,9 @@ $badge_backcolor : #B2EBF2;
   @media(max-width: 768px) {
   }
   
-  @media(max-width: 479px) {
-    
+  // @media(max-width: 479px) {
+  @media(max-width: 500px) {
+      
     .gravatarsent_sent {
       display: none;
     }

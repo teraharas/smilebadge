@@ -1,16 +1,10 @@
 <% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-    </aside>
-    <aside class="col-md-8">
-      <section class="badgepost">
-        <%= render 'shared/feed' %>
-      </section>
-    </aside>
-  </div>
+<section class="user_info">
+  <%= render 'shared/user_info' %>
+</section>
+<section class="badgepost">
+  <%= render 'shared/feed' %>
+</section>
 <% else %>
   <div class="center jumbotron toppage">
     <!--<h1>SMILE Badgeへようこそ！</h1>-->

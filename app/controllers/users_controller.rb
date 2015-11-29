@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update]
   
   def index
     # 自分以外のユーザーを取得する。
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
     end
     
     @graph = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: 'もらったバッジバランス')
+      f.title(text: '獲得したバッジバランス')
       f.series(name: 'バッジ数', data: data, type: 'pie')
     end
   end

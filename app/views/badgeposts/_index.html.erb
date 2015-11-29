@@ -1,3 +1,13 @@
 <% provide(:title, 'バッジやりとり一覧') %>
 
-<%= render badgeposts, type: type %>
+<%#= render badgeposts, type: type %>
+
+<div class="container-fluid">
+	<div class="row">
+		<% badgeposts.each do |badgepost| %>
+			<div class="col-md-6">
+				<%= render badgepost, type: type %>
+			</div>
+		<% end %>
+	</div>
+</div>

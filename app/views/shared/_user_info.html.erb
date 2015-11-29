@@ -1,3 +1,7 @@
+<p><%= current_user.bumon.name %></p>
+
+<h3><%= current_user.name %></h3>
+
 <% if current_user.image1? %>
   <div class="largeimage" style="background-image: url(<%= current_user.image1.url %>);">
     <%= link_to image_tag('empty.gif'), current_user %>
@@ -8,9 +12,8 @@
   </div>
 <% end %>
 <br/>
+
 <br/>
-<h1><%= current_user.name %></h1>
-<br/>
-<span><%= link_to "自分のプロフィールを見る", current_user %></span>
-<span><%= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジを贈りました。" %></span>
-<span><%= "今までに " + current_user.recept_badgeposts.count.to_s + "個のバッジを獲得しました。" %></span>
+<p><%= link_to "自分のプロフィールを見る", current_user %></p>
+<p><%= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジを贈りました。" %></p>
+<p><%= "今までに " + current_user.recept_badgeposts.count.to_s + "個のバッジを獲得しました。" %></p>

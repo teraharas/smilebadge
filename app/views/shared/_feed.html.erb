@@ -1,6 +1,14 @@
 <% if @feed_items.any? %>
-  <h1>もらったバッジ</h1>
+  <h1>獲得したバッジ</h1>
   <ol class="badgeposts">
-    <%= render @feed_items, type: "recept" %>
+    <div class="container-fluid">
+      <div class="row">
+        <% @feed_items.each do |badgepost| %>
+        	<div class="col-md-6">
+        		<%= render badgepost, type: "recept" %>
+        	</div>
+        <% end %>
+      </div>
+    </div>
   </ol>
 <% end %>

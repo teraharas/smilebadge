@@ -7,7 +7,7 @@
     <% if @recept_user.image1? %>
       <div class="largeimage" style="background-image: url(<%= @recept_user.image1.url %>);"></div>
     <% else %>
-      <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+      <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);"></div>
     <% end %>
   </p>
   <%= @recept_user.name + "さんにバッジを贈ろう！！" %>

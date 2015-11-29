@@ -69,24 +69,24 @@
     </div>
 </div>
 
-  <footer>
-    <!--コメント-->
-    <span class="content">
-      <% if badgepost.content == "" %>
-        <%= badgepost.recept_user.name %>さんへ<%= badgepost.badge.name %>バッジを贈ります！
-      <% else %>
-        <%= simple_format(h(badgepost.content)) %>
-      <% end %>
-    </span>
-  
-    <!--タイムスタンプ-->
-    <span class="timestamp">
-      <%= badgepost.created_at.in_time_zone('Tokyo').to_s(:published_on) %>
-      <% if type=="sent" %>
-        に贈りました。
-      <% else %>
-        に獲得しました。
-      <% end %>
-    </span>
-  </footer>
+<footer>
+  <!--コメント-->
+  <span class="content">
+    <% if badgepost.content == "" %>
+      <%= badgepost.recept_user.name %>さんへ<%= badgepost.badge.name %>バッジを贈ります！
+    <% else %>
+      <%= simple_format(h(badgepost.content)) %>
+    <% end %>
+  </span>
+
+  <!--タイムスタンプ-->
+  <span class="timestamp">
+    <%= badgepost.created_at.in_time_zone('Tokyo').to_s(:published_on) %>
+    <% if type=="sent" %>
+      に贈りました。
+    <% else %>
+      に獲得しました。
+    <% end %>
+  </span>
+</footer>
 </li>
