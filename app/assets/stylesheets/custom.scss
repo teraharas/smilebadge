@@ -70,6 +70,24 @@ p {
   line-height: 1.7em;
 }
 
+// メディアサイズでの切り分け
+@media(max-width: 1000px) {
+}
+@media(max-width: 768px) {
+}
+@media(max-width: 500px) {
+    .container-fluid {
+      margin: 0 !important;
+      padding: 5px !important;
+    }
+    
+    .col-md-6 {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+}
+
+
 /* header */
 
 #logo {
@@ -431,7 +449,6 @@ $badge_backcolor : #B2EBF2;
   
   // @media(max-width: 479px) {
   @media(max-width: 500px) {
-      
     .gravatarsent_sent {
       display: none;
     }
