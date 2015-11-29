@@ -366,7 +366,8 @@ $badge_backcolor : #B2EBF2;
   // 	border: 55px solid #A7F1FF;
     border: 55px solid $badge_backcolor;
   	border-left-color: white;
-    border-left: 30px solid white;
+  // 	矢印マークの角度
+    border-left: 20px solid white;
   }
   
   .triangle_recept {
@@ -375,13 +376,14 @@ $badge_backcolor : #B2EBF2;
   // 	border: 55px solid #A7F1FF;
     border: 55px solid $badge_backcolor;
   	border-left-color: white;
-    border-left: 30px solid white;
+  // 	矢印マークの角度
+    border-left: 20px solid white;
   }
   
   
   .gravatarrecept_sent {
     position: relative;
-    left: -50px;
+    left: -55px;
     // background-color: #A7F1FF;
     background-color: $badge_backcolor;
     float: left;
@@ -393,7 +395,7 @@ $badge_backcolor : #B2EBF2;
   
   .gravatarrecept_recept {
     position: relative;
-    left: -50px;
+    left: -55px;
     // background-color: #A7F1FF;
     background-color: $badge_backcolor;
     float: left;
