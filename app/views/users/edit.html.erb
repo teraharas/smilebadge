@@ -60,6 +60,7 @@
   </div>
   
       <% if logged_in_adminuser? %>
+      <!--管理者なら-->
         <%= f.label "ユーザー有効フラグ" %>
         <%= f.check_box 'activeflg', {:checked => true}, true, false %>
         
@@ -78,6 +79,7 @@
         <%= f.label "メールアドレス" %>
         <%= f.text_field :email %>
       <% else %>
+      <!--通常ユーザーなら-->
         <p><%= f.label "氏名" %></p>
         <p><%= @user.name %></p>
         

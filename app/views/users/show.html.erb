@@ -1,3 +1,10 @@
+<div class="users">
+  <% if current_user?(@users) || logged_in_adminuser? %>
+  <!--自分自身か、管理者ユーザーは編集OK-->
+    <div class="edit_profile"><%= link_to "プロフィールの編集" , edit_user_path(current_user) %></div>
+  <% end %>
+</div>
+
 <div class="row">
   <aside class="col-md-4">
 
