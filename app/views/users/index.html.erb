@@ -11,20 +11,24 @@
           <% @users.each do |user| %>
             <li>
               <span class="gravatar">
-                <div class="middleimage">
                 <% if user.image1? %>
-                  <%= link_to image_tag(user.image1.url), new_badgepost_path(recept_user_id: user.id) %>
+                  <div class="middleimage" style="background-image: url(<%= user.image1.url %>);">
+                    <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id) %>
+                  </div>
                 <% else %>
-                  <%= link_to image_tag('user_noimage.gif'), new_badgepost_path(recept_user_id: user.id) %>
+                  <div class="middleimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+                    <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id) %>
+                  </div>
                 <% end %>
-                </div>
               </span>
-              <span class="user"><strong><%= link_to user.name, new_badgepost_path(recept_user_id: user.id) %></strong></span>
+              <span class="user"><strong><%= link_to user.name + "さんにバッジを贈る！！", new_badgepost_path(recept_user_id: user.id) %></strong></span>
               <br/>
               <span><%= user.bumon.name %></span>
               <br/>
-              <%= link_to user.name + " のプロフィールを見る！", user %>
+              <%= link_to user.name + " さんのプロフィールを見る！", user %>
             </li>
+            <br/>
+            <br/>
           <% end %>
         </ol>
       <% end %>

@@ -4,13 +4,11 @@
   <%= render 'shared/error_messages', object: f.object %>
   
   <p class="gravatar">
-    <div class="largeimage">
     <% if @recept_user.image1? %>
-    <%= image_tag(@recept_user.image1.url) %>
+      <div class="largeimage" style="background-image: url(<%= @recept_user.image1.url %>);"></div>
     <% else %>
-    <%= image_tag('user_noimage.gif') %>
+      <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
     <% end %>
-    </div>
   </p>
   <%= @recept_user.name + "さんにバッジを贈ろう！！" %>
   

@@ -13,7 +13,7 @@
               <li>
               <span><%= badge.outputnumber.to_s + "：" %></span>
               <span class="gravatar">
-                <div class="middleimage">
+                <div class="middlebadgeimage">
                   <% if badge.image? %>
                     <%= link_to image_tag(badge.image.url), edit_badge_path(badge) %>
                   <% else %>

@@ -8,17 +8,15 @@
     <section class="user_info">
       <h1>
         <span class="gravatar">
-          <div class="largeimage">
             <% if @user.image1? %>
-              <%= image_tag @user.image1.url %>
+              <div class="largeimage" style="background-image: url(<%= @user.image1.url %>);"></div>
             <% else %>
-              <%= image_tag 'user_noimage.gif' %>
+              <div class="largeimage" style="background-image: url(user_noimage.gif);"></div>
             <% end %>
-          </div>
         </span>
       </h1>
     </section>
-  
+    
   <%= form_for(@user) do |f| %>
     <% if @user.errors.present? %>
       <div class="alert alert-danger">

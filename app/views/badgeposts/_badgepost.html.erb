@@ -6,22 +6,22 @@
         <!--送った人のユーザー情報-->
         <span class="gravatarsent_<%= type %>">
           <% if type=="sent" %>
-            <div class="middleimage">
-              <% if badgepost.sent_user.image1? %>
-                <%= image_tag(badgepost.sent_user.image1.url) %>
-              <% else %>
-                <%= image_tag('user_noimage.gif') %>
-              <% end %>
-            </div>
+            <% if badgepost.sent_user.image1? %>
+              <div class="middleimage" style="background-image: url(<%= badgepost.sent_user.image1.url %>);"></div>
+            <% else %>
+              <div class="middleimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);"></div>
+            <% end %>
             <strong><%= badgepost.sent_user.name %></strong>
           <% else %>
-            <div class="middleimage">
-              <% if badgepost.sent_user.image1? %>
-                <%= link_to image_tag(badgepost.sent_user.image1.url), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
-              <% else %>
-                <%= link_to image_tag('user_noimage.gif'), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
-              <% end %>
-            </div>
+            <% if badgepost.sent_user.image1? %>
+              <div class="middleimage" style="background-image: url(<%= badgepost.sent_user.image1.url %>);">
+                <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
+              </div>
+            <% else %>
+              <div class="middleimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+                <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.sent_user.id) %>
+              </div>
+            <% end %>
             <strong><%= link_to badgepost.sent_user.name, new_badgepost_path(recept_user_id: badgepost.sent_user.id) %></strong>
           <% end %>
         </span>
@@ -29,7 +29,7 @@
       
         <!--送られたバッジの情報-->
         <span class="badgeicon_mini">
-          <div class="middleimage">
+          <div class="middlebadgeimage">
             <% if badgepost.badge.image? %>
               <%= image_tag(badgepost.badge.image.url) %>
             <% else %>
@@ -46,22 +46,22 @@
         <!--受け取った人のユーザー情報-->
         <span class="gravatarrecept_<%= type %>">
           <% if type=="sent" %>
-            <div class="middleimage">
-              <% if badgepost.recept_user.image1? %>
-                <%= link_to image_tag(badgepost.recept_user.image1.url), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
-              <% else %>
-                <%= link_to image_tag('user_noimage.gif'), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
-              <% end %>
-            </div>
+            <% if badgepost.recept_user.image1? %>
+              <div class="middleimage" style="background-image: url(<%= badgepost.recept_user.image1.url %>);">
+                <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
+              </div>
+            <% else %>
+              <div class="middleimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+                <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
+              </div>
+            <% end %>
             <strong><%= link_to badgepost.recept_user.name, new_badgepost_path(recept_user_id: badgepost.recept_user.id) %></strong>
           <% else %>
-            <div class="middleimage">
-              <% if badgepost.recept_user.image1? %>
-                <%= image_tag(badgepost.recept_user.image1.url) %>
-              <% else %>
-                <%= image_tag('user_noimage.gif') %>
-              <% end %>
-            </div>
+            <% if badgepost.recept_user.image1? %>
+              <div class="middleimage" style="background-image: url(<%= badgepost.recept_user.image1.url %>);"></div>
+            <% else %>
+              <div class="middleimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);"></div>
+            <% end %>
             <strong><%= badgepost.recept_user.name %></strong>
           <% end %>
         </span>
