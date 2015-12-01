@@ -9,8 +9,7 @@ class User < ActiveRecord::Base
   has_secure_password
   
   # 画像アップロード
-  mount_uploader :image1, ImageUploader
-  mount_uploader :image2, ImageUploader
+  mount_uploader :image, ImageUploader
   
   belongs_to :bumon, class_name: "Bumon"
   has_many :sent_badgeposts, :class_name => "Badgepost", :foreign_key => "sent_user_id"

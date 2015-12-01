@@ -1,3 +1,7 @@
+<% unless current_user?(@user) %>
+  <span class="user"><strong><%= link_to @user.name + "さんにバッジを贈る！！", new_badgepost_path(recept_user_id: @user.id) %></strong></span>
+<% end %>
+
 <div class="users">
   <% if current_user?(@users) || logged_in_adminuser? %>
   <!--自分自身か、管理者ユーザーは編集OK-->
@@ -15,10 +19,18 @@
     <section class="user_info">
       <h1>
         <span class="gravatar">
-            <% if @user.image1? %>
-              <div class="largeimage" style="background-image: url(<%= @user.image1.url %>);"></div>
+            <% if @user.image? %>
+              <div class="largeimage" style="background-image: url(<%= @user.image.url %>);">
+                <% unless current_user?(@user) %>
+                  <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: @user.id) %>
+                <% end %>
+              </div>
             <% else %>
-              <div class="largeimage" style="background-image: url(user_noimage.gif);"></div>
+              <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+                <% unless current_user?(@user) %>
+                  <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: @user.id) %>
+                <% end %>
+              </div>
             <% end %>
         </span>
       </h1>

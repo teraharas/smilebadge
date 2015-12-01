@@ -4,8 +4,8 @@
   <%= render 'shared/error_messages', object: f.object %>
   
   <p class="gravatar">
-    <% if @recept_user.image1? %>
-      <div class="largeimage" style="background-image: url(<%= @recept_user.image1.url %>);"></div>
+    <% if @recept_user.image? %>
+      <div class="largeimage" style="background-image: url(<%= @recept_user.image.url %>);"></div>
     <% else %>
       <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);"></div>
     <% end %>

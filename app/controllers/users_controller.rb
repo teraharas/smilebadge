@@ -83,6 +83,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:activeflg, :bumon_id, :name, :kananame, :nickname, :adminflg,
                                   :email, :password, :password_confirmation,
                                   :myword, :hobby, :message,
-                                  :image1, :remove_image1, :image_cache1, :image2, :remove_image2, :image_cache2)
+                                  :image, :remove_image, :image_cache)
   end
 end

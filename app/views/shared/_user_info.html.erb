@@ -2,8 +2,8 @@
 
 <h3><%= current_user.name %></h3>
 
-<% if current_user.image1? %>
-  <div class="largeimage" style="background-image: url(<%= current_user.image1.url %>);">
+<% if current_user.image? %>
+  <div class="largeimage" style="background-image: url(<%= current_user.image.url %>);">
     <%= link_to image_tag('empty.gif'), current_user %>
   </div>
 <% else %>

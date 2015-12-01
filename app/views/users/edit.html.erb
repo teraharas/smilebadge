@@ -17,47 +17,27 @@
   <% end %>
   
   <div class="field">
-    <% if @user.image1? %>
+    <% if @user.image? %>
       <div class="thumbnail">
-        <%= image_tag @user.image1.url %>
+        <%= image_tag @user.image.url %>
       </div>
     <% end %>
     <br>
-    <%= f.label :image1 %>
+    <%= f.label :image %>
     <br>
-    <%= f.file_field :image1 %>
+    <%= f.file_field :image %>
     <%= f.hidden_field :image_cache1 %>
   </div>
   <div class="field">
-    <% if @user.persisted? && @user.image1? %>
+    <% if @user.persisted? && @user.image? %>
       <label>
-        <%= f.check_box :remove_image1 %>
+        <%= f.check_box :remove_image %>
         画像1を削除
       </label>
     <% end %>
     
     <br/>
     <br/>
-    
-  <% if @user.image2? %>
-      <div class="thumbnail">
-        <%= image_tag @user.image2.url %>
-      </div>
-    <% end %>
-    <br>
-    <%= f.label :image2 %>
-    <br>
-    <%= f.file_field :image2 %>
-    <%= f.hidden_field :image_cache2 %>
-  </div>
-  <div class="field">
-    <% if @user.persisted? && @user.image2? %>
-      <label>
-        <%= f.check_box :remove_image2 %>
-        画像2を削除
-      </label>
-    <% end %>
-  </div>
   
       <% if logged_in_adminuser? %>
       <!--管理者なら-->
