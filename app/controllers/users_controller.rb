@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def index
     # 自分以外のユーザーを取得する。
-    @users = User.where('id <> ?', current_user.id).order(id: :desc)
+    @users = User.where('id <> ?', current_user.id).order(:kananame)
 
   end
   
