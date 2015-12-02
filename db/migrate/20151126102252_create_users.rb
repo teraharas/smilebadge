@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :activeflg, default: true
       t.references :bumon, index: true
       t.string :name
-      t.string :kananame, collation: '"C"'
+      t.string :kananame, :collation => '"C"'
       t.string :nickname
       t.boolean :adminflg, default: false
       t.string :email

@@ -6,8 +6,13 @@ class UsersController < ApplicationController
   def index
     # 自分以外のユーザーを取得する。
     # ソート：カナ（昇順）
-    # @users = User.where('id <> ?', current_user.id).order('kananame COLLATE "C"')
-    @users = User.where('id <> ?', current_user.id).order(:kananame)
+    if Rails.env == 'production'
+      @users = User.where('id <> ?', current_user.id).order('kananame COLLATE "C"')
+    elsif Rails.env == 'development'
+      @users = User.where('id <> ?', current_user.id).order(:kananame)
+    elsif Rails.env == 'test'
+      @users = User.where('id <> ?', current_user.id).order(:kananame)
+    end
   end
   
   def show
