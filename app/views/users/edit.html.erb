@@ -26,7 +26,7 @@
     <%= f.label :image %>
     <br>
     <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache1 %>
+    <%= f.hidden_field :image_cache %>
   </div>
   <div class="field">
     <% if @user.persisted? && @user.image? %>
