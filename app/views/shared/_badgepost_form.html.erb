@@ -45,8 +45,7 @@
       <div class="field">
       
       <%= f.hidden_field :recept_user_id, :value => @recept_user.id %>
-      
-      <%= f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かった書いてね！", :size => "10x5", :maxlength => "140" %>
+          <%= f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かった書いてね！", :size => "10x5", :maxlength => "140" %>
       </div>
       
       <%= f.submit "バッジを送る！", class: "btn btn-primary" %>

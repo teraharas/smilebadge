@@ -76,14 +76,14 @@ p {
 @media(max-width: 768px) {
 }
 @media(max-width: 500px) {
-    .container-fluid {
-      margin: 0 !important;
-      padding: 2px !important;
-    }
+    // .container-fluid {
+    //   margin: 2px !important;
+    //   padding: 2px !important;
+    // }
     
     .col-md-6 {
       margin: 0 !important;
-      padding: 2px !important;
+      padding: 0 !important;
     }
 }
 
