@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     end
   end
   
+  
   def show
     @user = User.find(params[:id])
     
@@ -27,6 +28,52 @@ class UsersController < ApplicationController
     # 今までに贈ったバッジのグラフ
     @graph_sent = get_graph(@user.id, "ALL_SENT")
   end
+  
+  
+  def new
+    @user = User.new
+  end
+  
+
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = "登録しました！ログインしてください！"
+      redirect_to login_path
+    else
+      render 'new'
+    end
+  end
+  
+  
+  def update
+    @user = User.find(params[:id])
+    
+    if @user.update(user_params)
+      # 保存に成功した場合はトップページへリダイレクト
+      flash[:success] = "プロフィールを編集しました。"
+      redirect_to @user
+    else
+      # 保存に失敗した場合は編集画面へ戻す
+      render 'edit'
+    end
+  end
+  
+
+  private
+  def user_params
+    params.require(:user)
+      .permit(:activeflg, :bumon_id, :name, :kananame, :nickname, :adminflg,
+            :email, :password, :password_confirmation,
+            :myword, :hobby, :message,
+            :image, :remove_image, :image_cache)
+  end
+  
   
   def get_graph(user_id, type)
     # グラフインスタンス取得
@@ -72,48 +119,5 @@ class UsersController < ApplicationController
       end
       f.series(name: 'バッジ数', data: data, type: 'pie')
     end
-  end
-  
-  def new
-    @user = User.new
-  end
-  
-
-  def edit
-    @user = User.find(params[:id])
-  end
-  
-
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      flash[:success] = "登録しました！ログインしてください！"
-      redirect_to login_path
-    else
-      render 'new'
-    end
-  end
-  
-  
-  def update
-    @user = User.find(params[:id])
-    
-    if @user.update(user_params)
-      # 保存に成功した場合はトップページへリダイレクト
-      flash[:success] = "プロフィールを編集しました。"
-      redirect_to @user
-    else
-      # 保存に失敗した場合は編集画面へ戻す
-      render 'edit'
-    end
-  end
-  
-
-  private
-  def user_params
-    params.require(:user).permit(:activeflg, :bumon_id, :name, :kananame, :nickname, :adminflg,
-                                  :email, :password, :password_confirmation,
-                                  :myword, :hobby, :message,
-                                  :image, :remove_image, :image_cache)
   end
 end
