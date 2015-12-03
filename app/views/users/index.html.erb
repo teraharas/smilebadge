@@ -8,28 +8,28 @@
         <% if @users.any? %>
           <ol class="users">
             <% @users.each do |user| %>
-    <div class="col-md-4">
-              <li>
-                <span class="gravatar">
-                  <% if user.image? %>
-                    <div class="middleimage" style="background-image: url(<%= user.image.url %>);">
-                      <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id) %>
-                    </div>
-                  <% else %>
-                    <div class="middleimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
-                      <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id) %>
-                    </div>
-                  <% end %>
-                </span>
-                <span class="user"><strong><%= link_to user.name + "さんにバッジを贈る！！", new_badgepost_path(recept_user_id: user.id) %></strong></span>
+              <div class="col-md-6">
+                <li>
+                  <span class="gravatar">
+                    <% if user.image? %>
+                      <div class="middleimage" style="background-image: url(<%= user.image.url %>);">
+                        <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id) %>
+                      </div>
+                    <% else %>
+                      <div class="middleimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+                        <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id) %>
+                      </div>
+                    <% end %>
+                  </span>
+                  <span class="user"><strong><%= link_to user.name + "さんにバッジを贈る！！", new_badgepost_path(recept_user_id: user.id) %></strong></span>
+                  <br/>
+                  <span><%= user.bumon.name %></span>
+                  <br/>
+                  <%= link_to "プロフィール", user %>
+                </li>
                 <br/>
-                <span><%= user.bumon.name %></span>
                 <br/>
-                <%= link_to user.name + " さんのプロフィール", user %>
-              </li>
-              <br/>
-              <br/>
-  </div>
+              </div>
             <% end %>
           </ol>
         <% end %>
