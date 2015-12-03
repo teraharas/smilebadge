@@ -86,7 +86,13 @@
 
 <br/>
 
-<h2><%= @maxbagecount %></h2>
+<!--獲得したバッジグラフ表示-->
+<%= high_chart("radar1", @graph_recept30days) %>
+<br/>
 
-<!--グラフ表示-->
-<%= high_chart("radar", @graph) %>
+<!--獲得したバッジグラフ表示-->
+<%= high_chart("radar2", @graph_recept) %>
+<br/>
+
+<!--贈ったバッジグラフ表示-->
+<%= high_chart("radar3", @graph_sent) %>
