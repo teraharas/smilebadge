@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @badgeposts_recept30days = Badge.joins(join_condition_recept30days).group(:id, :name, :image, :outputnumber)
             .select(badgejoin_recept30days[:id], badgejoin_recept30days[:name], badgejoin_recept30days[:image], badgejoin_recept30days[:outputnumber], badgejoin_recept30days[:id].count.as('cnt'))
             .where(badgepostjoin_recept30days[:recept_user_id].eq(current_user.id))
-            .where(badgepostjoin_recept30days[:created_at].gt 30.minutes.ago)
+            .where(badgepostjoin_recept30days[:created_at].gt 30.days.ago)
             .order('cnt DESC')
             # .limit(10)
     data = Array.new
