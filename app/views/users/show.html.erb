@@ -1,6 +1,8 @@
-<% unless current_user?(@user) %>
-  <span class="user"><strong><%= link_to @user.name + "さんにバッジを贈る！！", new_badgepost_path(recept_user_id: @user.id) %></strong></span>
-<% end %>
+<h3>
+  <% unless current_user?(@user) %>
+    <span class="user"><strong><%= link_to @user.name + "さんにバッジを贈る！！", new_badgepost_path(recept_user_id: @user.id) %></strong></span>
+  <% end %>
+</h3>
 
 <div class="users">
   <% if current_user?(@users) || logged_in_adminuser? %>
