@@ -1,7 +1,6 @@
 class BadgesController < ApplicationController
   def index
    @badges = Badge.all.order(:outputnumber)
-    # binding.pry
   end
 
   
@@ -9,10 +8,6 @@ class BadgesController < ApplicationController
     @badge = Badge.new
   end
   
-  
-#   def show
-#     @badge = Badge.find(params[:id])
-#   end
   
   
   def edit
@@ -24,7 +19,7 @@ class BadgesController < ApplicationController
     @badge = Badge.new(badge_params)
     if @badge.save
       flash[:success] = "新しいバッジを登録しました！"
-      redirect_to controller: 'badges', action: 'index'
+      redirect_to static_pages_adminpage_path
     else
       render controller: 'badges', action: 'new'
     end
@@ -37,7 +32,7 @@ class BadgesController < ApplicationController
     if @badge.update(badge_params)
       # 保存に成功した場合はトップページへリダイレクト
       flash[:success] = "バッジを編集しました。"
-      redirect_to controller: 'badges', action: 'index'
+      redirect_to static_pages_adminpage_path
     else
       # 保存に失敗した場合は編集画面へ戻す
       render controller: 'badges', action: 'edit'
@@ -47,6 +42,9 @@ class BadgesController < ApplicationController
 
   private
   def badge_params
-    params.require(:badge).permit(:outputnumber, :name, :explanation, :image, :remove_image, :image_cache)
+    params.require(:badge)
+    .permit(:outputnumber, :name, :explanation,
+          :level1_title, :level2_title,
+          :image, :remove_image, :image_cache)
   end
 end

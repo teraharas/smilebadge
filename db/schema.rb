@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20151126102340) do
   create_table "badges", force: :cascade do |t|
     t.boolean  "activeflg"
     t.string   "name"
+    t.string   "level1_title"
+    t.string   "level2_title"
     t.integer  "outputnumber"
     t.boolean  "optionflg"
     t.text     "explanation"

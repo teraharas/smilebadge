@@ -16,7 +16,7 @@ class BumonsController < ApplicationController
     @bumon = Bumon.new(bumon_params)
     if @bumon.save
       flash[:success] = "新しい部門を登録しました！"
-      redirect_to controller: 'bumons', action: 'index'
+      redirect_to static_pages_adminpage_path
     else
       render controller: 'bumons', action: 'new'
     end
@@ -28,7 +28,7 @@ class BumonsController < ApplicationController
     if @bumon.update(bumon_params)
       # 保存に成功した場合はトップページへリダイレクト
       flash[:success] = "部門を編集しました。"
-      redirect_to controller: 'bumons', action: 'index'
+      redirect_to static_pages_adminpage_path
     else
       # 保存に失敗した場合は編集画面へ戻す
       render controller: 'bumons', action: 'edit'

@@ -35,6 +35,12 @@
         <%= f.label "バッジの説明" %>
         <%= f.text_area :explanation %>
         
+        <%= f.label "称号（レベル１）" %>
+        <%= f.text_field :level1_title %>
+        
+        <%= f.label "称号（レベル２）" %>
+        <%= f.text_field :level2_title %>
+        
         <%= f.submit "新しくバッジを登録する！", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
