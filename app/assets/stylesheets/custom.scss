@@ -1,3 +1,4 @@
+@import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
@@ -88,7 +89,14 @@ p {
 }
 
 
+
 /* header */
+.minismile{
+  img{
+    width:20px;
+    height:20px;
+  }
+}
 
 #logo {
   img{
@@ -113,7 +121,7 @@ p {
   background-color: white;
 }
 
-
+// Image
 .smallimage {
   width: 20px;
   height: 20px;
@@ -514,3 +522,4 @@ span.picture {
     text-align: right;
   }
 }
+

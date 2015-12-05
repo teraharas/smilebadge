@@ -67,6 +67,9 @@ group :development, :test do
   gem 'quiet_assets'      # ログのassetsを表示しないようにし、ログを見やすくしてくれる
 end
 
+# .ENV対応
+gem 'dotenv-rails'
+
 # かみなり
 gem 'kaminari'
 # CarrierWave

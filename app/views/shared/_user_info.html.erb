@@ -1,3 +1,13 @@
+<div>
+  <%= link_to users_path do %>
+    <span class="minismile"><%= image_tag asset_path "smile.png" %></span>
+    バッジを贈る！！
+  <% end %>
+</div>
+
+<br/>
+<br/>
+
 <p><%= current_user.bumon.name %></p>
 
 <h3><%= current_user.name %></h3>

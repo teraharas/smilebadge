@@ -20,9 +20,15 @@
               <li><%= link_to "会員登録", signup_path %></li>
               <li><%= link_to "ログイン", login_path %></li>
             <% else %>
-              <li><%= link_to "贈ったバッジ", badgeposts_sending_path %></li>
-              <li><%= link_to "獲得したバッジ", badgeposts_recepting_path %></li>
-              <li><%= link_to "バッジを贈る！", users_path %></li>
+              <li>
+                <%= link_to users_path do %>
+                <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>-->
+                <span class="minismile"><%= image_tag asset_path "smile.png" %></span>
+                バッジを贈る！！
+                <% end %>
+              </li>
+              <li><%= link_to "贈ったバッジ履歴", badgeposts_sending_path %></li>
+              <li><%= link_to "獲得したバッジ履歴", badgeposts_recepting_path %></li>
               <li><%= link_to "管理者", static_pages_adminpage_path %></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

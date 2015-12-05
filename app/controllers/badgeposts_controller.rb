@@ -20,6 +20,8 @@ class BadgepostsController < ApplicationController
   def create
     @badgepost = current_user.sent_badgeposts.build(badgepost_params)
     if @badgepost.save
+      # バッジ受け取りメール送信
+      NoticeMailer.mail_recept_badge(@badgepost).deliver
       flash[:success] = @badgepost.recept_user.name + "さんに「" + @badgepost.badge.name + "」バッジを贈りました！"
       redirect_to root_url
     else

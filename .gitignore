@@ -17,3 +17,5 @@
 /tmp
 /public/mypath
 /public/uploads
+
+.env

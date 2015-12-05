@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :image
       t.boolean :remove_image
       t.string :image_cache
+      t.string :catchphrase
       t.text :myword
       t.text :hobby
       t.string :message

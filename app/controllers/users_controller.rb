@@ -4,15 +4,44 @@ class UsersController < ApplicationController
 
   
   def index
-    # 自分以外のユーザーを取得する。
-    # ソート：カナ（昇順）
-    if Rails.env == 'production'
-      @users = User.where('id <> ?', current_user.id).order('kananame COLLATE "C"')
-    elsif Rails.env == 'development'
-      @users = User.where('id <> ?', current_user.id).order(:kananame)
-    elsif Rails.env == 'test'
-      @users = User.where('id <> ?', current_user.id).order(:kananame)
+    # binding.pry
+    if params[:user_find_form] == nil
+      @form = UserFindForm.new
+      # 自分以外のユーザーを取得する。
+      # ソート：カナ（昇順）
+      if Rails.env == 'production'
+        @users = User.where('id <> ?', current_user.id).order('kananame COLLATE "C"')
+      elsif Rails.env == 'development' or Rails.env == 'test'
+        @users = User.where('id <> ?', current_user.id).order(:kananame)
+      end
+    else
+      @form = UserFindForm.new(find_params)
+      @searchword = @form.searchword.gsub("　", " ")
+      t = User.arel_table
+      
+      # 自分以外のユーザーを取得する。
+      # ソート：カナ（昇順）
+      if Rails.env == 'production'
+        @users = User.where('id <> ?', current_user.id)
+          .where(t[:name].matches('%' + @searchword + '%')
+            .or(t[:kananame].matches('%' + @searchword + '%'))
+            .or(t[:email].matches('%' + @searchword + '%')))
+            .order('kananame COLLATE "C"')
+      elsif Rails.env == 'development' or Rails.env == 'test'
+        @users = User.where('id <> ?', current_user.id)
+          .where(t[:name].matches('%' + @searchword + '%')
+            .or(t[:kananame].matches('%' + @searchword + '%'))
+            .or(t[:email].matches('%' + @searchword + '%')))
+            .order(:kananame)
+      end
     end
+
+  end
+  
+  
+  def find
+    binding.pry
+    @form = UserFindForm.new
   end
   
   
@@ -70,10 +99,13 @@ class UsersController < ApplicationController
     params.require(:user)
       .permit(:activeflg, :bumon_id, :name, :kananame, :nickname, :adminflg,
             :email, :password, :password_confirmation,
-            :myword, :hobby, :message,
+            :catchphrase, :myword, :hobby, :message,
             :image, :remove_image, :image_cache)
   end
   
+  def find_params
+    params.require(:user_find_form).permit(:searchword)
+  end
   
   def get_graph(user_id, type)
     # グラフインスタンス取得
