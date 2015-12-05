@@ -14,16 +14,20 @@
       display: inline-block;
       margin-bottom: 0;
       vertical-align: middle;
-      width: 400px;
+      max-width: 400px;
       padding: 7px 13px;
       border-radius: 3px;
       border: 1px solid #ddd;
       font-size: 18px;
     }
+    // .input-mysize {
+    //   max-width: 60px;
+    // }
     .btn {
       float: right;
       margin: 0;
       padding: 7px 13px;
+      width: 100px;
     }
   }
 }

@@ -4,7 +4,7 @@
   <%= form_for @form, url: '/users', method: :get do |f| %>
     <!--一行表示させる-->
     <div class="searchbox" style="display:inline-flex">
-      <%= f.text_field :searchword, :size=>"60", placeholder: "名前、ふりがな、メールアドレスで検索してね", required: true %>
+      <%= f.text_field :searchword, placeholder: "名前、かな、アドレス", required: true %>
       <%= f.submit '検索する', class: "btn btn-success", data: { disable_with: "検索中..."} %>
     </div>
   <% end %>
