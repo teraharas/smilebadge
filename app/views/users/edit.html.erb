@@ -42,10 +42,10 @@
       <% if logged_in_adminuser? %>
       <!--管理者なら-->
         <%= f.label "ユーザー有効フラグ" %>
-        <%= f.check_box 'activeflg', {:checked => true}, true, false %>
+        <%= f.check_box 'activeflg' %>
         
         <%= f.label "管理者フラグ" %>
-        <%= f.check_box 'adminflg', {:checked => false}, true, false %>
+        <%= f.check_box 'adminflg' %>
         
         <%= f.label "氏名" %>
         <%= f.text_field :name %>
