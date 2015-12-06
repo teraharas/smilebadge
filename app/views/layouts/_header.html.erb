@@ -22,6 +22,11 @@
                 <li><%= link_to "管理者", static_pages_adminpage_path %></li>
               <% end %>
               <li><%= link_to "ログイン", login_path %></li>
+              <li>
+                <%= link_to static_pages_help_path do %>
+                  <span class="minihelp"><%= image_tag asset_path "help.png" %></span>
+                <% end %>
+              </li>
             <% else %>
               <li>
                 <%= link_to users_path do %>
@@ -58,14 +63,15 @@
                   </li>
                   <li role="separator" class="divider"></li>
                   <li>
+                    <%= link_to static_pages_help_path do %>
+                      <span class="minihelp"><%= image_tag asset_path "help.png" %>ヘルプ</span>
+                    <% end %>
+                  </li>
+                  <li role="separator" class="divider"></li>
+                  <li>
                     <%= link_to "ログアウト", logout_path, method: "delete" %>
                   </li>
                 </ul>
-              </li>
-              <li>
-                <%= link_to static_pages_help_path do %>
-                  <span class="minismile"><%= image_tag asset_path "help.png" %></span>
-                <% end %>
               </li>
             <% end %>
           </ul>
