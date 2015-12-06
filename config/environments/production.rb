@@ -31,6 +31,7 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   # config.assets.compile = false
+  config.assets.compless = true
   config.assets.compile = true
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
