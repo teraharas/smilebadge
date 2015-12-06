@@ -10,7 +10,7 @@
       <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);"></div>
     <% end %>
   </p>
-  <%= @recept_user.name + "さんにバッジを贈ろう！！" %>
+  <p><%= @recept_user.name + "さんにバッジを贈ろう！！" %></p>
   
   <%= f.hidden_field :badge_id, :value => "" %>
 

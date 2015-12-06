@@ -1,5 +1,7 @@
 <% provide(:title, '全メンバー') %>
 
+<script type="text/javascript" src="js/jquery.balloon.js"></script>
+
 <div class="search">
   <%= form_for @form, url: '/users', method: :get do |f| %>
     <!--一行表示させる-->
@@ -23,7 +25,7 @@
             <% @users.each do |user| %>
               <div class="col-md-6">
                 <li>
-                  <span class="gravatar">
+                  <span class="gravatar" title="<%= user.message %>">
                     <% if user.image? %>
                       <div class="middleimage" style="background-image: url(<%= user.image.url %>);">
                         <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id) %>
@@ -50,3 +52,7 @@
     </div>
 </div>
 
+<script>
+// ユーザーの画像に一言メッセージをポップアップ
+$(".gravatar").balloon({ position: "right",offsetX: 0, offsetY: -30 });
+</script>
