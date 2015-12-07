@@ -1,1 +1,314 @@
-!function(e){"use strict";function t(){this.initialize.apply(this,arguments)}function o(o,i,s){function a(e,t,o,i,n){var s=Math.round(i/1.7320508);t.inactive()["setBorder"+o.camel.pos.f](i)["setBorder"+o.camel.pos.c1](s)["setBorder"+o.camel.pos.c2](s)["set"+o.camel.pos.p1](o.isTopLeft?-i:e.inner[o.size.p])["set"+o.camel.pos.c1](e.inner[o.size.c]/2-s).active().$.css("border-"+o.pos.f+"-color",n)}i.stop(!0,!0);var r,l,p={position:"absolute",height:"0",width:"0",border:"solid 0 transparent"},c=new t(o),d=new t(i);if(d.setTop(-s.offsetY+(s.position&&s.position.indexOf("top")>=0?c.top-d.height:s.position&&s.position.indexOf("bottom")>=0?c.bottom:c.center.top-d.height/2)),d.setLeft(s.offsetX+(s.position&&s.position.indexOf("left")>=0?c.left-d.width:s.position&&s.position.indexOf("right")>=0?c.right:c.center.left-d.width/2)),s.tipSize>0){i.data("outerTip")&&(i.data("outerTip").remove(),i.removeData("outerTip")),i.data("innerTip")&&(i.data("innerTip").remove(),i.removeData("innerTip")),r=new t(e("<div>").css(p).appendTo(i)),l=new t(e("<div>").css(p).appendTo(i));for(var h,u=0;u<n.pos.length;u++){if(h=n.getRelativeNames(u),d.center[h.pos.c1]>=c[h.pos.c1]&&d.center[h.pos.c1]<=c[h.pos.c2])if(u%2===0){if(d[h.pos.o]>=c[h.pos.o]&&d[h.pos.f]>=c[h.pos.f])break}else if(d[h.pos.o]<=c[h.pos.o]&&d[h.pos.f]<=c[h.pos.f])break;h=null}h?(d["set"+h.camel.pos.p1](d[h.pos.p1]+(h.isTopLeft?1:-1)*(s.tipSize-d["border"+h.camel.pos.o])),a(d,r,h,s.tipSize,i.css("border-"+h.pos.o+"-color")),a(d,l,h,s.tipSize-2*d["border"+h.camel.pos.o],i.css("background-color")),i.data("outerTip",r.$).data("innerTip",l.$)):e.each([r.$,l.$],function(){this.remove()})}}function i(t,o){var i=t.data("balloon")&&t.data("balloon").get(0);return!(i&&(i===o.relatedTarget||e.contains(i,o.relatedTarget)))}var n={};n.pos=e.extend(["top","bottom","left","right"],{camel:["Top","Bottom","Left","Right"]}),n.size=e.extend(["height","width"],{camel:["Height","Width"]}),n.getRelativeNames=function(e){var t={pos:{o:e,f:e%2===0?e+1:e-1,p1:e%2===0?e:e-1,p2:e%2===0?e+1:e,c1:2>e?2:0,c2:2>e?3:1},size:{p:2>e?0:1,c:2>e?1:0}},o={};for(var i in t){o[i]||(o[i]={});for(var s in t[i])o[i][s]=n[i][t[i][s]],o.camel||(o.camel={}),o.camel[i]||(o.camel[i]={}),o.camel[i][s]=n[i].camel[t[i][s]]}return o.isTopLeft=o.pos.o===o.pos.p1,o},function(){function o(e,t){if(null==t)return o(e,!0),o(e,!1);var i=n.getRelativeNames(t?0:2);return e[i.size.p]=e.$["outer"+i.camel.size.p](),e[i.pos.f]=e[i.pos.o]+e[i.size.p],e.center[i.pos.o]=e[i.pos.o]+e[i.size.p]/2,e.inner[i.pos.o]=e[i.pos.o]+e["border"+i.camel.pos.o],e.inner[i.size.p]=e.$["inner"+i.camel.size.p](),e.inner[i.pos.f]=e.inner[i.pos.o]+e.inner[i.size.p],e.inner.center[i.pos.o]=e.inner[i.pos.f]+e.inner[i.size.p]/2,e}var i={setBorder:function(e,t){return function(i){return this.$.css("border-"+e.toLowerCase()+"-width",i+"px"),this["border"+e]=i,this.isActive?o(this,t):this}},setPosition:function(e,t){return function(i){return this.$.css(e.toLowerCase(),i+"px"),this[e.toLowerCase()]=i,this.isActive?o(this,t):this}}};t.prototype={initialize:function(t){this.$=t,e.extend(!0,this,this.$.offset(),{center:{},inner:{center:{}}});for(var o=0;o<n.pos.length;o++)this["border"+n.pos.camel[o]]=parseInt(this.$.css("border-"+n.pos[o]+"-width"))||0;this.active()},active:function(){return this.isActive=!0,o(this),this},inactive:function(){return this.isActive=!1,this}};for(var s=0;s<n.pos.length;s++)t.prototype["setBorder"+n.pos.camel[s]]=i.setBorder(n.pos.camel[s],2>s),s%2===0&&(t.prototype["set"+n.pos.camel[s]]=i.setPosition(n.pos.camel[s],2>s))}(),e.fn.balloon=function(t){return this.one("mouseenter",function o(){var n=e(this),s=this,a=n.off("mouseenter",o).showBalloon(t).on("mouseenter",function(e){i(n,e)&&n.showBalloon()}).data("balloon");a&&a.on("mouseleave",function(t){s===t.relatedTarget||e.contains(s,t.relatedTarget)||n.hideBalloon()}).on("mouseenter",function(t){s===t.relatedTarget||e.contains(s,t.relatedTarget)||(a.stop(!0,!0),n.showBalloon())})}).on("mouseleave",function(t){var o=e(this);i(o,t)&&o.hideBalloon()})},e.fn.showBalloon=function(t){var i,n;return(t||!this.data("options"))&&(null===e.balloon.defaults.css&&(e.balloon.defaults.css={}),this.data("options",e.extend(!0,{},e.balloon.defaults,t||{}))),t=this.data("options"),this.each(function(){var s,a;i=e(this),s=!i.data("balloon"),n=i.data("balloon")||e("<div>"),(s||!n.data("active"))&&(n.data("active",!0),clearTimeout(i.data("minLifetime")),a=e.isFunction(t.contents)?t.contents.apply(this):t.contents||(t.contents=i.attr("title")||i.attr("alt")),n.append(a),(t.url||""!==n.html())&&(s||a===n.html()||n.empty().append(a),i.removeAttr("title"),t.url&&n.load(e.isFunction(t.url)?t.url(this):t.url,function(e,s,a){t.ajaxComplete&&t.ajaxComplete(e,s,a),o(i,n,t)}),s?(n.addClass(t.classname).css(t.css||{}).css({visibility:"hidden",position:"absolute"}).appendTo("body"),i.data("balloon",n),o(i,n,t),n.hide().css("visibility","visible")):o(i,n,t),i.data("delay",setTimeout(function(){t.showAnimation?t.showAnimation.apply(n.stop(!0,!0),[t.showDuration,function(){t.showComplete&&t.showComplete.apply(n)}]):n.show(t.showDuration,function(){this.style.removeAttribute&&this.style.removeAttribute("filter"),t.showComplete&&t.showComplete.apply(n)}),t.maxLifetime&&(clearTimeout(i.data("maxLifetime")),i.data("maxLifetime",setTimeout(function(){i.hideBalloon()},t.maxLifetime)))},t.delay))))})},e.fn.hideBalloon=function(){var t=this.data("options");return this.data("balloon")?this.each(function(){var o=e(this);clearTimeout(o.data("delay")),clearTimeout(o.data("minLifetime")),o.data("minLifetime",setTimeout(function(){var i=o.data("balloon");t.hideAnimation?t.hideAnimation.apply(i.stop(!0,!0),[t.hideDuration,function(o){e(this).data("active",!1),t.hideComplete&&t.hideComplete(o)}]):i.stop(!0,!0).hide(t.hideDuration,function(o){e(this).data("active",!1),t.hideComplete&&t.hideComplete(o)})},t.minLifetime))}):this},e.balloon={defaults:{contents:null,url:null,ajaxComplete:null,classname:null,position:"top",offsetX:0,offsetY:0,tipSize:12,delay:0,minLifetime:200,maxLifetime:0,showDuration:100,showAnimation:null,hideDuration:80,hideAnimation:function(e,t){this.fadeOut(e,t)},showComplete:null,hideComplete:null,css:{minWidth:"20px",padding:"5px",borderRadius:"6px",border:"solid 1px #777",boxShadow:"4px 4px 4px #555",color:"#666",backgroundColor:"#efefef",opacity:"0.85",zIndex:"32767",textAlign:"left"}}}}(jQuery);
+/**
+ * Hover balloon on elements without css and images.
+ *
+ * Copyright (c) 2011 Hayato Takenaka
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ * @author: Hayato Takenaka (http://urin.github.com)
+ * @version: 0.6.2 - 2015/04/30
+**/
+(function($) {
+  "use strict";
+  //-----------------------------------------------------------------------------
+  // Private
+  //-----------------------------------------------------------------------------
+  // Helper for meta programming
+  var Meta = {};
+  Meta.pos  = $.extend(["top", "bottom", "left", "right"], {camel: ["Top", "Bottom", "Left", "Right"]});
+  Meta.size = $.extend(["height", "width"], {camel: ["Height", "Width"]});
+  Meta.getRelativeNames = function(position) {
+    var idx = {
+      pos: {
+        o: position,                                           // origin
+        f: (position % 2 === 0) ? position + 1 : position - 1, // faced
+        p1: (position % 2 === 0) ? position : position - 1,
+        p2: (position % 2 === 0) ? position + 1 : position,
+        c1: (position < 2) ? 2 : 0,
+        c2: (position < 2) ? 3 : 1
+      },
+      size: {
+        p: (position < 2) ? 0 : 1, // parallel
+        c: (position < 2) ? 1 : 0  // cross
+      }
+    };
+    var names = {};
+    for(var m1 in idx) {
+      if(!names[m1]) names[m1] = {};
+      for(var m2 in idx[m1]) {
+        names[m1][m2] = Meta[m1][idx[m1][m2]];
+        if(!names.camel) names.camel = {};
+        if(!names.camel[m1]) names.camel[m1] = {};
+        names.camel[m1][m2] = Meta[m1].camel[idx[m1][m2]];
+      }
+    }
+    names.isTopLeft = (names.pos.o === names.pos.p1);
+    return names;
+  };
+
+  // Helper class to handle position and size as numerical pixels.
+  function NumericalBoxElement() { this.initialize.apply(this, arguments); }
+  (function() {
+    // Method factories
+    var Methods = {
+      setBorder: function(pos, isVertical) {
+        return function(value) {
+          this.$.css("border-" + pos.toLowerCase() + "-width", value + "px");
+          this["border" + pos] = value;
+          return (this.isActive) ? digitalize(this, isVertical) : this;
+        }
+      },
+      setPosition: function(pos, isVertical) {
+        return function(value) {
+          this.$.css(pos.toLowerCase(), value + "px");
+          this[pos.toLowerCase()] = value;
+          return (this.isActive) ? digitalize(this, isVertical) : this;
+        }
+      }
+    };
+
+    NumericalBoxElement.prototype = {
+      initialize: function($element) {
+        this.$ = $element;
+        $.extend(true, this, this.$.offset(), {center: {}, inner: {center: {}}});
+        for(var i = 0; i < Meta.pos.length; i++) {
+          this["border" + Meta.pos.camel[i]] = parseInt(this.$.css("border-" + Meta.pos[i] + "-width")) || 0;
+        }
+        this.active();
+      },
+      active: function() { this.isActive = true; digitalize(this); return this; },
+      inactive: function() { this.isActive = false; return this; }
+    };
+    for(var i = 0; i < Meta.pos.length; i++) {
+      NumericalBoxElement.prototype["setBorder" + Meta.pos.camel[i]] = Methods.setBorder(Meta.pos.camel[i], (i < 2));
+      if(i % 2 === 0)
+        NumericalBoxElement.prototype["set" + Meta.pos.camel[i]] = Methods.setPosition(Meta.pos.camel[i], (i < 2));
+    }
+
+    function digitalize(box, isVertical) {
+      if(isVertical == null) { digitalize(box, true); return digitalize(box, false); }
+      var m = Meta.getRelativeNames((isVertical) ? 0 : 2);
+      box[m.size.p] = box.$["outer" + m.camel.size.p]();
+      box[m.pos.f] = box[m.pos.o] + box[m.size.p];
+      box.center[m.pos.o] = box[m.pos.o] + box[m.size.p] / 2;
+      box.inner[m.pos.o] = box[m.pos.o] + box["border" + m.camel.pos.o];
+      box.inner[m.size.p] = box.$["inner" + m.camel.size.p]();
+      box.inner[m.pos.f] = box.inner[m.pos.o] + box.inner[m.size.p];
+      box.inner.center[m.pos.o] = box.inner[m.pos.f] + box.inner[m.size.p] / 2;
+      return box;
+    }
+  })();
+
+  // Adjust position of balloon body
+  function makeupBalloon($target, $balloon, options) {
+    $balloon.stop(true, true);
+    var outerTip, innerTip,
+      initTipStyle = {position: "absolute", height: "0", width: "0", border: "solid 0 transparent"},
+      target = new NumericalBoxElement($target),
+      balloon = new NumericalBoxElement($balloon);
+    balloon.setTop(-options.offsetY
+      + ((options.position && options.position.indexOf("top") >= 0) ? target.top - balloon.height
+      : ((options.position && options.position.indexOf("bottom") >= 0) ? target.bottom
+      : target.center.top - balloon.height / 2)));
+    balloon.setLeft(options.offsetX
+      + ((options.position && options.position.indexOf("left") >= 0) ? target.left - balloon.width
+      : ((options.position && options.position.indexOf("right") >= 0) ? target.right
+      : target.center.left - balloon.width / 2)));
+    if(options.tipSize > 0) {
+      // Add hidden balloon tips into balloon body.
+      if($balloon.data("outerTip")) { $balloon.data("outerTip").remove(); $balloon.removeData("outerTip"); }
+      if($balloon.data("innerTip")) { $balloon.data("innerTip").remove(); $balloon.removeData("innerTip"); }
+      outerTip = new NumericalBoxElement($("<div>").css(initTipStyle).appendTo($balloon));
+      innerTip = new NumericalBoxElement($("<div>").css(initTipStyle).appendTo($balloon));
+      // Make tip triangle, adjust position of tips.
+      var m;
+      for(var i = 0; i < Meta.pos.length; i++) {
+        m = Meta.getRelativeNames(i);
+        if(balloon.center[m.pos.c1] >= target[m.pos.c1] &&
+          balloon.center[m.pos.c1] <= target[m.pos.c2]) {
+          if(i % 2 === 0) {
+            if(balloon[m.pos.o] >= target[m.pos.o] && balloon[m.pos.f] >= target[m.pos.f]) break;
+          } else {
+            if(balloon[m.pos.o] <= target[m.pos.o] && balloon[m.pos.f] <= target[m.pos.f]) break;
+          }
+        }
+        m = null;
+      }
+      if(m) {
+        balloon["set" + m.camel.pos.p1]
+          (balloon[m.pos.p1] + ((m.isTopLeft) ? 1 : -1) * (options.tipSize - balloon["border" + m.camel.pos.o]));
+        makeTip(balloon, outerTip, m, options.tipSize, $balloon.css("border-" + m.pos.o + "-color"));
+        makeTip(balloon, innerTip, m, options.tipSize - 2 * balloon["border" + m.camel.pos.o], $balloon.css("background-color"));
+        $balloon.data("outerTip", outerTip.$).data("innerTip", innerTip.$);
+      } else {
+        $.each([outerTip.$, innerTip.$], function() { this.remove(); });
+      }
+    }
+    // Make up balloon tip.
+    function makeTip(balloon, tip, m, tipSize, color) {
+      var len = Math.round(tipSize / 1.7320508);
+      tip.inactive()
+        ["setBorder" + m.camel.pos.f](tipSize)
+        ["setBorder" + m.camel.pos.c1](len)
+        ["setBorder" + m.camel.pos.c2](len)
+        ["set" + m.camel.pos.p1]((m.isTopLeft) ? -tipSize : balloon.inner[m.size.p])
+        ["set" + m.camel.pos.c1](balloon.inner[m.size.c] / 2 - len)
+        .active()
+        .$.css("border-" + m.pos.f + "-color", color);
+    }
+  }
+
+  // True if the event comes from the target or balloon.
+  function isValidTargetEvent($target, e) {
+    var b = $target.data("balloon") && $target.data("balloon").get(0);
+    return !(b && (b === e.relatedTarget || $.contains(b, e.relatedTarget)));
+  }
+
+  //-----------------------------------------------------------------------------
+  // Public
+  //-----------------------------------------------------------------------------
+  $.fn.balloon = function(options) {
+    return this.one("mouseenter", function first(e) {
+      var $target = $(this), t = this;
+      var $balloon = $target.off("mouseenter", first)
+        .showBalloon(options).on("mouseenter", function(e) {
+          isValidTargetEvent($target, e) && $target.showBalloon();
+        }).data("balloon");
+      if($balloon) {
+        $balloon.on("mouseleave", function(e) {
+          if(t === e.relatedTarget || $.contains(t, e.relatedTarget)) return;
+          $target.hideBalloon();
+        }).on("mouseenter", function(e) {
+          if(t === e.relatedTarget || $.contains(t, e.relatedTarget)) return;
+          $balloon.stop(true, true);
+          $target.showBalloon();
+        });
+      }
+    }).on("mouseleave", function(e) {
+      var $target = $(this);
+      isValidTargetEvent($target, e) && $target.hideBalloon();
+    });
+  };
+
+  $.fn.showBalloon = function(options) {
+    var $target, $balloon;
+    if(options || !this.data("options")) {
+      if($.balloon.defaults.css === null) $.balloon.defaults.css = {};
+      this.data("options", $.extend(true, {}, $.balloon.defaults, options || {}));
+    }
+    options = this.data("options");
+    return this.each(function() {
+      var isNew, contents;
+      $target = $(this);
+      isNew = !$target.data("balloon");
+      $balloon = $target.data("balloon") || $("<div>");
+      if(!isNew && $balloon.data("active")) { return; }
+      $balloon.data("active", true);
+      clearTimeout($target.data("minLifetime"));
+      contents = $.isFunction(options.contents)
+        ? options.contents.apply(this)
+        : (options.contents || (options.contents = $target.attr("title") || $target.attr("alt")));
+      $balloon.append(contents);
+      if(!options.url && $balloon.html() === "") { return; }
+      if(!isNew && contents !== $balloon.html()) $balloon.empty().append(contents);
+      $target.removeAttr("title");
+      if(options.url) {
+        $balloon.load($.isFunction(options.url) ? options.url(this) : options.url, function(res, sts, xhr) {
+          if(options.ajaxComplete) options.ajaxComplete(res, sts, xhr);
+          makeupBalloon($target, $balloon, options);
+        });
+      }
+      if(isNew) {
+        $balloon
+          .addClass(options.classname)
+          .css(options.css || {})
+          .css({visibility: "hidden", position: "absolute"})
+          .appendTo("body");
+        $target.data("balloon", $balloon);
+        makeupBalloon($target, $balloon, options);
+        $balloon.hide().css("visibility", "visible");
+      } else {
+        makeupBalloon($target, $balloon, options);
+      }
+      $target.data("delay", setTimeout(function() {
+        if(options.showAnimation) {
+          options.showAnimation.apply(
+            $balloon.stop(true, true), [
+              options.showDuration, function() {
+                options.showComplete && options.showComplete.apply($balloon);
+              }
+            ]
+          );
+        } else {
+          $balloon.show(options.showDuration, function() {
+            if(this.style.removeAttribute) { this.style.removeAttribute("filter"); }
+            options.showComplete && options.showComplete.apply($balloon);
+          });
+        }
+        if(options.maxLifetime) {
+          clearTimeout($target.data("maxLifetime"));
+          $target.data("maxLifetime",
+            setTimeout(function() { $target.hideBalloon(); }, options.maxLifetime)
+          );
+        }
+      }, options.delay));
+    });
+  };
+
+  $.fn.hideBalloon = function() {
+    var options = this.data("options");
+    if(!this.data("balloon")) return this;
+    return this.each(function() {
+      var $target = $(this);
+      clearTimeout($target.data("delay"));
+      clearTimeout($target.data("minLifetime"));
+      $target.data("minLifetime", setTimeout(function() {
+        var $balloon = $target.data("balloon");
+        if(options.hideAnimation) {
+          options.hideAnimation.apply(
+            $balloon.stop(true, true),
+            [
+              options.hideDuration,
+              function(d) {
+                $(this).data("active", false);
+                options.hideComplete && options.hideComplete(d);
+              }
+            ]
+          );
+        } else {
+          $balloon.stop(true, true).hide(
+            options.hideDuration,
+            function(d) {
+              $(this).data("active", false);
+              options.hideComplete && options.hideComplete(d);
+            }
+          );
+        }
+      },
+      options.minLifetime));
+    });
+  };
+
+  $.balloon = {
+    defaults: {
+      contents: null, url: null, ajaxComplete: null, classname: null,
+      position: "top", offsetX: 0, offsetY: 0, tipSize: 12,
+      delay: 0, minLifetime: 200, maxLifetime: 0,
+      showDuration: 100, showAnimation: null,
+      hideDuration:  80, hideAnimation: function(d, c) { this.fadeOut(d, c); },
+      showComplete: null, hideComplete: null,
+      css: {
+        minWidth       : "20px",
+        padding        : "5px",
+        borderRadius   : "6px",
+        border         : "solid 1px #777",
+        boxShadow      : "4px 4px 4px #555",
+        color          : "#666",
+        backgroundColor: "#efefef",
+        opacity        : "0.85",
+        zIndex         : "32767",
+        textAlign      : "left"
+      }
+    }
+  };
+})(jQuery);

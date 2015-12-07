@@ -1,5 +1,5 @@
 <% provide(:title, '全メンバー') %>
-<script src="js/jquery.balloon.js"></script>
+<%= javascript_include_tag 'balloon' %>
 
 <div class="search">
   <%= form_for @form, url: '/users', method: :get do |f| %>
