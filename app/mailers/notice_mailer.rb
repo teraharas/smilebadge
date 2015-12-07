@@ -1,6 +1,6 @@
 class NoticeMailer < ApplicationMailer
   
-  default from: ENV["FROM_MAIL_ADDRESS"]
+  default from: "from@example.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -11,6 +11,6 @@ class NoticeMailer < ApplicationMailer
     @recept_user_name = badgepost.recept_user.name
     # binding.pry
     # mail to: badgepost.recept_user.email
-    mail to: badgepost.recept_user.email, from: 'noreply@yoursite.com', subject: badgepost.recept_user.name + "さんにバッジが届きました！！"
+    mail to: badgepost.recept_user.email, subject: badgepost.recept_user.name + "さんにバッジが届きました！！"
   end
 end
