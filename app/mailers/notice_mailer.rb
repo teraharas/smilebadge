@@ -1,6 +1,6 @@
 class NoticeMailer < ApplicationMailer
   
-  default from: ENV["SMTP_USER_NAME"]
+  default from: ENV["FROM_MAIL_ADDRESS"]
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
