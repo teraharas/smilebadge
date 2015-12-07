@@ -11,6 +11,6 @@ class NoticeMailer < ApplicationMailer
     @recept_user_name = badgepost.recept_user.name
     # binding.pry
     # mail to: badgepost.recept_user.email
-    mail to: badgepost.recept_user.email, from: '"表示名" <noreply@yoursite.com>', subject: badgepost.recept_user.name + "さんにバッジが届きました！！"
+    mail to: badgepost.recept_user.email, from: 'noreply@yoursite.com', subject: badgepost.recept_user.name + "さんにバッジが届きました！！"
   end
 end
