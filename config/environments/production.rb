@@ -84,6 +84,8 @@ Rails.application.configure do
         address: ENV["SMTP_ADDRESS"],
         port: ENV["SMTP_PORT"],
         domain: ENV["SMTP_DOMAIN"],
+        authentication: "plain",
+        enable_starttls_auto: true,
         user_name: ENV["SMTP_USER_NAME"],
         password: ENV["SMTP_PASSWORD"]
   }
