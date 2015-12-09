@@ -92,3 +92,5 @@ gem 'jpmobile'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
+
+gem 'resque'
