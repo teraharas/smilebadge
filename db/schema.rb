@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151126102340) do
+ActiveRecord::Schema.define(version: 20151209000602) do
 
   create_table "badgeposts", force: :cascade do |t|
     t.integer  "sent_user_id"
@@ -54,6 +54,22 @@ ActiveRecord::Schema.define(version: 20151126102340) do
   end
 
   add_index "bumons", ["outputnumber"], name: "index_bumons_on_outputnumber", unique: true
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "users", force: :cascade do |t|
     t.boolean  "activeflg",       default: true

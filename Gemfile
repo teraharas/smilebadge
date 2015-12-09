@@ -87,3 +87,8 @@ gem 'lazy_high_charts'
 
 # スマホ対応
 gem 'jpmobile'
+
+# 時間のかかる処理を非同期実行
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+gem 'daemons'
