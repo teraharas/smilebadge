@@ -32,7 +32,7 @@
     <% if @user.persisted? && @user.image? %>
       <label>
         <%= f.check_box :remove_image %>
-        画像1を削除
+        画像を削除
       </label>
     <% end %>
     
@@ -48,10 +48,10 @@
         <%= f.check_box 'adminflg' %>
         
         <%= f.label "氏名" %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, required: true %>
         
         <%= f.label "ふりがな" %>
-        <%= f.text_field :kananame %>
+        <%= f.text_field :kananame, required: true %>
         
         <%= f.label "部門名" %>
         <%= f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name) %>
@@ -72,6 +72,7 @@
         <p><%= f.label "メールアドレス" %></p>
         <p><%= @user.email %></p>
       <% end %>
+      
       
       <%= f.label "ニックネーム" %>
       <%= f.text_field :nickname %>

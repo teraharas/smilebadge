@@ -4,6 +4,9 @@
 
 <%= form_for(@bumon) do |f| %>
 
+    <%= f.label "部門有効フラグ" %>
+    <%= f.check_box 'activeflg' %>
+
     <%= f.label "表示順" %>
     <%= f.number_field :outputnumber %>
     

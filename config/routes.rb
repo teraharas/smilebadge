@@ -9,10 +9,12 @@ Rails.application.routes.draw do
 
   get 'badgeposts/recepting'
   get 'badgeposts/sending'
+  get 'users/full_index'
 
   resources :users
   resources :bumons
   resources :sessions, only: [:new, :create, :destroy]
   resources :badges
   resources :badgeposts
+  
 end

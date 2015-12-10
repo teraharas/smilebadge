@@ -38,6 +38,6 @@ class BumonsController < ApplicationController
 
   private
   def bumon_params
-    params.require(:bumon).permit(:outputnumber, :name)
+    params.require(:bumon).permit(:outputnumber, :name, :activeflg)
   end
 end

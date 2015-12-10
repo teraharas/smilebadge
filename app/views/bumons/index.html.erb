@@ -9,6 +9,7 @@
         <ol class="bumons">
           <% @bumons.each do |bumon| %>
             <li>
+              <span class="bumon"><%= bumon.activeflg ? "OK" : "NG" %></span>
               <span class="bumon"><%= bumon.outputnumber %></span>
               <span class="bumon"><%= link_to bumon.name, edit_bumon_path(bumon) %></span>
             </li>

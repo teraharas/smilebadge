@@ -4,15 +4,14 @@ class UsersController < ApplicationController
 
   
   def index
-    # binding.pry
     if params[:user_find_form] == nil
       @form = UserFindForm.new
       # 自分以外のユーザーを取得する。
       # ソート：カナ（昇順）
       if Rails.env == 'production'
-        @users = User.where('id <> ?', current_user.id).order('kananame COLLATE "C"')
+        @users = User.where('id <> ?', current_user.id).where(activeflg: true).order('kananame COLLATE "C"')
       elsif Rails.env == 'development' or Rails.env == 'test'
-        @users = User.where('id <> ?', current_user.id).order(:kananame)
+        @users = User.where('id <> ?', current_user.id).where(activeflg: true).order(:kananame)
       end
     else
       @form = UserFindForm.new(find_params)
@@ -23,19 +22,52 @@ class UsersController < ApplicationController
       # ソート：カナ（昇順）
       if Rails.env == 'production'
         @users = User.where('id <> ?', current_user.id)
+          .where(t[:activeflg].eq(true))
           .where(t[:name].matches('%' + @searchword + '%')
             .or(t[:kananame].matches('%' + @searchword + '%'))
             .or(t[:email].matches('%' + @searchword + '%')))
             .order('kananame COLLATE "C"')
       elsif Rails.env == 'development' or Rails.env == 'test'
         @users = User.where('id <> ?', current_user.id)
+          .where(t[:activeflg].eq(true))
           .where(t[:name].matches('%' + @searchword + '%')
             .or(t[:kananame].matches('%' + @searchword + '%'))
             .or(t[:email].matches('%' + @searchword + '%')))
             .order(:kananame)
       end
     end
-
+  end
+  
+  
+  def full_index
+    if params[:user_find_form] == nil
+      @form = UserFindForm.new
+      # 自分以外のユーザーを取得する。
+      # ソート：カナ（昇順）
+      if Rails.env == 'production'
+        @users = User.all.order('kananame COLLATE "C"')
+      elsif Rails.env == 'development' or Rails.env == 'test'
+        @users = User.all.order(:kananame)
+      end
+    else
+      @form = UserFindForm.new(find_params)
+      @searchword = @form.searchword.gsub("　", " ")
+      t = User.arel_table
+      
+      # 自分以外のユーザーを取得する。
+      # ソート：カナ（昇順）
+      if Rails.env == 'production'
+        @users = User.where(t[:name].matches('%' + @searchword + '%')
+                .or(t[:kananame].matches('%' + @searchword + '%'))
+                .or(t[:email].matches('%' + @searchword + '%')))
+                .order('kananame COLLATE "C"')
+      elsif Rails.env == 'development' or Rails.env == 'test'
+        @users = User.where(t[:name].matches('%' + @searchword + '%')
+                .or(t[:kananame].matches('%' + @searchword + '%'))
+                .or(t[:email].matches('%' + @searchword + '%')))
+                .order(:kananame)
+      end
+    end
   end
   
   
@@ -82,9 +114,8 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    
     if @user.update(user_params)
-      # 保存に成功した場合はトップページへリダイレクト
+      # 保存に成功した場合はプロフィールページへリダイレクト
       flash[:success] = "プロフィールを編集しました。"
       redirect_to @user
     else

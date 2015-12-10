@@ -6,7 +6,7 @@
       <%= render 'shared/error_messages', object: f.object %>
  
       <%= f.label "部門名" %>
-      <%= f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name) %>
+      <%= f.collection_select(:bumon_id, Bumon.where(activeflg: true).order(:outputnumber), :id, :name) %>
       
       <%= f.label "氏名" %>
       <%= f.text_field :name %>

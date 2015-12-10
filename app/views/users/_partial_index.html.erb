@@ -1,0 +1,63 @@
+<% provide(:title, '全メンバー') %>
+<%= javascript_include_tag 'balloon' %>
+
+<div class="search">
+  <%= form_for @form, url: '/users', method: :get do |f| %>
+    <!--一行表示させる-->
+    <div class="searchbox" style="display:inline-flex">
+      <%= f.text_field :searchword, placeholder: "名前、かな、アドレス", required: true %>
+      <%= f.submit '検索する', class: "btn btn-success", data: { disable_with: "検索中..."} %>
+    </div>
+  <% end %>
+</div>
+
+<h2><%= link_to "全ユーザーを表示", users_path %></h2>
+
+<h1>バッジを贈るメンバーを選んでね！！</h1>
+
+<h2>全メンバー (<%= @users.count %>)</h2>
+<div class="container-fluid">
+  <div class="row">
+      <section>
+        <% if @users.any? %>
+          <ol class="users">
+            <% @users.each do |user| %>
+              <div class="col-md-6">
+                <li>
+                  <span class="gravatar" title="<%= user.message %>">
+                    <% if user.image? %>
+                      <div class="middleimage" style="background-image: url(<%= user.image.url %>);">
+                        <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id) %>
+                      </div>
+                    <% else %>
+                      <div class="middleimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+                        <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id) %>
+                      </div>
+                    <% end %>
+                  </span>
+                  <span class="user"><strong><%= link_to user.name + "さんにバッジを贈る！！", new_badgepost_path(recept_user_id: user.id) %></strong></span>
+                  <br/>
+                  <span><%= user.bumon.name %></span>
+                  <br/>
+                  <% if adminModeFlg == true %>
+                    <%= user.activeflg ? "" : "（無効）" %>
+                    <%= user.adminflg ? "（管理者）" : ""  %>
+                    <%= link_to "プロフィール編集", edit_user_path(user.id) %>
+                  <% else %>
+                    <%= link_to "プロフィール", user %>
+                  <% end %>
+                </li>
+                <br/>
+                <br/>
+              </div>
+            <% end %>
+          </ol>
+        <% end %>
+      </section>
+    </div>
+</div>
+
+<script>
+// ユーザーの画像に一言メッセージをポップアップ
+$(".gravatar").balloon({ position: "right",offsetX: 0, offsetY: -30 });
+</script>

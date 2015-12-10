@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
-    if @user && @user.authenticate(params[:session][:password])
+    # ログインでき、かつ有効ユーザーならOK
+    if @user && @user.authenticate(params[:session][:password]) && @user.activeflg
       session[:user_id] = @user.id
       flash[:info] = "#{@user.name}でログインしました！バッジを贈って「褒める」をカタチにしよう！"
       redirect_to root_url
