@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :sent_badgeposts, :class_name => "Badgepost", :foreign_key => "sent_user_id"
   has_many :recept_badgeposts, :class_name => "Badgepost", :foreign_key => "recept_user_id"
   
+
   # フィードには、自分のささやきと、自分がフォローしているユーザーのつぶやきを表示（取得）
   def feed_items
     Badgepost.where(recept_user_id: [self.id])
