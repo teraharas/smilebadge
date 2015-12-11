@@ -1,5 +1,7 @@
 <% provide(:title, 'バッジやりとり一覧') %>
 
+<%= javascript_include_tag 'balloon' %>
+
 <%#= render badgeposts, type: type %>
 
 <div class="container-fluid">
@@ -11,3 +13,9 @@
 		<% end %>
 	</div>
 </div>
+
+<script>
+// ユーザーの画像に一言メッセージをポップアップ
+$(".gravatarsent_<%= type %>").balloon({ position: "right", offsetX: 0, offsetY: -30 });
+$(".gravatarrecept_<%= type %>").balloon({ position: "right", offsetX: 0, offsetY: -30 });
+</script>

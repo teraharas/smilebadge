@@ -4,7 +4,7 @@
     <div class="badgemove">
       <div class="col-sm-12">
         <!--送った人のユーザー情報-->
-        <span class="gravatarsent_<%= type %>">
+        <span class="gravatarsent_<%= type %>" title="<%= badgepost.sent_user.message %>">
           <% if type=="sent" %>
             <% if badgepost.sent_user.image? %>
               <div class="middleimage" style="background-image: url(<%= badgepost.sent_user.image.url %>);"></div>
@@ -44,7 +44,7 @@
         
 
         <!--受け取った人のユーザー情報-->
-        <span class="gravatarrecept_<%= type %>">
+        <span class="gravatarrecept_<%= type %>" title="<%= badgepost.recept_user.message %>">
           <% if type=="sent" %>
             <% if badgepost.recept_user.image? %>
               <div class="middleimage" style="background-image: url(<%= badgepost.recept_user.image.url %>);">
@@ -90,3 +90,4 @@
   </span>
 </footer>
 </li>
+

@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'balloon' %>
+
 <% if @feed_items.any? %>
   <h1>獲得したバッジ</h1>
   <ol class="badgeposts">
@@ -12,3 +14,9 @@
     </div>
   </ol>
 <% end %>
+
+<script>
+// ユーザーの画像に一言メッセージをポップアップ
+$(".gravatarsent_recept").balloon({ position: "right", offsetX: 0, offsetY: -30 });
+$(".gravatarrecept_recept").balloon({ position: "right", offsetX: 0, offsetY: -30 });
+</script>
