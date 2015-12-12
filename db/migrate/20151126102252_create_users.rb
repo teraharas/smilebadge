@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :adminflg, default: false
       t.string :email
       t.string :password_digest
+      t.string :remember_digest
       t.string :image
       t.boolean :remove_image
       t.string :image_cache

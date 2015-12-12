@@ -6,7 +6,7 @@
       <%= render 'shared/error_messages', object: f.object %>
       
       <%= f.label "部門有効フラグ" %>
-      <%= f.check_box 'activeflg' %>
+      <%= f.check_box 'activeflg', {:checked => true} %>
  
       <%= f.label "表示順" %>
       <%= f.number_field :outputnumber %>

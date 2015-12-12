@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email].downcase)
     # ログインでき、かつ有効ユーザーならOK
     if @user && @user.authenticate(params[:session][:password]) && @user.activeflg
-      session[:user_id] = @user.id
+      log_in @user
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       flash[:info] = "#{@user.name}でログインしました！バッジを贈って「褒める」をカタチにしよう！"
       redirect_to root_url
     else
@@ -17,7 +18,8 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    session[:user_id] = nil
+    log_out if logged_in?
     redirect_to root_url
   end
+
 end

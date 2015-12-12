@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20151209000602) do
     t.boolean  "adminflg",        default: false
     t.string   "email"
     t.string   "password_digest"
+    t.string   "remember_digest"
     t.string   "image"
     t.boolean  "remove_image"
     t.string   "image_cache"
