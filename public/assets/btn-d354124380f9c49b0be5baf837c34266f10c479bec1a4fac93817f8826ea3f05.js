@@ -1,1 +1,0 @@
-function set_badge_id(e){$(':hidden[name="badgepost[badge_id]"]').val(e),$(".badge_checked").hide(),$("#badge_checked_"+e).show()}
