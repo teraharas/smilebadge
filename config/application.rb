@@ -26,7 +26,5 @@ module Smilebadge
     config.assets.initialize_on_precompile = false
     
     config.active_job.queue_adapter = :delayed_job # アダプターの設定を追記
-    
-    config.force_ssl = true
   end
 end
