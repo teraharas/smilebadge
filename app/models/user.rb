@@ -58,7 +58,8 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
   
-    private
+  
+  private
   
     def validate_password?
       password.present? || password_confirmation.present?

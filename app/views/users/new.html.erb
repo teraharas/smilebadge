@@ -1,3 +1,5 @@
+<% provide(:title, '会員登録') %>
+
 <h1>会員登録</h1>
 
 <div class="row">
@@ -6,22 +8,22 @@
       <%= render 'shared/error_messages', object: f.object %>
  
       <%= f.label "部門名" %>
-      <%= f.collection_select(:bumon_id, Bumon.where(activeflg: true).order(:outputnumber), :id, :name) %>
+      <%= f.collection_select(:bumon_id, Bumon.where(activeflg: true).order(:outputnumber), :id, :name, {:class => "form-control"}) %>
       
       <%= f.label "氏名" %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: 'form-control' %>
       
       <%= f.label "ふりがな" %>
-      <%= f.text_field :kananame %>
+      <%= f.text_field :kananame, class: 'form-control' %>
 
       <%= f.label "メールアドレス" %>
-      <%= f.email_field :email %>
+      <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label "パスワード" %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :password_confirmation, "パスワード（確認）" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "会員登録実行！", class: "btn btn-large btn-primary" %>
     <% end %>
