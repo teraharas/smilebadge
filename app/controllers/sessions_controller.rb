@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       flash[:info] = "#{@user.name}でログインしました！バッジを贈って「褒める」をカタチにしよう！"
       redirect_to root_url
     else
-      flash[:danger] = 'メールアドレスかパスワードが間違っています。'
+      flash.now[:danger] = 'メールアドレスかパスワードが間違っています。'
       render 'new'
     end
   end
