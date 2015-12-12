@@ -57,7 +57,7 @@
         <%= f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name) %>
         
         <%= f.label "メールアドレス" %>
-        <%= f.text_field :email %>
+        <%= f.email_field :email %>
       <% else %>
       <!--通常ユーザーなら-->
         <p><%= f.label "氏名" %></p>
