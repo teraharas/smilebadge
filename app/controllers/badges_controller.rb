@@ -19,7 +19,7 @@ class BadgesController < ApplicationController
     @badge = Badge.new(badge_params)
     if @badge.save
       flash[:success] = "新しいバッジを登録しました！"
-      redirect_to static_pages_adminpage_path
+      redirect_to adminpage_path
     else
       render controller: 'badges', action: 'new'
     end
@@ -32,7 +32,7 @@ class BadgesController < ApplicationController
     if @badge.update(badge_params)
       # 保存に成功した場合はトップページへリダイレクト
       flash[:success] = "バッジを編集しました。"
-      redirect_to static_pages_adminpage_path
+      redirect_to adminpage_path
     else
       # 保存に失敗した場合は編集画面へ戻す
       render controller: 'badges', action: 'edit'

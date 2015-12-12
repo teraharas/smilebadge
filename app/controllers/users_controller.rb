@@ -104,8 +104,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "登録しました！ログインしてください！"
-      redirect_to login_path
+      flash[:success] = "ユーザー「" + @user.name + "」を登録しました！"
+      redirect_to adminpage_path
     else
       render 'new'
     end
