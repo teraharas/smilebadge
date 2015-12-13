@@ -1,31 +1,29 @@
 <% provide(:title, '全メンバー') %>
 <%= javascript_include_tag 'balloon' %>
 
-<div class="search">
-  <% if adminModeFlg %>
+<% if adminModeFlg %>
+  <div class="search">
     <%= form_for @form, url: users_full_index_path, method: :get do |f| %>
       <div class="searchbox" style="display:inline-flex">
         <%= f.text_field :searchword, placeholder: "名前、かな、アドレス", required: true %>
         <%= f.submit '検索する', class: "btn btn-success", data: { disable_with: "検索中..."} %>
       </div>
     <% end %>
-  <% else %>
+  </div>
+  <h2><%= link_to "全ユーザーを表示", users_full_index_path %></h2>
+  <h1>プロフィールを編集するメンバーを選んでね！！</h1>
+<% else %>
+  <div class="search">
     <%= form_for @form, url: users_path, method: :get do |f| %>
       <div class="searchbox" style="display:inline-flex">
         <%= f.text_field :searchword, placeholder: "名前、かな、アドレス", required: true %>
         <%= f.submit '検索する', class: "btn btn-success", data: { disable_with: "検索中..."} %>
       </div>
     <% end %>
-  <% end %>
-</div>
-
-<% if adminModeFlg %>
-  <h2><%= link_to "全ユーザーを表示", users_full_index_path %></h2>
-<% else %>
+  </div>
   <h2><%= link_to "全ユーザーを表示", users_path %></h2>
+  <h1>バッジを贈るメンバーを選んでね！！</h1>
 <% end %>
-
-<h1>バッジを贈るメンバーを選んでね！！</h1>
 
 <%= will_paginate %>
 
@@ -51,8 +49,8 @@
                     <br/>
                     <span><%= user.bumon.name %></span>
                     <br/>
-                    <%= user.activeflg ? "" : "（無効）" %>
-                    <%= user.adminflg ? "（管理者）" : ""  %>
+                    <%= user.activeflg ? "" : "【無効】" %>
+                    <%= user.adminflg ? "【管理者】" : ""  %>
                     <%= link_to "プロフィール編集", edit_user_path(user.id) %>
                   <% else %>
                     <!--バッジ送付先選択画面時-->
