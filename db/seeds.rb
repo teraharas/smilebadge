@@ -8,7 +8,7 @@ User.create!(name:  "Example User",
 
 300.times do |n|
   name  = Faker::Name.name
-  kananame  = "てすと"
+  kananame  = "わてすと#{n+1}"
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   bumon_id = 1
