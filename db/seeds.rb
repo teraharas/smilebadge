@@ -6,7 +6,7 @@ User.create!(name:  "Example User",
              adminflg: true,
              bumon_id: 1)
 
-99.times do |n|
+300.times do |n|
   name  = Faker::Name.name
   kananame  = "てすと"
   email = "example-#{n+1}@railstutorial.org"
