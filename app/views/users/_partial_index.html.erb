@@ -2,18 +2,32 @@
 <%= javascript_include_tag 'balloon' %>
 
 <div class="search">
-  <%= form_for @form, url: '/users', method: :get do |f| %>
-    <!--一行表示させる-->
-    <div class="searchbox" style="display:inline-flex">
-      <%= f.text_field :searchword, placeholder: "名前、かな、アドレス", required: true %>
-      <%= f.submit '検索する', class: "btn btn-success", data: { disable_with: "検索中..."} %>
-    </div>
+  <% if adminModeFlg %>
+    <%= form_for @form, url: users_full_index_path, method: :get do |f| %>
+      <div class="searchbox" style="display:inline-flex">
+        <%= f.text_field :searchword, placeholder: "名前、かな、アドレス", required: true %>
+        <%= f.submit '検索する', class: "btn btn-success", data: { disable_with: "検索中..."} %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= form_for @form, url: users_path, method: :get do |f| %>
+      <div class="searchbox" style="display:inline-flex">
+        <%= f.text_field :searchword, placeholder: "名前、かな、アドレス", required: true %>
+        <%= f.submit '検索する', class: "btn btn-success", data: { disable_with: "検索中..."} %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
-<h2><%= link_to "全ユーザーを表示", users_path %></h2>
+<% if adminModeFlg %>
+  <h2><%= link_to "全ユーザーを表示", users_full_index_path %></h2>
+<% else %>
+  <h2><%= link_to "全ユーザーを表示", users_path %></h2>
+<% end %>
 
 <h1>バッジを贈るメンバーを選んでね！！</h1>
+
+<%= will_paginate %>
 
 <h2>全メンバー (<%= @users.count %>)</h2>
 <div class="container-fluid">
@@ -69,6 +83,9 @@
       </section>
     </div>
 </div>
+
+<%= will_paginate %>
+
 
 <script>
 // ユーザーの画像に一言メッセージをポップアップ

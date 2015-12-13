@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :full_index, :find, :show, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 
   
@@ -9,9 +9,15 @@ class UsersController < ApplicationController
       # 自分以外のユーザーを取得する。
       # ソート：カナ（昇順）
       if Rails.env == 'production'
-        @users = User.where('id <> ?', current_user.id).where(activeflg: true).order('kananame COLLATE "C"')
+        @users = User.paginate(page: params[:page])
+                      .where('id <> ?', current_user.id)
+                      .where(activeflg: true)
+                      .order('kananame COLLATE "C"')
       elsif Rails.env == 'development' or Rails.env == 'test'
-        @users = User.where('id <> ?', current_user.id).where(activeflg: true).order(:kananame)
+        @users = User.paginate(page: params[:page])
+                      .where('id <> ?', current_user.id)
+                      .where(activeflg: true)
+                      .order(:kananame)
       end
     else
       @form = UserFindForm.new(find_params)
@@ -21,14 +27,16 @@ class UsersController < ApplicationController
       # 自分以外のユーザーを取得する。
       # ソート：カナ（昇順）
       if Rails.env == 'production'
-        @users = User.where('id <> ?', current_user.id)
+        @users = User.paginate(page: params[:page])
+          .where('id <> ?', current_user.id)
           .where(t[:activeflg].eq(true))
           .where(t[:name].matches('%' + @searchword + '%')
             .or(t[:kananame].matches('%' + @searchword + '%'))
             .or(t[:email].matches('%' + @searchword + '%')))
             .order('kananame COLLATE "C"')
       elsif Rails.env == 'development' or Rails.env == 'test'
-        @users = User.where('id <> ?', current_user.id)
+        @users = User.paginate(page: params[:page])
+          .where('id <> ?', current_user.id)
           .where(t[:activeflg].eq(true))
           .where(t[:name].matches('%' + @searchword + '%')
             .or(t[:kananame].matches('%' + @searchword + '%'))
@@ -45,9 +53,10 @@ class UsersController < ApplicationController
       # 自分以外のユーザーを取得する。
       # ソート：カナ（昇順）
       if Rails.env == 'production'
-        @users = User.all.order('kananame COLLATE "C"')
+        @users = User.paginate(page: params[:page]).order('kananame COLLATE "C"')
       elsif Rails.env == 'development' or Rails.env == 'test'
-        @users = User.all.order(:kananame)
+        # @users = User.paginate(page: params[:page]).order(:kananame)
+        @users = User.paginate(page: params[:page]).order(:kananame)
       end
     else
       @form = UserFindForm.new(find_params)
@@ -57,15 +66,21 @@ class UsersController < ApplicationController
       # 自分以外のユーザーを取得する。
       # ソート：カナ（昇順）
       if Rails.env == 'production'
-        @users = User.where(t[:name].matches('%' + @searchword + '%')
+        @users = User.paginate(page: params[:page])
+                .where(t[:name].matches('%' + @searchword + '%')
                 .or(t[:kananame].matches('%' + @searchword + '%'))
                 .or(t[:email].matches('%' + @searchword + '%')))
                 .order('kananame COLLATE "C"')
       elsif Rails.env == 'development' or Rails.env == 'test'
-        @users = User.where(t[:name].matches('%' + @searchword + '%')
+        @users = User.paginate(page: params[:page])
+                .where(t[:name].matches('%' + @searchword + '%')
                 .or(t[:kananame].matches('%' + @searchword + '%'))
                 .or(t[:email].matches('%' + @searchword + '%')))
                 .order(:kananame)
+        # @users = User.where(t[:name].matches('%' + @searchword + '%')
+        #         .or(t[:kananame].matches('%' + @searchword + '%'))
+        #         .or(t[:email].matches('%' + @searchword + '%')))
+        #         .order(:kananame)
       end
     end
   end
