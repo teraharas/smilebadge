@@ -5,13 +5,13 @@ class UsersController < ApplicationController
   
   def index
     # カレントユーザーを表示しない
-    @users = get_index_users(false)
+    @users = get_index_users(false, params[:initial_letter])
   end
   
   
   def full_index
     # カレントユーザー含め全ユーザーを表示する
-    @users = get_index_users(true)
+    @users = get_index_users(true, params[:initial_letter])
   end
   
   
@@ -82,20 +82,32 @@ class UsersController < ApplicationController
       params.require(:user_find_form).permit(:searchword)
     end
     
-    def get_index_users(display_current_user)
+    def get_index_users(display_current_user, initial_letter)
       if params[:user_find_form] == nil
         # 検索未入力時（初回表示時）
         @form = UserFindForm.new
         # 自分以外のユーザーを取得する。
         # ソート：カナ（昇順）
-        # @users = User.paginate(page: params[:page])
+        t = User.arel_table
 
         if display_current_user
-          @users = User.paginate(page: params[:page])
+          if initial_letter.present?
+            @users = User.paginate(page: params[:page])
+                          .where(t[:kananame].matches(initial_letter + '%'))
+          else
+            @users = User.paginate(page: params[:page])
+          end
         else
-          @users = User.paginate(page: params[:page])
+          if initial_letter.present?
+            @users = User.paginate(page: params[:page])
                     .where('id <> ?', current_user.id)
                     .where(activeflg: true)
+                    .where(t[:kananame].matches(initial_letter + '%'))
+          else
+            @users = User.paginate(page: params[:page])
+                    .where('id <> ?', current_user.id)
+                    .where(activeflg: true)
+          end
         end
         
         if Rails.env == 'production'
