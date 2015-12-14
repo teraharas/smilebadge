@@ -4,81 +4,14 @@ class UsersController < ApplicationController
 
   
   def index
-    if params[:user_find_form] == nil
-      @form = UserFindForm.new
-      # 自分以外のユーザーを取得する。
-      # ソート：カナ（昇順）
-      if Rails.env == 'production'
-        @users = User.paginate(page: params[:page])
-                      .where('id <> ?', current_user.id)
-                      .where(activeflg: true)
-                      .order('kananame COLLATE "C"')
-      elsif Rails.env == 'development' or Rails.env == 'test'
-        @users = User.paginate(page: params[:page])
-                      .where('id <> ?', current_user.id)
-                      .where(activeflg: true)
-                      .order(:kananame)
-      end
-    else
-      @form = UserFindForm.new(find_params)
-      @searchword = @form.searchword.gsub("　", " ")
-      t = User.arel_table
-      
-      # 自分以外のユーザーを取得する。
-      # ソート：カナ（昇順）
-      if Rails.env == 'production'
-        @users = User.paginate(page: params[:page])
-          .where('id <> ?', current_user.id)
-          .where(t[:activeflg].eq(true))
-          .where(t[:name].matches('%' + @searchword + '%')
-            .or(t[:kananame].matches('%' + @searchword + '%'))
-            .or(t[:email].matches('%' + @searchword + '%')))
-            .order('kananame COLLATE "C"')
-      elsif Rails.env == 'development' or Rails.env == 'test'
-        @users = User.paginate(page: params[:page])
-          .where('id <> ?', current_user.id)
-          .where(t[:activeflg].eq(true))
-          .where(t[:name].matches('%' + @searchword + '%')
-            .or(t[:kananame].matches('%' + @searchword + '%'))
-            .or(t[:email].matches('%' + @searchword + '%')))
-            .order(:kananame)
-      end
-    end
+    # カレントユーザーを表示しない
+    @users = get_index_users(false)
   end
   
   
   def full_index
-    if params[:user_find_form] == nil
-      @form = UserFindForm.new
-      # 自分以外のユーザーを取得する。
-      # ソート：カナ（昇順）
-      if Rails.env == 'production'
-        @users = User.paginate(page: params[:page]).order('kananame COLLATE "C"')
-      elsif Rails.env == 'development' or Rails.env == 'test'
-        # @users = User.paginate(page: params[:page]).order(:kananame)
-        @users = User.paginate(page: params[:page]).order(:kananame)
-      end
-    else
-      @form = UserFindForm.new(find_params)
-      @searchword = @form.searchword.gsub("　", " ")
-      t = User.arel_table
-      
-      # 自分以外のユーザーを取得する。
-      # ソート：カナ（昇順）
-      if Rails.env == 'production'
-        @users = User.paginate(page: params[:page])
-                .where(t[:name].matches('%' + @searchword + '%')
-                .or(t[:kananame].matches('%' + @searchword + '%'))
-                .or(t[:email].matches('%' + @searchword + '%')))
-                .order('kananame COLLATE "C"')
-      elsif Rails.env == 'development' or Rails.env == 'test'
-        @users = User.paginate(page: params[:page])
-                .where(t[:name].matches('%' + @searchword + '%')
-                .or(t[:kananame].matches('%' + @searchword + '%'))
-                .or(t[:email].matches('%' + @searchword + '%')))
-                .order(:kananame)
-      end
-    end
+    # カレントユーザー含め全ユーザーを表示する
+    @users = get_index_users(true)
   end
   
   
@@ -149,6 +82,62 @@ class UsersController < ApplicationController
       params.require(:user_find_form).permit(:searchword)
     end
     
+    def get_index_users(display_current_user)
+      if params[:user_find_form] == nil
+        # 検索未入力時（初回表示時）
+        @form = UserFindForm.new
+        # 自分以外のユーザーを取得する。
+        # ソート：カナ（昇順）
+        # @users = User.paginate(page: params[:page])
+
+        if display_current_user
+          @users = User.paginate(page: params[:page])
+        else
+          @users = User.paginate(page: params[:page])
+                    .where('id <> ?', current_user.id)
+                    .where(activeflg: true)
+        end
+        
+        if Rails.env == 'production'
+          @users.order('kananame COLLATE "C"')
+        elsif Rails.env == 'development' or Rails.env == 'test'
+          @users.order(:kananame)
+        end
+      else
+        # 検索欄入力時
+        @form = UserFindForm.new(find_params)
+        @searchword = @form.searchword.gsub("　", " ")
+        t = User.arel_table
+        
+        # 自分以外のユーザーを取得する。
+        # ソート：カナ（昇順）
+        @users = User.paginate(page: params[:page])
+                      .where(t[:name].matches('%' + @searchword + '%')
+                        .or(t[:kananame].matches('%' + @searchword + '%'))
+                        .or(t[:email].matches('%' + @searchword + '%')))
+        
+        if display_current_user
+          @users = User.paginate(page: params[:page])
+                    .where(t[:name].matches('%' + @searchword + '%')
+                      .or(t[:kananame].matches('%' + @searchword + '%'))
+                      .or(t[:email].matches('%' + @searchword + '%')))
+        else
+        @users = User.paginate(page: params[:page])
+                    .where('id <> ?', current_user.id)
+                    .where(t[:activeflg].eq(true))
+                    .where(t[:name].matches('%' + @searchword + '%')
+                      .or(t[:kananame].matches('%' + @searchword + '%'))
+                      .or(t[:email].matches('%' + @searchword + '%')))
+        end
+  
+        if Rails.env == 'production'
+          @users.order('kananame COLLATE "C"')
+        elsif Rails.env == 'development' or Rails.env == 'test'
+          @users.order(:kananame)
+        end
+      end
+    end
+    
     def get_graph(user_id, type)
       # グラフインスタンス取得
       
@@ -158,22 +147,19 @@ class UsersController < ApplicationController
       join_condition = badgejoin.join(badgepostjoin, Arel::Nodes::OuterJoin)
                 .on(badgejoin[:id].eq(badgepostjoin[:badge_id])).join_sources
       
+      @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
+              .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
+      
       if type == "30DAYS_RECEPT"
-        @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
-              .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
-              .where(badgepostjoin[:recept_user_id].eq(user_id))
-              .where(badgepostjoin[:created_at].gt 30.days.ago)
-              .order('cnt DESC').order(badgejoin[:id])
+        @badgeposts.where(badgepostjoin[:recept_user_id].eq(user_id))
+                    .where(badgepostjoin[:created_at].gt 30.days.ago)
+                    .order('cnt DESC').order(badgejoin[:id])
       elsif type == "ALL_RECEPT"
-        @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
-              .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
-              .where(badgepostjoin[:recept_user_id].eq(user_id))
-              .order('cnt DESC').order(badgejoin[:id])
+        @badgeposts.where(badgepostjoin[:recept_user_id].eq(user_id))
+                    .order('cnt DESC').order(badgejoin[:id])
       else
-        @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
-              .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
-              .where(badgepostjoin[:sent_user_id].eq(user_id))
-              .order('cnt DESC').order(badgejoin[:id])
+        @badgeposts.where(badgepostjoin[:sent_user_id].eq(user_id))
+                    .order('cnt DESC').order(badgejoin[:id])
       end
   
       data = Array.new
