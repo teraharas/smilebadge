@@ -77,10 +77,6 @@ class UsersController < ApplicationController
                 .or(t[:kananame].matches('%' + @searchword + '%'))
                 .or(t[:email].matches('%' + @searchword + '%')))
                 .order(:kananame)
-        # @users = User.where(t[:name].matches('%' + @searchword + '%')
-        #         .or(t[:kananame].matches('%' + @searchword + '%'))
-        #         .or(t[:email].matches('%' + @searchword + '%')))
-        #         .order(:kananame)
       end
     end
   end
@@ -167,17 +163,17 @@ class UsersController < ApplicationController
               .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
               .where(badgepostjoin[:recept_user_id].eq(user_id))
               .where(badgepostjoin[:created_at].gt 30.days.ago)
-              .order('cnt DESC')
+              .order('cnt DESC').order(badgejoin[:id])
       elsif type == "ALL_RECEPT"
         @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
               .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
               .where(badgepostjoin[:recept_user_id].eq(user_id))
-              .order('cnt DESC')
+              .order('cnt DESC').order(badgejoin[:id])
       else
         @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
               .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
               .where(badgepostjoin[:sent_user_id].eq(user_id))
-              .order('cnt DESC')
+              .order('cnt DESC').order(badgejoin[:id])
       end
   
       data = Array.new
