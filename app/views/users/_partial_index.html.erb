@@ -27,19 +27,7 @@
   <% @index_action_name = "index" %>
 <% end %>
 
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-    あ行
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu">
-    <li><%= link_to("あ", :action => @index_action_name, :initial_letter => "あ") %></li>
-    <li><%= link_to("い", :action => @index_action_name, :initial_letter => "い") %></li>
-    <li><%= link_to("う", :action => @index_action_name, :initial_letter => "う") %></li>
-    <li><%= link_to("え", :action => @index_action_name, :initial_letter => "え") %></li>
-    <li><%= link_to("お", :action => @index_action_name, :initial_letter => "お") %></li>
-  </ul>
-</li>
+<%= render 'users/partial_initial_letter' %>
 
 <div class="will_paginate"><%= will_paginate %></div>
 

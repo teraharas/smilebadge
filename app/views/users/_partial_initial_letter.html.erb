@@ -1,0 +1,27 @@
+<% data = [["あ","い","う","え","お"],
+          ["か","き","く","け","こ","が","ぎ","ぐ","げ","ご"],
+          ["さ","し","す","せ","そ","ざ","じ","ず","ぜ","ぞ"],
+          ["た","ち","つ","て","と","だ","ぢ","づ","で","ど"],
+          ["な","に","ぬ","ね","の"],
+          ["は","ひ","ふ","へ","ほ","ば","び","ぶ","べ","ぼ"],
+          ["ま","み","む","め","も"],
+          ["や","ゆ","よ"],
+          ["ら","り","る","れ","ろ"],
+          ["わ","を","ん"]
+          ] %>
+
+<div class="user_initial_dropdown">
+  <% data.each { |data_gyou| %>
+  <span class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      <%= data_gyou[0] %>行
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <% data_gyou.each { |d| %>
+        <li><%= link_to(d, :action => @index_action_name, :initial_letter => d) %></li>
+      <% } %>
+    </ul>
+  </span>
+  <% } %>
+</div>
