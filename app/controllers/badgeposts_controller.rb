@@ -19,9 +19,9 @@ class BadgepostsController < ApplicationController
     @optionbadges = Badge.where(optionflg: true).where(activeflg: true).order(:outputnumber)
     # アソビバッジの今月の使用数
     @optionbadges.each do |optionbadge|
-      @in_string.push(optionbadge.id)
+      @in_string_optionbadge.push(optionbadge.id)
     end
-    @optionbadgecounts = Badgepost.where('sent_user_id IN(?)', @in_string).
+    @optionbadgecounts = Badgepost.where('sent_user_id IN(?)', @in_string_optionbadge).
   end
 
   def create
