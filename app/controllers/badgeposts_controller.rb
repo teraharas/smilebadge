@@ -21,7 +21,7 @@ class BadgepostsController < ApplicationController
     @optionbadges.each do |optionbadge|
       @in_string_optionbadge.push(optionbadge.id)
     end
-    @optionbadgecounts = Badgepost.where('sent_user_id IN(?)', @in_string_optionbadge).
+    # @optionbadgecounts = Badgepost.where('sent_user_id IN(?)', @in_string_optionbadge).
   end
 
   def create
