@@ -44,7 +44,7 @@ class BadgesController < ApplicationController
   def badge_params
     params.require(:badge)
     .permit(:outputnumber, :name, :explanation,
-          :level1_title, :level2_title,
+          :level1_title, :level2_title, :activeflg, :optionflg,
           :image, :remove_image, :image_cache)
   end
 end

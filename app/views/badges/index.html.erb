@@ -21,8 +21,11 @@
                     <% end %>
                   </div>
                 </span>
-                <span class="user"><strong><%= link_to badge.name, edit_badge_path(badge) %></strong>
-                  　レベル１：<%= badge.level1_title %>　　レベル２：<%= badge.level2_title %>
+                <span class="user">
+                  <%= badge.activeflg ? "" : "【無効】" %>
+                  <%= badge.optionflg ? "【アソビ】" : "" %>
+                  <strong><%= link_to badge.name, edit_badge_path(badge) %></strong>
+                　レベル１：<%= badge.level1_title %>　　レベル２：<%= badge.level2_title %>
                 </span>
                 <br/>
                 <% if badge.explanation? %>

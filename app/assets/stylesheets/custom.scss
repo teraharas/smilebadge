@@ -366,6 +366,19 @@ aside {
 
 
 
+/* badgepostsform */
+
+.badgepostsform {
+  li {
+    list-style: none;
+    float: left;
+  }
+  .listbreak {
+    float: right;
+  }
+}
+
+
 /* badgeposts */
 
 // 黄緑

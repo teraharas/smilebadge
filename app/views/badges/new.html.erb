@@ -25,6 +25,12 @@
             </label>
             <% end %>
         </div>
+        
+        <%= f.label "部門有効フラグ" %>
+        <%= f.check_box 'activeflg', {:checked => true} %>
+        
+        <%= f.label "アソビバッジフラグ" %>
+        <%= f.check_box 'optionflg', {:checked => false} %>
 
         <%= f.label "出力順" %>
         <%= f.number_field :outputnumber %>

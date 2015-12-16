@@ -159,18 +159,21 @@ class UsersController < ApplicationController
       join_condition = badgejoin.join(badgepostjoin, Arel::Nodes::OuterJoin)
                 .on(badgejoin[:id].eq(badgepostjoin[:badge_id])).join_sources
       
-      @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
-              .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
-      
       if type == "30DAYS_RECEPT"
-        @badgeposts.where(badgepostjoin[:recept_user_id].eq(user_id))
+        @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
+              .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
+                    .where(badgepostjoin[:recept_user_id].eq(user_id))
                     .where(badgepostjoin[:created_at].gt 30.days.ago)
                     .order('cnt DESC').order(badgejoin[:id])
       elsif type == "ALL_RECEPT"
-        @badgeposts.where(badgepostjoin[:recept_user_id].eq(user_id))
+        @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
+              .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
+                    .where(badgepostjoin[:recept_user_id].eq(user_id))
                     .order('cnt DESC').order(badgejoin[:id])
       else
-        @badgeposts.where(badgepostjoin[:sent_user_id].eq(user_id))
+        @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
+              .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
+                    .where(badgepostjoin[:sent_user_id].eq(user_id))
                     .order('cnt DESC').order(badgejoin[:id])
       end
   

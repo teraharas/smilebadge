@@ -10,11 +10,18 @@ class BadgepostsController < ApplicationController
   end
   
   def new
-    @badges = Badge.all.order(:outputnumber)
     @badgepost = Badgepost.new
-    
     @recept_user = User.find(params[:recept_user_id])
-    # binding.pry
+    
+    # バリューバッジ
+    @valuebadges = Badge.where(optionflg: false).where(activeflg: true).order(:outputnumber)
+    # アソビバッジ
+    @optionbadges = Badge.where(optionflg: true).where(activeflg: true).order(:outputnumber)
+    # アソビバッジの今月の使用数
+    @optionbadges.each do |optionbadge|
+      @in_string.push(optionbadge.id)
+    end
+    @optionbadgecounts = Badgepost.where('sent_user_id IN(?)', @in_string).
   end
 
   def create
@@ -23,8 +30,7 @@ class BadgepostsController < ApplicationController
       
       # バッジ受け取りメール送信
       # NoticeMailer.mail_recept_badge(@badgepost).deliver_later
-      
-      
+
       flash[:success] = @badgepost.recept_user.name + "さんに「" + @badgepost.badge.name + "」バッジを贈りました！"
       redirect_to root_url
     else
