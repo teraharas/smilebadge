@@ -18,10 +18,17 @@ class BadgepostsController < ApplicationController
     # アソビバッジ
     @optionbadges = Badge.where(optionflg: true).where(activeflg: true).order(:outputnumber)
     # アソビバッジの今月の使用数
-    # @optionbadges.each do |optionbadge|
-    #   @in_string.push(optionbadge.id)
-    # end
-    # @optionbadgecounts = Badgepost.where('sent_user_id IN(?)', @in_string).
+    # IN句に挿入する配列を準備
+    @in_string = Array.new(0, nil)
+    @optionbadges.each do |optionbadge|
+      # binding.pry
+      @in_string.push(optionbadge.id)
+    end
+    @optionbadgecounts = Badgepost.select("badge_id, count(*) as badgecount")
+                        .where(sent_user_id: current_user.id).where('badge_id IN(?)', @in_string).group(:badge_id)
+    results = @optionbadgecounts.map{|optionbadgecount| [optionbadgecount.badge_id, optionbadgecount.badgecount]}
+    @badgecounthash = Hash[results]
+    # binding.pry
   end
 
   def create

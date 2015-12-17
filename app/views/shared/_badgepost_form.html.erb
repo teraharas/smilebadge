@@ -28,7 +28,7 @@
             <li>
               <% next if badge.optionflg %>
               <div class="badgeicon_big" id="id_badge_<%= badge.id %>">
-                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>)">
+                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>, 1)">
                   <div class="largebadgeimage">
                     <% if badge.image? %>
                       <%= image_tag(badge.image.url) %>
@@ -60,10 +60,15 @@
             <li>
               <% next if !badge.optionflg %>
               <div class="badgeicon_big" id="id_badge_<%= badge.id %>">
-                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>)">
+                <!--バッジ送信可能数-->
+                <% @sentbadgecount = @badgecounthash[badge.id] if @badgecounthash.has_key?(badge.id) %>
+                <% @usablebadgecount = 0 %>
+                <% @usablebadgecount = 3 - @sentbadgecount if @sentbadgecount <= 3 %>
+                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>, <%= @usablebadgecount %>)">
                   <div class="largebadgeimage">
                     <% if badge.image? %>
                       <%= image_tag(badge.image.url) %>
+                      <%= image_tag('soldout.png') %>
                     <% else %>
                       <%= image_tag('badge_noimage.gif') %>
                     <% end %>
@@ -72,6 +77,9 @@
                   <span class="badge_explanation"><%= badge.explanation %></span>
                 </div>
                 <p class="clear"><%= badge.name %></p>
+              </div>
+              <div class="badgecount">
+                残り<%= @usablebadgecount %>回
               </div>
             </li>
             <% end %>

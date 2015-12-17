@@ -378,11 +378,15 @@ aside {
   }
 }
 
+.badgecount {
+  font-size: 1.5em;
+  // text-align: right;
+}
+
 
 /* badgeposts */
 
-// 黄緑
-// $badge_backcolor : #bcf5c1;
+// 背景のブルー
 $badge_backcolor : #B2EBF2;
 
 .badgeposts {
@@ -432,7 +436,6 @@ $badge_backcolor : #B2EBF2;
     padding-right: 5px;
   }
   .badgeicon_mini img {
-      // background : url('light1.png') no-repeat left top;
       -webkit-animation-duration: 10s;  
       -webkit-animation-timing-fanction: ease-in-out;  
       -webkit-animation-iteration-count: infinite;  
@@ -445,22 +448,18 @@ $badge_backcolor : #B2EBF2;
   }  
    
   .triangle_sent {
-    // margin-left: -10px;
     float: left;
-  // 	border: 55px solid #A7F1FF;
     border: 55px solid $badge_backcolor;
   	border-left-color: white;
-  // 	矢印マークの角度
+    // 	矢印マークの角度
     border-left: 20px solid white;
   }
   
   .triangle_recept {
-    // margin-left: -10px;
     float: left;
-  // 	border: 55px solid #A7F1FF;
     border: 55px solid $badge_backcolor;
   	border-left-color: white;
-  // 	矢印マークの角度
+    // 	矢印マークの角度
     border-left: 20px solid white;
   }
   
@@ -468,7 +467,6 @@ $badge_backcolor : #B2EBF2;
   .gravatarrecept_sent {
     position: relative;
     left: -55px;
-    // background-color: #A7F1FF;
     background-color: $badge_backcolor;
     float: left;
     padding-top: 5px;
@@ -480,7 +478,6 @@ $badge_backcolor : #B2EBF2;
   .gravatarrecept_recept {
     position: relative;
     left: -55px;
-    // background-color: #A7F1FF;
     background-color: $badge_backcolor;
     float: left;
     padding-top: 5px;
@@ -512,8 +509,6 @@ $badge_backcolor : #B2EBF2;
   
   @media(max-width: 768px) {
   }
-  
-  // @media(max-width: 479px) {
   @media(max-width: 500px) {
     .gravatarsent_sent {
       display: none;
