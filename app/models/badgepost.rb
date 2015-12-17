@@ -6,5 +6,5 @@ class Badgepost < ActiveRecord::Base
   validates :sent_user_id, presence: true
   validates :recept_user_id, presence: true
   validates :badge_id, presence: true
-  validates :content, length: { maximum: 140 }
+  validates :content, presence:true
 end

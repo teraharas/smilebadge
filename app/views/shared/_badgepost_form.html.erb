@@ -68,8 +68,11 @@
                 <div class="gravatar" onclick="set_badge_id(<%= badge.id %>, <%= @usablebadgecount %>)">
                   <div class="largebadgeimage">
                     <% if badge.image? %>
-                      <%= image_tag(badge.image.url) %>
-                      <%= image_tag('soldout.png') %>
+                      <% if @usablebadgecount <= 0 %>
+                        <%= image_tag('soldout.png') %>
+                      <% else %>
+                        <%= image_tag(badge.image.url) %>
+                      <% end %>
                     <% else %>
                       <%= image_tag('badge_noimage.gif') %>
                     <% end %>
@@ -95,7 +98,8 @@
       <div class="field">
       
       <%= f.hidden_field :recept_user_id, :value => @recept_user.id %>
-          <%= f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かった書いてね！", :size => "10x5", :maxlength => "140" %>
+          <%= f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かった書いてね！",
+            :size => "10x5", :maxlength => "140" %>
       </div>
       
       <%= f.submit "バッジを贈る！！", class: "btn btn-primary" %>
