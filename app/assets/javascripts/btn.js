@@ -1,4 +1,4 @@
-function set_badge_id(badge_id, usablebadgecount) {
+function set_badge_id(badge_id) {
     // バッジ送付可能数0以下ならチェックONにしない
     // if (usablebadgecount <= 0) {
     //     exit;

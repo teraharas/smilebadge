@@ -28,7 +28,7 @@
             <li>
               <% next if badge.optionflg %>
               <div class="badgeicon_big" id="id_badge_<%= badge.id %>">
-                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>, 1)">
+                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>)">
                   <div class="largebadgeimage">
                     <% if badge.image? %>
                       <%= image_tag(badge.image.url) %>
@@ -64,7 +64,7 @@
                 <% @sentbadgecount = @badgecounthash[badge.id] if @badgecounthash.has_key?(badge.id) %>
                 <% @usablebadgecount = 0 %>
                 <% @usablebadgecount = 3 - @sentbadgecount if @sentbadgecount <= 3 %>
-                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>, <%= @usablebadgecount %>)">
+                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>)">
                   <div class="largebadgeimage">
                     <% if badge.image? %>
                       <%= image_tag(badge.image.url) %>
