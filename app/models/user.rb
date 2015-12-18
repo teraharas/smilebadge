@@ -60,9 +60,6 @@ class User < ActiveRecord::Base
   
   # パスワード再設定の属性を設定する
   def create_reset_digest
-    
-    # binding.pry
-    
     self.reset_token = User.new_token
     update_attribute(:reset_digest,  User.digest(reset_token))
     update_attribute(:reset_sent_at, Time.zone.now)
@@ -70,9 +67,6 @@ class User < ActiveRecord::Base
 
   # パスワード再設定のメールを送信する
   def send_password_reset_email
-    
-    binding.pry
-    
     UserMailer.password_reset(self).deliver_later
   end
   

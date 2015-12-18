@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   
   
   def find
-    binding.pry
     @form = UserFindForm.new
   end
   

@@ -1,7 +1,6 @@
 class BumonsController < ApplicationController
   def index
    @bumons = Bumon.all.order(:outputnumber)
-    # binding.pry
   end
 
   def new
