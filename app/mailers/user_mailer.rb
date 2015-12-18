@@ -3,6 +3,6 @@ class UserMailer < ApplicationMailer
   
   def password_reset(user)
     @user = user
-    mail to: user.email, subject: "SMILE Badgeパスワードリセット2"
+    mail to: user.email, subject: "SMILE Badgeパスワードリセット"
   end
 end
