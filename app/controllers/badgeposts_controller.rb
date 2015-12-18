@@ -27,7 +27,7 @@ class BadgepostsController < ApplicationController
     if @badgepost.save
       
       # バッジ受け取りメール送信
-      # NoticeMailer.mail_recept_badge(@badgepost).deliver_later
+      NoticeMailer.mail_recept_badge(@badgepost).deliver_later
 
       flash[:success] = @badgepost.recept_user.name + "さんに「" + @badgepost.badge.name + "」バッジを贈りました！"
       redirect_to root_url
