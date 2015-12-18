@@ -39,55 +39,61 @@
     <br/>
     <br/>
   
-      <% if logged_in_adminuser? %>
-      <!--管理者なら-->
-        <%= f.label "ユーザー有効フラグ" %>
-        <%= f.check_box 'activeflg' %>
-        
-        <%= f.label "管理者フラグ" %>
-        <%= f.check_box 'adminflg' %>
-        
-        <%= f.label "氏名" %>
-        <%= f.text_field :name, required: true %>
-        
-        <%= f.label "ふりがな" %>
-        <%= f.text_field :kananame, required: true %>
-        
-        <%= f.label "部門名" %>
-        <%= f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name) %>
-        
-        <%= f.label "メールアドレス" %>
-        <%= f.email_field :email %>
-      <% else %>
-      <!--通常ユーザーなら-->
-        <p><%= f.label "氏名" %></p>
-        <p><%= @user.name %></p>
-        
-        <p><%= f.label "ふりがな" %></p>
-        <p><%= @user.kananame %></p>
-        
-        <p><%= f.label "部門名" %></p>
-        <p><%= @user.bumon.name %></p>
-        
-        <p><%= f.label "メールアドレス" %></p>
-        <p><%= @user.email %></p>
-      <% end %>
+    <% if logged_in_adminuser? %>
+    <!--管理者なら-->
+      <%= f.label "ユーザー有効フラグ" %>
+      <%= f.check_box 'activeflg' %>
       
+      <%= f.label "管理者フラグ" %>
+      <%= f.check_box 'adminflg' %>
       
-      <%= f.label "ニックネーム" %>
-      <%= f.text_field :nickname %>
+      <%= f.label "氏名" %>
+      <%= f.text_field :name, required: true %>
       
-      <%= f.label "キャッチフレーズ" %>
-      <%= f.text_field :catchphrase %>
+      <%= f.label "ふりがな" %>
+      <%= f.text_field :kananame, required: true %>
+      
+      <%= f.label "部門名" %>
+      <%= f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name) %>
+      
+      <%= f.label "メールアドレス" %>
+      <%= f.email_field :email %>
+    <% else %>
+    <!--通常ユーザーなら-->
+      <p><%= f.label "氏名" %></p>
+      <p><%= @user.name %></p>
+      
+      <p><%= f.label "ふりがな" %></p>
+      <p><%= @user.kananame %></p>
+      
+      <p><%= f.label "部門名" %></p>
+      <p><%= @user.bumon.name %></p>
+      
+      <p><%= f.label "メールアドレス" %></p>
+      <p><%= @user.email %></p>
+    <% end %>
+    
+    
+    <%= f.label "ニックネーム" %>
+    <%= f.text_field :nickname %>
+    
+    <%= f.label "キャッチフレーズ" %>
+    <%= f.text_field :catchphrase %>
 
-      <%= f.label "好きな言葉・座右の銘・マイルール" %>
-      <%= f.text_area :myword, :size => "10x5" %>
-      
-      <%= f.label "趣味" %>
-      <%= f.text_area :hobby, :size => "10x5" %>
-      
-      <%= f.label "一言メッセージ" %>
-      <%= f.text_field :message %>
+    <%= f.label "好きな言葉・座右の銘・マイルール" %>
+    <%= f.text_area :myword, :size => "10x5" %>
+    
+    <%= f.label "趣味" %>
+    <%= f.text_area :hobby, :size => "10x5" %>
+    
+    <%= f.label "一言メッセージ" %>
+    <%= f.text_field :message %>
+
+    <%= f.label "パスワード（変更する場合は入力してください）" %>
+    <%= f.password_field :password, class: 'form-control' %>
+    
+    <%= f.label :password_confirmation, "パスワード（確認）" %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
       
   <%= f.submit "プロフィールを更新", class: "btn btn-sm btn-primary" %>
 <% end %>
