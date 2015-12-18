@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
 
   # パスワード再設定のメールを送信する
   def send_password_reset_email
-    UserMailer.password_reset(self).deliver_later
+    UserMailer.password_reset(self).deliver_now
   end
   
   # パスワード再設定の期限が切れている場合はtrueを返す
