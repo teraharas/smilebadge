@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'users/full_index'
 
   resources :users
+  resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :bumons
   resources :sessions, only: [:new, :create, :destroy]
   resources :badges

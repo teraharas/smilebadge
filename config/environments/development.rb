@@ -23,7 +23,7 @@ Rails.application.configure do
         user_name: ENV["SMTP_USER_NAME"],
         password: ENV["SMTP_PASSWORD"]
   }
-
+  
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

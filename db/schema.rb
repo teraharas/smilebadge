@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 20151209000602) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
     t.string   "image"
     t.boolean  "remove_image"
     t.string   "image_cache"
