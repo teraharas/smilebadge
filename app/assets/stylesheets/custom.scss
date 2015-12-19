@@ -11,6 +11,10 @@ body {
   padding-top: 60px;
   background-color: $backcoloygray;
   font-family: "Open Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  background-image : url(smile.png);
+}
+.layerTransparent{
+	background-color: rgba(255, 255, 255, 0.93);
 }
 
 section {

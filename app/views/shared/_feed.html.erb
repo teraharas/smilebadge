@@ -2,7 +2,6 @@
 
 <% if @feedbadgeposts.any? %>
   <h1>獲得したバッジ</h1>
-  <ol class="badgeposts">
     <div class="container-fluid">
       <div class="row">
         <% @feedbadgeposts.each do |badgepost| %>
@@ -12,7 +11,6 @@
         <% end %>
       </div>
     </div>
-  </ol>
 <% end %>
 
 <script>
