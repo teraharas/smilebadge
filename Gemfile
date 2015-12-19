@@ -94,11 +94,8 @@ gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
 
-# gem 'resque'
-
 gem 'faker'
 
 # ページネーション
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-

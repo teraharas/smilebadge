@@ -1,5 +1,5 @@
 User.create!(name:  "Example User",
-             kananame: "てすと",
+             kananame: "わてすと",
              email: "example@railstutorial.org",
              password:              "foobar",
              password_confirmation: "foobar",

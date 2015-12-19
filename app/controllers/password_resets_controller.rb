@@ -43,7 +43,6 @@ class PasswordResetsController < ApplicationController
     end
 
     # Beforeフィルタ
-
     def get_user
       @user = User.find_by(email: params[:email])
     end
