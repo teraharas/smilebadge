@@ -1,11 +1,11 @@
 <%= javascript_include_tag 'balloon' %>
 
-<% if @feed_items.any? %>
+<% if @feedbadgeposts.any? %>
   <h1>獲得したバッジ</h1>
   <ol class="badgeposts">
     <div class="container-fluid">
       <div class="row">
-        <% @feed_items.each do |badgepost| %>
+        <% @feedbadgeposts.each do |badgepost| %>
         	<div class="col-md-6">
         		<%= render badgepost, type: "recept" %>
         	</div>

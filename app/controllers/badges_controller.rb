@@ -1,4 +1,6 @@
 class BadgesController < ApplicationController
+  before_action :logged_in_adminuser
+  
   def index
    @badges = Badge.all.order(:outputnumber)
   end

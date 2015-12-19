@@ -1,4 +1,20 @@
 module SessionsHelper
+  
+  # ログインしていなければ促す
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "ログインしてください。"
+      redirect_to login_url
+    end
+  end
+  
+  # 編集権限があるユーザーか
+  def editable_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless ( current_user?(@user) || logged_in_adminuser?)
+  end
+  
   # 記憶トークンcookieに対応するユーザーを返す
   def current_user
     if (user_id = session[:user_id])
@@ -12,6 +28,7 @@ module SessionsHelper
     end
   end
   
+  # 自分のユーザーか
   def current_user?(user)
     user == current_user
   end
@@ -21,13 +38,20 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
+  # ログイン中か
   def logged_in?
     !current_user.nil?
   end
   
+  # 管理者ユーザーでログインをさせる
+  def logged_in_adminuser
+      current_user
+      redirect_to(root_url) unless ( (!@current_user.nil? && @current_user.adminflg) || !User.exists?(adminflg: true) )
+  end
+  
+  # 管理者権限でログインしているか（管理者ユーザー不在の時はログインしなくてもOK）
   def logged_in_adminuser?
     current_user
-    # binding.pry
     # 管理者ユーザーのときか、管理者ユーザーが存在していないとき
     if @current_user.adminflg || !User.exists?(adminflg: true)
       return true
@@ -50,7 +74,7 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
 
-  # 現在のユーザーがログアウトする
+  # 現在のユーザーをログアウトする
   def log_out
     forget(current_user)
     session.delete(:user_id)

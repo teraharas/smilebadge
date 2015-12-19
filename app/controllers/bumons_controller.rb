@@ -1,4 +1,6 @@
 class BumonsController < ApplicationController
+  before_action :logged_in_adminuser
+  
   def index
    @bumons = Bumon.all.order(:outputnumber)
   end

@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password,
-    :length => { :minimum => 4, :if => :validate_password? },
+    :length => { :minimum => 8, :if => :validate_password? },
     :confirmation => { :if => :validate_password? }
 
   
@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   
 
   # フィードには、自分のささやきと、自分がフォローしているユーザーのつぶやきを表示（取得）
-  def feed_items
+  def feed_badgeposts
     Badgepost.where(recept_user_id: [self.id])
   end
   
@@ -73,6 +73,7 @@ class User < ActiveRecord::Base
   
   # パスワード再設定の期限が切れている場合はtrueを返す
   def password_reset_expired?
+    # パスワードの有効期限は2時間とする
     reset_sent_at < 2.hours.ago
   end
   
