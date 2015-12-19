@@ -1,8 +1,8 @@
 User.create!(name:  "Example User",
              kananame: "わてすと",
              email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
+             password:              "foobarfoobar",
+             password_confirmation: "foobarfoobar",
              adminflg: true,
              bumon_id: 1)
 
@@ -10,7 +10,7 @@ User.create!(name:  "Example User",
   name  = Faker::Name.name
   kananame  = "わてすと"
   email = "example-#{n+1}@railstutorial.org"
-  password = "password"
+  password = "foobarfoobar"
   bumon_id = 1
   User.create!(name:  name,
                kananame: kananame,
