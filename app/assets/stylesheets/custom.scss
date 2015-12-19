@@ -22,6 +22,7 @@ body {
 // 背景画像
 .body_back_image {
   background-image : url(smile.png);
+  background-attachment: fixed;
 }
 // 背景画像を透過にする
 .layerTransparent{
