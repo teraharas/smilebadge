@@ -597,10 +597,11 @@ $nickname_color: #A52A2A;
   .name_block {
     // float: right;
     // margin: 0 auto;
+    margin: 10px;
+    padding: 10px;
     max-width: 350px;
     background: white;
-    padding: 10px;
-    border: 1px solid #ff0000;
+    border: 1px solid red;
     border-radius: 10px;
     .bumon_name {
       font-size: 0.9em;
@@ -626,8 +627,11 @@ $nickname_color: #A52A2A;
   
   .user_info {
     background: white;
-    max-width: 250px;
+    max-width: 252px;
     min-height: 300px;
+    border: 1px solid blue;
+    margin-left: 10px;
+    margin-right: 10px;
     // border-radius: 10px;
     // padding: 0px;
     // margin: 0px;
@@ -646,21 +650,30 @@ $nickname_color: #A52A2A;
   }
   
   .catchphrase {
+    margin: 10px;
+    padding: 10px;
+    max-width: 350px;
     background: white;
-    max-width: 250px;
-    min-height: 30px;
+    border: 1px solid blue;
+    border-radius: 10px;
   }
     
   .myrule {
+    margin: 10px;
+    padding: 10px;
+    max-width: 350px;
     background: white;
-    max-width: 250px;
-    min-height: 30px;
+    border: 1px solid green;
+    border-radius: 10px;
   }
   
   .hobby {
+    margin: 10px;
+    padding: 10px;
+    max-width: 350px;
     background: white;
-    max-width: 250px;
-    min-height: 30px;
+    border: 1px solid green;
+    border-radius: 10px;
   }
   
 }
