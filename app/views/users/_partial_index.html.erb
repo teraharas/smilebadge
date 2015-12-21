@@ -69,11 +69,15 @@
                         </div>
                       <% end %>
                     </span>
-                    <span class="user"><strong><%= link_to user.name + "さんにバッジを贈る！！", new_badgepost_path(recept_user_id: user.id) %></strong></span>
+                    <span class="user">
+                      <%= link_to new_badgepost_path(recept_user_id: user.id) do %>
+                        <strong><span class="minismile"><%= image_tag asset_path "smile.png" %></span><%= user.name %>さんにバッジを贈る！！</strong>
+                      <% end %>
+                    </span>
                     <br/>
                     <span><%= user.bumon.name %></span>
                     <br/>
-                    <%= link_to "プロフィール", user %>
+                    <i class="fa fa-user fa-fw"></i><%= link_to "プロフィール", user %>
                   <% end %>
                 </li>
                 <br/>
