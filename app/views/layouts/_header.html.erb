@@ -17,7 +17,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <% unless logged_in? %>
-              <!--<li><%#= link_to "会員登録", signup_path %></li>-->
               <% if !User.exists?(adminflg: true) %>
                 <li><%= link_to "管理者", adminpage_path %></li>
               <% end %>
@@ -30,7 +29,6 @@
             <% else %>
               <li>
                 <%= link_to users_path do %>
-                <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>-->
                 <span class="minismile"><%= image_tag asset_path "smile.png" %></span>
                 バッジを贈る！！
                 <% end %>

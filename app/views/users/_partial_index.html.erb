@@ -39,7 +39,7 @@
           <ol class="users">
             <% @users.each do |user| %>
               <div class="col-md-6">
-                <li>
+                <li id="animation">
                   <% if adminModeFlg == true %>
                     <!--管理モード時-->
                     <span class="gravatar" title="<%= user.message %>">
@@ -97,4 +97,16 @@
 // ユーザーの画像に一言メッセージをポップアップ
 $(".gravatar").balloon({ position: "right", offsetX: 0, offsetY: -30, 
                       css: { backgroundColor: '#EEFFFF', color: '#000' } });
+
+$('#animation').css('visibility','hidden');
+$(window).scroll(function(){
+ var windowHeight = $(window).height(),
+     topWindow = $(window).scrollTop();
+ $('#animation').each(function(){
+  var targetPosition = $(this).offset().top;
+  if(topWindow > targetPosition - windowHeight + 100){
+   $(this).addClass("fadeInDown");
+  }
+ });
+});
 </script>
