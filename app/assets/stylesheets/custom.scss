@@ -416,7 +416,7 @@ $badge_backcolor : #B2EBF2;
     list-style: none;
   }
   
-  .gravatarsent_recept {
+  .gravatarsent {
     background-color: white;
     float: left;
     padding-top: 5px;
@@ -425,13 +425,12 @@ $badge_backcolor : #B2EBF2;
     padding-right: 20px;
   }
   
+  .gravatarsent_recept {
+    @extend .gravatarsent;
+  }
+  
   .gravatarsent_sent {
-    background-color: white;
-    float: left;
-    padding-top: 5px;
-    padding-left: 5px;
-    padding-bottom: 0px;
-    padding-right: 20px;
+    @extend .gravatarsent;
   }
   
   .badgeicon_mini {
@@ -452,26 +451,25 @@ $badge_backcolor : #B2EBF2;
     0% {-webkit-transform: rotate(0deg);}
     30% {-webkit-transform: rotate(360deg);}
     100% {-webkit-transform: rotate(360deg);}
-  }  
-   
-  .triangle_sent {
+  }
+  
+  .triangle {
     float: left;
     border: 55px solid $badge_backcolor;
   	border-left-color: white;
     // 	矢印マークの角度
     border-left: 20px solid white;
+  }
+   
+  .triangle_sent {
+    @extend .triangle;
   }
   
   .triangle_recept {
-    float: left;
-    border: 55px solid $badge_backcolor;
-  	border-left-color: white;
-    // 	矢印マークの角度
-    border-left: 20px solid white;
+    @extend .triangle;
   }
   
-  
-  .gravatarrecept_sent {
+  .gravatarrecept {
     position: relative;
     left: -55px;
     background-color: $badge_backcolor;
@@ -480,17 +478,13 @@ $badge_backcolor : #B2EBF2;
     padding-left: 5px;
     padding-bottom: 0px;
     padding-right: 5px;
+  }
+  .gravatarrecept_sent {
+    @extend .gravatarrecept;
   }
   
   .gravatarrecept_recept {
-    position: relative;
-    left: -55px;
-    background-color: $badge_backcolor;
-    float: left;
-    padding-top: 5px;
-    padding-left: 5px;
-    padding-bottom: 0px;
-    padding-right: 5px;
+    @extend .gravatarrecept;
   }
   
   
@@ -592,12 +586,10 @@ $nickname_color: #A52A2A;
 
 /* プロフィール画面 */
 .profile_show {
-  background: $backcoloygray;
-  
+  // background: $backcoloygray;
   hr {
       margin: 2px;
   }
-  
   .name_block {
     // float: right;
     // margin: 0 auto;

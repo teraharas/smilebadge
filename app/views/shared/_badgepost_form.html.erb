@@ -18,7 +18,7 @@
   <% kaigyouflg = false %>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <section>
           <% if @valuebadges.any? %>
           <ul>
@@ -94,12 +94,12 @@
       
     <br/>
 
-    <div class="col-md-4">
+    <div class="col-md-5">
       <div class="field">
       
       <%= f.hidden_field :recept_user_id, :value => @recept_user.id %>
           <%= f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かった書いてね！",
-            :size => "10x5", :maxlength => "140" %>
+            :size => "10x6", :maxlength => "140" %>
       </div>
       
       <%= f.submit "バッジを贈る！！", class: "btn btn-primary" %>

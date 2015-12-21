@@ -1,7 +1,9 @@
 <div class="profile_show">
   <h3>
     <% unless current_user?(@user) %>
-      <span class="user"><strong><%= link_to @user.name + "さんにバッジを贈る！！", new_badgepost_path(recept_user_id: @user.id) %></strong></span>
+      <%= link_to new_badgepost_path(recept_user_id: @user.id) do %>
+        <strong><span class="minismile"><%= image_tag asset_path "smile.png" %></span><%= @user.name %>さんにバッジを贈る！！</strong>
+      <% end %>
     <% end %>
   </h3>
   
