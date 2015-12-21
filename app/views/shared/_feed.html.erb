@@ -2,15 +2,15 @@
 
 <% if @feedbadgeposts.any? %>
   <h1>獲得したバッジ</h1>
-    <div class="container-fluid">
-      <div class="row">
-        <% @feedbadgeposts.each do |badgepost| %>
-        	<div class="col-md-6">
-        		<%= render badgepost, type: "recept" %>
-        	</div>
-        <% end %>
-      </div>
+  <div class="container-fluid">
+    <div class="row">
+      <% @feedbadgeposts.each do |badgepost| %>
+      	<div class="col-md-6">
+      		<%= render badgepost, type: "recept" %>
+      	</div>
+      <% end %>
     </div>
+  </div>
 <% end %>
 
 <script>

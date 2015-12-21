@@ -2,6 +2,8 @@
 
 <%= javascript_include_tag 'balloon' %>
 
+<div class="will_paginate"><%= will_paginate %></div>
+
 <div class="container-fluid">
 	<div class="row">
 		<% badgeposts.each do |badgepost| %>
@@ -11,6 +13,8 @@
 		<% end %>
 	</div>
 </div>
+
+<div class="will_paginate"><%= will_paginate %></div>
 
 <script>
 // ユーザーの画像に一言メッセージをポップアップ

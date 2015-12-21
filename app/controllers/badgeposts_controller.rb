@@ -2,11 +2,11 @@ class BadgepostsController < ApplicationController
   before_action :logged_in_user, only: [:create]
 
   def recepting
-    @badgeposts = Badgepost.where(recept_user_id: current_user.id).order(created_at: :desc)
+    @badgeposts = Badgepost.paginate(page: params[:page]).where(recept_user_id: current_user.id).order(created_at: :desc)
   end
   
   def sending
-    @badgeposts = Badgepost.where(sent_user_id: current_user.id).order(created_at: :desc)
+    @badgeposts = Badgepost.paginate(page: params[:page]).where(sent_user_id: current_user.id).order(created_at: :desc)
   end
   
   def new
