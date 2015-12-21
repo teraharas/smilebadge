@@ -217,8 +217,8 @@ p {
 }
 
 .largeimage {
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
   border: 1px solid #ccc;
   background-size: cover;
@@ -586,4 +586,57 @@ span.picture {
 .user_initial_dropdown {
   margin-right: 20px;
   text-align: center;
+}
+
+$nickname_color: #A52A2A;
+
+/* プロフィール画面 */
+.profile_show {
+  background: $backcoloygray;
+  .user_info {
+    background: white;
+    max-width: 250px;
+    min-height: 300px;
+    border-radius: 10px;
+    .largeimage {
+      border-radius: 10px 10px 0px 0px;
+    }
+    .message {
+      padding-left: 10px;
+    }
+    .catchphrase {
+      background: white;
+      max-width: 250px;
+      min-height: 30px;
+    }
+  }
+  .name_block {
+    // float: right;
+    // margin: 0 auto;
+    max-width: 350px;
+    background: white;
+    padding: 10px;
+    border: 1px solid #ff0000;
+    border-radius: 10px;
+    .bumon_name {
+      font-size: 0.9em;
+    }
+    .kananame {
+      font-size: 0.6em;
+      // margin: 0px;
+    }
+    .name {
+      font-size: 2.5em;
+    }
+    .nickname {
+      // margin-left: 60px;
+      font-size: 1.0em;
+      .nicknamevalue {
+        color: $nickname_color;
+      }
+    }
+    .email {
+      font-size: 0.8em;
+    }
+  }
 }
