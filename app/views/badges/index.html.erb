@@ -29,7 +29,7 @@
                 </span>
                 <br/>
                 <% if badge.explanation? %>
-                  <p><%= badge.explanation %></p>
+                  <p><%= simple_format(h(badge.explanation)) %></p>
                 <% else%>
                   <br/>
                   <br/>

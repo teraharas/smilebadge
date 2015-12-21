@@ -37,7 +37,7 @@
                     <% end %>
                   </div>
                   <div id="badge_checked_<%= badge.id %>" class="badge_checked"><%= image_tag('check_big.png', {:size => '30x30'}) %></div>
-                  <span class="badge_explanation"><%= badge.explanation %></span>
+                  <span class="badge_explanation"><%= simple_format(h(badge.explanation)) %></span>
                 </div>
                 <p class="clear"><%= badge.name %></p>
               </div>
@@ -78,7 +78,7 @@
                     <% end %>
                   </div>
                   <div id="badge_checked_<%= badge.id %>" class="badge_checked"><%= image_tag('check_big.png', {:size => '30x30'}) %></div>
-                  <span class="badge_explanation"><%= badge.explanation %></span>
+                  <span class="badge_explanation"><%= simple_format(h(badge.explanation)) %></span>
                 </div>
                 <p class="clear"><%= badge.name %></p>
               </div>
