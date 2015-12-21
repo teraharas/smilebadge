@@ -51,8 +51,9 @@
       </section>
       
       <div class="catchphrase">
-          キャッチフレーズ
-          <%= @user.catchphrase %>
+          <p>キャッチフレーズ</p>
+          <hr>
+          <span><strong><%= @user.catchphrase %></strong></span>
       </div>
     </div>
 
@@ -60,16 +61,18 @@
 
     <div class="col-md-4">
       <div class="myrule">
-        好きな言葉・座右の銘・マイルール：
-        <%= simple_format(h(@user.myword)) %>
+        <p><strong>好きな言葉・座右の銘・マイルール</strong></p>
+        <hr>
+        <span><%= simple_format(h(@user.myword)) %></span>
       </div>
     </div>
 
 
     <div class="col-md-4">
       <div class="hobby">
-        趣味：
-        <%= simple_format(h(@user.hobby)) %>
+        <p><strong>趣味</strong></p>
+        <hr>
+        <span><%= simple_format(h(@user.hobby)) %></span>
       </div>
     </div>
       
