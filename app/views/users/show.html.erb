@@ -49,22 +49,30 @@
         </p>
         <p class="message"><strong><%= @user.message %></strong></p>
       </section>
+      
+      <br/>
+      
       <div class="catchphrase">
           キャッチフレーズ
           <%= @user.catchphrase %>
       </div>
     </div>
 
+    <br/>
 
     <div class="col-md-4">
-      好きな言葉・座右の銘・マイルール：
-      <%= simple_format(h(@user.myword)) %>
+      <div class="myrule">
+        好きな言葉・座右の銘・マイルール：
+        <%= simple_format(h(@user.myword)) %>
+      </div>
     </div>
 
 
     <div class="col-md-4">
-      趣味：
-      <%= simple_format(h(@user.hobby)) %>
+      <div class="hobby">
+        趣味：
+        <%= simple_format(h(@user.hobby)) %>
+      </div>
     </div>
       
   </div>

@@ -593,23 +593,7 @@ $nickname_color: #A52A2A;
 /* プロフィール画面 */
 .profile_show {
   background: $backcoloygray;
-  .user_info {
-    background: white;
-    max-width: 250px;
-    min-height: 300px;
-    border-radius: 10px;
-    .largeimage {
-      border-radius: 10px 10px 0px 0px;
-    }
-    .message {
-      padding-left: 10px;
-    }
-    .catchphrase {
-      background: white;
-      max-width: 250px;
-      min-height: 30px;
-    }
-  }
+  
   .name_block {
     // float: right;
     // margin: 0 auto;
@@ -639,4 +623,44 @@ $nickname_color: #A52A2A;
       font-size: 0.8em;
     }
   }
+  
+  .user_info {
+    background: white;
+    max-width: 250px;
+    min-height: 300px;
+    // border-radius: 10px;
+    // padding: 0px;
+    // margin: 0px;
+    .gravatar {
+      // padding: 10px;
+      margin: 0px;
+    }
+    // .largeimage {
+    //   border-radius: 10px 10px 0px 0px;
+    //   padding: 0px;
+    //   margin: 0px;
+    // }
+    .message {
+      padding-left: 10px;
+    }
+  }
+  
+  .catchphrase {
+    background: white;
+    max-width: 250px;
+    min-height: 30px;
+  }
+    
+  .myrule {
+    background: white;
+    max-width: 250px;
+    min-height: 30px;
+  }
+  
+  .hobby {
+    background: white;
+    max-width: 250px;
+    min-height: 30px;
+  }
+  
 }
