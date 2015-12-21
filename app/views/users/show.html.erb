@@ -82,15 +82,21 @@
   
   <br/>
   
-  <!--獲得したバッジグラフ表示-->
-  <%= high_chart("radar1", @graph_recept30days) %>
-  <br/>
-  
-  <!--獲得したバッジグラフ表示-->
-  <%= high_chart("radar2", @graph_recept) %>
-  <br/>
-  
-  <!--贈ったバッジグラフ表示-->
-  <%= high_chart("radar3", @graph_sent) %>
+  <div class="row">
+    <div class="col-md-4">
+      <!--獲得したバッジグラフ表示-->
+      <%= high_chart("radar1", @graph_recept30days) %>
+    </div>
+    
+    <div class="col-md-4">
+      <!--獲得したバッジグラフ表示-->
+      <%= high_chart("radar2", @graph_recept) %>
+    </div>
+    
+    <div class="col-md-4">
+      <!--贈ったバッジグラフ表示-->
+      <%= high_chart("radar3", @graph_sent) %>
+    </div>
+  </div>
 
 </div>
