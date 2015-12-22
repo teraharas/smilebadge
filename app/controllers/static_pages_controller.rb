@@ -19,13 +19,22 @@ class StaticPagesController < ApplicationController
     @bumonname_hash = get_name_hash(bumons)
 
     # 画面で指定された範囲に作成されたBadgepostを集計
-    @sentbadgeposts = Badgepost.select(:sent_user_id, :badge_id, "strftime('%Y%m', created_at) AS create_month", "COUNT(*) AS count")
+    if Rails.env == 'production'
+       @sentbadgeposts = Badgepost.select(:sent_user_id, :badge_id, "to_char(created_at, 'yyyymm') AS create_month", "COUNT(*) AS count")
+                          .where('created_at >= ?', 30.days.ago)
+                          .group(:sent_user_id, :badge_id, "to_char(created_at, 'yyyymm')")
+      @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "to_char(created_at, 'yyyymm') AS create_month", "COUNT(*) AS count")
+                          .where('created_at >= ?', 30.days.ago)
+                          .group(:recept_user_id, :badge_id, "to_char(created_at, 'yyyymm')")
+    elsif Rails.env == 'development' or Rails.env == 'test'
+      @sentbadgeposts = Badgepost.select(:sent_user_id, :badge_id, "strftime('%Y%m', created_at) AS create_month", "COUNT(*) AS count")
                           .where('created_at >= ?', 30.days.ago)
                           .group(:sent_user_id, :badge_id, "strftime('%Y%m', created_at)")
-
     @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "strftime('%Y%m', created_at) AS create_month", "COUNT(*) AS count")
                           .where('created_at >= ?', 30.days.ago)
                           .group(:recept_user_id, :badge_id, "strftime('%Y%m', created_at)")
+    end
+    
     
     # binding.pry
   end
