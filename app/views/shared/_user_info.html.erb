@@ -1,28 +1,31 @@
-<h3>
-  <%= link_to users_path do %>
-    <span class="minismile"><%= image_tag asset_path "smile.png" %></span>
-    バッジを贈る！！
+<div class="user_info">
+  <h3>
+    <%= link_to users_path do %>
+      <span class="minismile"><%= image_tag asset_path "smile.png" %></span>
+      バッジを贈る！！
+    <% end %>
+  </h3>
+  
+  <br/>
+  
+  <div class="name_block">
+    <p><%= current_user.bumon.name %></p>
+    <h3><%= current_user.name %></h3>
+  </div>
+  
+  <% if current_user.image? %>
+    <div class="largeimage" style="background-image: url(<%= current_user.image.url %>);">
+      <%= link_to image_tag('empty.gif'), current_user %>
+    </div>
+  <% else %>
+    <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+      <%= link_to image_tag('empty.gif'), current_user %>
+    </div>
   <% end %>
-</h3>
 
-<br/>
-
-<p><%= current_user.bumon.name %></p>
-
-<h3><%= current_user.name %></h3>
-
-<% if current_user.image? %>
-  <div class="largeimage" style="background-image: url(<%= current_user.image.url %>);">
-    <%= link_to image_tag('empty.gif'), current_user %>
+  <div class="user_badge_info">
+    <p><i class="fa fa-user fa-fw"></i><%= link_to "自分のプロフィールを見る", current_user %></p>
+    <p><%= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジを贈りました。" %></p>
+    <p><%= "今までに " + current_user.recept_badgeposts.count.to_s + "個のバッジを獲得しました。" %></p>
   </div>
-<% else %>
-  <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
-    <%= link_to image_tag('empty.gif'), current_user %>
-  </div>
-<% end %>
-<br/>
-
-<br/>
-<p><i class="fa fa-user fa-fw"></i><%= link_to "自分のプロフィールを見る", current_user %></p>
-<p><%= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジを贈りました。" %></p>
-<p><%= "今までに " + current_user.recept_badgeposts.count.to_s + "個のバッジを獲得しました。" %></p>
+</div>

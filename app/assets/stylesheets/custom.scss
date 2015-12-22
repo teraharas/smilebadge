@@ -688,3 +688,27 @@ $nickname_color: #A52A2A;
     @extend .long_sentence;
   }
 }
+
+
+.user_info {
+  .name_block {
+    margin-bottom: 10px;
+    padding: 10px;
+    max-width: 250px;
+    background: white;
+    border: 1px solid red;
+    border-radius: 10px;
+  }
+  .largeimage {
+    max-width: 252px;
+    border: 1px solid blue;
+  }
+  .user_badge_info {
+    margin-top: 10px;
+    padding: 10px;
+    max-width: 350px;
+    background: white;
+    border: 1px solid blue;
+    border-radius: 10px;
+  }
+}
