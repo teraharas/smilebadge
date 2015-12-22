@@ -6,6 +6,10 @@
 
 /* universal */
 $backcoloygray: #FAFAFA;
+$nickname_color: #A52A2A;
+$flat_green: #16A6B6;
+$flat_blue: #40AAEF;
+$flat_red: #F58E7E;
 
 html {
   background-color: white;
@@ -498,7 +502,7 @@ $badge_backcolor : #B2EBF2;
     overflow: auto;
   	background: white;
     // border: 2px outset;
-    border: 2px solid #16A6B6;
+    border: 2px solid $flat_green;
     width: auto;
     max-width: 380px;
     height: 120px;
@@ -590,8 +594,6 @@ span.picture {
   text-align: center;
 }
 
-$nickname_color: #A52A2A;
-
 /* プロフィール画面 */
 .profile_show {
   // background: $backcoloygray;
@@ -605,7 +607,7 @@ $nickname_color: #A52A2A;
     padding: 10px;
     max-width: 350px;
     background: white;
-    border: 1px solid red;
+    border: 2px solid $flat_red;
     border-radius: 10px;
     .bumon_name {
       font-size: 0.9em;
@@ -631,9 +633,9 @@ $nickname_color: #A52A2A;
   
   .user_info {
     background: white;
-    max-width: 252px;
+    max-width: 254px;
     min-height: 300px;
-    border: 1px solid blue;
+    border: 2px solid $flat_blue;
     margin-left: 10px;
     margin-right: 10px;
     // border-radius: 10px;
@@ -658,7 +660,7 @@ $nickname_color: #A52A2A;
     padding: 10px;
     max-width: 350px;
     background: white;
-    border: 1px solid blue;
+    border: 2px solid $flat_blue;
     border-radius: 10px;
     p {
       margin: 0px;
@@ -675,7 +677,7 @@ $nickname_color: #A52A2A;
   }
   .long_sentence {
     @extend .prof_box;
-    border: 1px solid green;
+    border: 2px solid $flat_green;
     p {
       font-size: 1.2em;
     }
@@ -698,19 +700,19 @@ $nickname_color: #A52A2A;
     padding: 10px;
     max-width: 250px;
     background: white;
-    border: 1px solid red;
+    border: 2px solid $flat_red;
     border-radius: 10px;
   }
-  .largeimage {
-    max-width: 252px;
-    border: 1px solid blue;
-  }
+  // .largeimage {
+  //   max-width: 252px;
+  //   border: 1px solid blue;
+  // }
   .user_badge_info {
     margin-top: 10px;
     padding: 10px;
     max-width: 350px;
     background: white;
-    border: 1px solid blue;
+    border: 2px solid $flat_blue;
     border-radius: 10px;
   }
 }
