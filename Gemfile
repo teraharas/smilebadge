@@ -99,3 +99,5 @@ gem 'faker'
 # ページネーション
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+
+gem 'pivot_table'

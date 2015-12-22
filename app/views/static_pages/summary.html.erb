@@ -1,0 +1,95 @@
+<% provide(:title, '集計') %>
+<h1>集計</h1>
+
+<% sent_user_set_id_list = Array.new %>
+<% recept_user_set_id_list = Array.new %>
+
+<table border>
+<tr bgcolor="green">
+  <th><font color="white">送受信区分</font></th>
+  <th><font color="white">ユーザー名</font></th>
+  <th><font color="white">部門名</font></th>
+  <th><font color="white">バッジ名</font></th>
+  <th><font color="white">年月</font></th>
+  <th><font color="white">バッジ数</font></th>
+</tr>
+<% @sentbadgeposts.each do |sentbadgepost| %>
+  <tr>
+    <td>送信</td>
+    <% user_info = @userinfo_hash[sentbadgepost.sent_user_id] if @userinfo_hash.has_key?(sentbadgepost.sent_user_id) %>
+    <% if user_info.nil? %>
+      <td></td>
+    <% else %>
+      <td>
+        <% if user_info.activeflg? %>
+          <!--有効なユーザーで、セット済みユーザーIDリストにまだなければセットする。-->
+          <% sent_user_set_id_list.push(sentbadgepost.sent_user_id) if !sent_user_set_id_list.include?(sentbadgepost.sent_user_id) %>
+        <% else %>
+          【無効】
+        <% end %>
+        <%= user_info.name %>
+      </td>
+    <% end %>
+    <% if user_info.nil? %>
+      <td></td>
+    <% else %>
+      <td><%= @bumonname_hash.has_key?(user_info.bumon_id)? @bumonname_hash[user_info.bumon_id] : ""  %></td>
+    <% end %>
+    <td><%= @badgename_hash.has_key?(sentbadgepost.badge_id)? @badgename_hash[sentbadgepost.badge_id] : "" %></td>
+    <td><%= sentbadgepost.create_month %></td>
+    <td><%= sentbadgepost.count %></td>
+  </tr>
+<% end %>
+<% @users.each do |user| %>
+  <% next if (!user.activeflg || sent_user_set_id_list.include?(user.id)) %>
+  <tr>
+    <td>送信</td>
+    <td><%= user.name %></td>
+    <td><%= user.bumon.name %></td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+  </tr>
+<% end %>
+
+
+
+<% @receptbadgeposts.each do |receptbadgepost| %>
+  <tr>
+    <td>受信</td>
+    <% user_info = @userinfo_hash[receptbadgepost.recept_user_id] if @userinfo_hash.has_key?(receptbadgepost.recept_user_id) %>
+    <% if user_info.nil? %>
+      <td></td>
+    <% else %>
+      <td>
+        <% if user_info.activeflg? %>
+          <!--有効なユーザーで、セット済みユーザーIDリストにまだなければセットする。-->
+          <% recept_user_set_id_list.push(receptbadgepost.recept_user_id) if !recept_user_set_id_list.include?(receptbadgepost.recept_user_id) %>
+        <% else %>
+          【無効】
+        <% end %>
+        <%= user_info.name %>
+      </td>
+    <% end %>
+    <% if user_info.nil? %>
+      <td></td>
+    <% else %>
+      <td><%= @bumonname_hash.has_key?(user_info.bumon_id)? @bumonname_hash[user_info.bumon_id] : ""  %></td>
+    <% end %>
+    <td><%= @badgename_hash.has_key?(receptbadgepost.badge_id)? @badgename_hash[receptbadgepost.badge_id] : "" %></td>
+    <td><%= receptbadgepost.create_month %></td>
+    <td><%= receptbadgepost.count %></td>
+  </tr>
+<% end %>
+<% @users.each do |user| %>
+  <% next if (!user.activeflg || recept_user_set_id_list.include?(user.id)) %>
+  <tr>
+    <td>受信</td>
+    <td><%= user.name %></td>
+    <td><%= user.bumon.name %></td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+  </tr>
+<% end %>
+</table>
