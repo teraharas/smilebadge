@@ -403,7 +403,7 @@ $badge_backcolor : #B2EBF2;
 
 .badgeposts {
   list-style: none;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 0px;
     margin-right: 0px;
   
@@ -493,18 +493,20 @@ $badge_backcolor : #B2EBF2;
     @extend .gravatarrecept;
   }
   
-  
   .content {
     display: block;
     overflow: auto;
   	background: white;
-    border: 2px outset;
+    // border: 2px outset;
+    border: 2px solid #16A6B6;
     width: auto;
-    max-width: 350px;
-    height: 100px;
-    padding: 5px;
+    max-width: 380px;
+    height: 120px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.9em;
   }
-    
+  
   .timestamp {
     color: $gray-light;
     display: block;
@@ -711,4 +713,11 @@ $nickname_color: #A52A2A;
     border: 1px solid blue;
     border-radius: 10px;
   }
+}
+
+
+.loginbadgecount {
+  font-size: 1.6em;
+  margin: 10px;
+  color: #0E7AC4;
 }
