@@ -18,6 +18,30 @@ $flat_gray: #7C858E;
 $badge_backcolor : #B2EBF2;
 $badge_back_white_color: #F8F8F8;
 
+
+
+// メディアサイズでの切り分け
+@media(max-width: 1000px) {
+}
+@media(max-width: 768px) {
+}
+@media(max-width: 500px) {
+
+    .margin_padding_clear {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    .col-md-6 {
+      @extend .margin_padding_clear;
+    }
+    .col-md-7 {
+      @extend .margin_padding_clear;
+    }
+}
+
+
+/* 全体 */
 html {
   background-color: white;
 }
@@ -98,23 +122,6 @@ h4 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
-}
-
-// メディアサイズでの切り分け
-@media(max-width: 1000px) {
-}
-@media(max-width: 768px) {
-}
-@media(max-width: 500px) {
-    // .container-fluid {
-    //   margin: 2px !important;
-    //   padding: 2px !important;
-    // }
-    
-    .col-md-6 {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
 }
 
 
@@ -414,6 +421,13 @@ aside {
     padding-bottom: 10px;
     // background: $back_color_gray;
     border-radius: 10px;
+    @media(max-width: 500px) {
+      // margin: 0px;
+      // padding: 0px;
+      ul {
+        padding: 5px !important;
+      }
+    }
   }
   .valuebadges {
     @extend .badgeplace;
@@ -763,4 +777,5 @@ span.picture {
   margin: 10px;
   color: #0E7AC4;
 }
+
 
