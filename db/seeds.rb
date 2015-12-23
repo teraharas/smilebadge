@@ -6,11 +6,11 @@
 #             adminflg: true,
 #             bumon_id: 1)
 
-# 300.times do |n|
+# 50.times do |n|
 #   name  = Faker::Name.name
 #   kananame  = "わてすと"
 #   email = "example-#{n+1}@railstutorial.org"
-#   password = "foobarfoobar"
+#   password = "passtest"
 #   bumon_id = 1
 #   User.create!(name:  name,
 #               kananame: kananame,

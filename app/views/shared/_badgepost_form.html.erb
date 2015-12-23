@@ -28,7 +28,7 @@
             <li>
               <% next if badge.optionflg %>
               <div class="badgeicon_big" id="id_badge_<%= badge.id %>">
-                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>, 1)">
+                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>, <%= badge.name.to_json %>, 1)">
                   <div class="largebadgeimage">
                     <% if badge.image? %>
                       <%= image_tag(badge.image.url) %>
@@ -61,7 +61,7 @@
                 <% @sentbadgecount = @badgecounthash[badge.id] if @badgecounthash.has_key?(badge.id) %>
                 <% @usablebadgecount = 0 %>
                 <% @usablebadgecount = 3 - @sentbadgecount if @sentbadgecount <= 3 %>
-                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>, <%= @usablebadgecount %>)">
+                <div class="gravatar" onclick="set_badge_id(<%= badge.id %>, <%= badge.name.to_json %>, <%= @usablebadgecount %>)">
                   <div class="largebadgeimage">
                     <% if badge.image? %>
                       <% if @usablebadgecount <= 0 %>
@@ -92,6 +92,8 @@
 
     <div class="col-md-5">
       <div class="field">
+      
+      <label id="selected_badge_name">バッジを選択してね！！</label>
       
       <%= f.hidden_field :recept_user_id, :value => @recept_user.id %>
           <%= f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かった書いてね！",

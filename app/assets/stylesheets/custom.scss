@@ -439,6 +439,10 @@ aside {
     @extend .badgeplace;
     border: 2px solid $flat_red;
   }
+  #selected_badge_name {
+    font-weight: normal;
+    font-size: 1.2em;
+  }
 }
 
 .badgecount {
