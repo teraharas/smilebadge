@@ -6,40 +6,52 @@ class StaticPagesController < ApplicationController
   end
   
   def summary
-    # まず、ユーザーをすべて取得（ユーザーと部門名を取得）
-    @users = User.all
-    @userinfo_hash = get_user_hash(@users)
-    
-    # 辞書用にバッジ情報を取得
-    badges = Badge.where(activeflg: true)
-    @badgename_hash = get_name_hash(badges)
-    
-    # 辞書用に部門情報を取得
-    bumons = Bumon.where(activeflg: true)
-    @bumonname_hash = get_name_hash(bumons)
-
-    # 画面で指定された範囲に作成されたBadgepostを集計
-    if Rails.env == 'production'
-       @sentbadgeposts = Badgepost.select(:sent_user_id, :badge_id, "to_char(created_at, 'yyyymm') AS create_month", "COUNT(*) AS count")
-                          .where('created_at >= ?', 30.days.ago)
-                          .group(:sent_user_id, :badge_id, "to_char(created_at, 'yyyymm')")
-      @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "to_char(created_at, 'yyyymm') AS create_month", "COUNT(*) AS count")
-                          .where('created_at >= ?', 30.days.ago)
-                          .group(:recept_user_id, :badge_id, "to_char(created_at, 'yyyymm')")
-    elsif Rails.env == 'development' or Rails.env == 'test'
-      @sentbadgeposts = Badgepost.select(:sent_user_id, :badge_id, "strftime('%Y%m', created_at) AS create_month", "COUNT(*) AS count")
-                          .where('created_at >= ?', 30.days.ago)
-                          .group(:sent_user_id, :badge_id, "strftime('%Y%m', created_at)")
-    @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "strftime('%Y%m', created_at) AS create_month", "COUNT(*) AS count")
-                          .where('created_at >= ?', 30.days.ago)
-                          .group(:recept_user_id, :badge_id, "strftime('%Y%m', created_at)")
+    if params[:summary_form] == nil
+      # 検索未入力時（初回表示時）
+      @form = SummaryForm.new
+    else
+      binding.pry
+      # 検索欄入力時
+      @form = SummaryForm.new(params[:summary_form])
+      
+      # まず、ユーザーをすべて取得（ユーザーと部門名を取得）
+      @users = User.all
+      @userinfo_hash = get_user_hash(@users)
+      
+      # 辞書用にバッジ情報を取得
+      badges = Badge.where(activeflg: true)
+      @badgename_hash = get_name_hash(badges)
+      
+      # 辞書用に部門情報を取得
+      bumons = Bumon.where(activeflg: true)
+      @bumonname_hash = get_name_hash(bumons)
+      
+      binding.pry
+  
+      # 画面で指定された範囲に作成されたBadgepostを集計
+      if Rails.env == 'production'
+        @sentbadgeposts = Badgepost.select(:sent_user_id, :badge_id, "to_char(created_at, 'yyyymm') AS create_month", "COUNT(*) AS count")
+                            .where('created_at >= ?', @form.summary_start_date)
+                            .group(:sent_user_id, :badge_id, "to_char(created_at, 'yyyymm')").order('count DESC')
+        @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "to_char(created_at, 'yyyymm') AS create_month", "COUNT(*) AS count")
+                            .where('created_at >= ?', @form.summary_start_date)
+                            .group(:recept_user_id, :badge_id, "to_char(created_at, 'yyyymm')").order('count DESC')
+      elsif Rails.env == 'development' or Rails.env == 'test'
+        @sentbadgeposts = Badgepost.select(:sent_user_id, :badge_id, "strftime('%Y%m', created_at) AS create_month", "COUNT(*) AS count")
+                            .where('created_at >= ?', @form.summary_start_date)
+                            .group(:sent_user_id, :badge_id, "strftime('%Y%m', created_at)").order('count DESC')
+        @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "strftime('%Y%m', created_at) AS create_month", "COUNT(*) AS count")
+                            .where('created_at >= ?', @form.summary_start_date)
+                            .group(:recept_user_id, :badge_id, "strftime('%Y%m', created_at)").order('count DESC')
+      end
     end
-    
-    
-    # binding.pry
   end
   
   private
+    def find_params
+      params.require(:summary_form).permit(:summary_start_date, :summary_end_date)
+    end
+  
     def get_user_hash(users)
       results = users.map{|user| [user.id, user]}
       Hash[results]
