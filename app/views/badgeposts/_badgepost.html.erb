@@ -51,7 +51,7 @@
                 <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
               </div>
             <% else %>
-              <div class="middleimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+              <div class="middleimage" style="background-image: url(<%= asset_path "user_noimageleft.gif" %>);">
                 <%= link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.recept_user.id) %>
               </div>
             <% end %>
@@ -60,7 +60,7 @@
             <% if badgepost.recept_user.image? %>
               <div class="middleimage" style="background-image: url(<%= badgepost.recept_user.image.url %>);"></div>
             <% else %>
-              <div class="middleimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);"></div>
+              <div class="middleimage" style="background-image: url(<%= asset_path "user_noimageleft.gif" %>);"></div>
             <% end %>
             <strong><%= badgepost.recept_user.name %></strong>
           <% end %>
