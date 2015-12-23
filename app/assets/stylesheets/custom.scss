@@ -416,17 +416,19 @@ aside {
     font-size: 1.5em;
   }
   .badgeplace {
+    ul {
+      padding: 0px !important;
+    }
     margin-top: 20px;
     margin-bottom: 20px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
     // background: $back_color_gray;
     border-radius: 10px;
     @media(max-width: 500px) {
-      // margin: 0px;
-      // padding: 0px;
-      ul {
-        padding: 5px !important;
-      }
+      padding: 10px;
     }
   }
   .valuebadges {
