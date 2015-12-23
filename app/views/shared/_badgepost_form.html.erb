@@ -11,7 +11,7 @@
       <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);"></div>
     <% end %>
   </p>
-  <p><%= @recept_user.name + "さんにバッジを贈ろう！！" %></p>
+  <p><span class="username"><%= @recept_user.name %></span>さんにバッジを贈ろう！！</p>
   
   <%= f.hidden_field :badge_id, :value => "" %>
 
@@ -19,7 +19,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-7">
-        <section>
+        <section class="valuebadges">
           <% if @valuebadges.any? %>
           <ul>
             <h3><strong>バリューバッジ</strong></h3>
@@ -46,12 +46,8 @@
           </ul>
           <% end %>
         </section>
-        
-        <br/>
-        <br/>
-        <br/>
-        
-        <section>
+
+        <section class="optionbadges">
           <% if @optionbadges.any? %>
           <ul>
             <h3><strong>アソビバッジ</strong></h3>

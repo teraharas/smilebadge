@@ -5,11 +5,18 @@
 @import "font-awesome";
 
 /* universal */
-$backcoloygray: #FAFAFA;
+$back_color_gray: #FAFAFA;
 $nickname_color: #A52A2A;
 $flat_green: #16A6B6;
 $flat_blue: #40AAEF;
-$flat_red: #F58E7E;
+$flat_denim: #0E7AC4;
+// $flat_red: #F58E7E;
+// $flat_red: #EE6557;
+$flat_red: #F27398;
+$flat_silver: #BFBFBF;
+$flat_gray: #7C858E;
+$badge_backcolor : #B2EBF2;
+$badge_back_white_color: #F8F8F8;
 
 html {
   background-color: white;
@@ -17,7 +24,7 @@ html {
 
 body {
   padding-top: 60px;
-  background-color: $backcoloygray;
+  background-color: $back_color_gray;
   font-family: "Open Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 }
 .container {
@@ -113,9 +120,12 @@ p {
 
 /* fontawesome */
 .fa-user {
-  color: #1253A4;
+  color: $flat_denim;
 }
 
+.fa-cog {
+  color: $flat_gray;
+}
 
 /* forms */
 
@@ -154,9 +164,10 @@ p {
 
 /* header */
 .minismile{
+  float: left;
   img{
-    width:20px;
-    height:20px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -393,6 +404,25 @@ aside {
   .listbreak {
     float: right;
   }
+  .username {
+    margin-left: 10px;
+    font-size: 1.5em;
+  }
+  .badgeplace {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    // background: $back_color_gray;
+    border-radius: 10px;
+  }
+  .valuebadges {
+    @extend .badgeplace;
+    border: 2px solid $flat_blue;
+  }
+  .optionbadges {
+    @extend .badgeplace;
+    border: 2px solid $flat_red;
+  }
 }
 
 .badgecount {
@@ -402,10 +432,6 @@ aside {
 
 /* badgeposts */
 
-// 背景のブルー
-$badge_backcolor : #B2EBF2;
-$badge_back_white_color: #F8F8F8;
-
 .badgeposts {
   list-style: none;
     margin-top: 20px;
@@ -413,7 +439,7 @@ $badge_back_white_color: #F8F8F8;
     margin-right: 0px;
   
   li {
-    background-color: $backcoloygray;
+    background-color: $back_color_gray;
     padding-top: 10px;
     border-top: 1px solid #e8e8e8;
   }
@@ -589,6 +615,15 @@ span.picture {
   }
 }
 
+/* userindex */
+.userindex {
+  .badgesendlink {
+    margin-left: 2px;
+  }
+  .username {
+    font-size: 1.2em;
+  }
+}
 .user_initial_dropdown {
   margin-right: 20px;
   text-align: center;
@@ -596,9 +631,14 @@ span.picture {
 
 /* プロフィール画面 */
 .profile_show {
-  // background: $backcoloygray;
+  // background: $back_color_gray;
   hr {
       margin: 2px;
+  }
+  .badgesendlink {
+    .username {
+      font-size: 1.2em;
+    }
   }
   .name_block {
     // float: right;

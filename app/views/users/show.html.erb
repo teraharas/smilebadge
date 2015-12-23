@@ -1,11 +1,12 @@
 <div class="profile_show">
-  <h3>
+  <p class="badgesendlink">
     <% unless current_user?(@user) %>
       <%= link_to new_badgepost_path(recept_user_id: @user.id) do %>
-        <strong><span class="minismile"><%= image_tag asset_path "smile.png" %></span><%= @user.name %>さんにバッジを贈る！！</strong>
+        <strong><span class="minismile"><%= image_tag asset_path "smile.png" %></span>
+        <span class="username"><%= @user.name %></span>さんにバッジを贈る！！</strong>
       <% end %>
     <% end %>
-  </h3>
+  </p>
   
   <div class="users">
     <% if current_user?(@user) || logged_in_adminuser? %>
