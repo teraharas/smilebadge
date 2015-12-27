@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :reset_token
+  # 画像アップロード
+  mount_uploader :image, ImageUploader
+
   before_save { self.email = email.downcase }
 
   validates :bumon, presence: true
@@ -16,9 +19,6 @@ class User < ActiveRecord::Base
     :length => { :minimum => 8, :if => :validate_password? },
     :confirmation => { :if => :validate_password? }
 
-  
-  # 画像アップロード
-  mount_uploader :image, ImageUploader
   
   belongs_to :bumon, class_name: "Bumon"
   has_many :sent_badgeposts, :class_name => "Badgepost", :foreign_key => "sent_user_id"
