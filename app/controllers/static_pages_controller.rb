@@ -19,6 +19,8 @@ class StaticPagesController < ApplicationController
                             params[:summary_form]["summary_end_date(2i)"].to_i,
                             params[:summary_form]["summary_end_date(3i)"].to_i, 23, 59)
       @form = SummaryForm.new
+      @form.summary_start_date = summary_start_date
+      @form.summary_end_date = summary_end_date
       
       # まず、ユーザーをすべて取得（ユーザーと部門名を取得）
       @users = User.all
@@ -73,4 +75,5 @@ class StaticPagesController < ApplicationController
       results = objects.map{|object| [object.id, object.name]}
       Hash[results]
     end
+    
 end
