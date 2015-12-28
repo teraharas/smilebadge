@@ -10,9 +10,15 @@ class StaticPagesController < ApplicationController
       # 検索未入力時（初回表示時）
       @form = SummaryForm.new
     else
-      binding.pry
+      # binding.pry
       # 検索欄入力時
-      @form = SummaryForm.new(params[:summary_form])
+      summary_start_date = Time.zone.local(params[:summary_form]["summary_start_date(1i)"].to_i,
+                            params[:summary_form]["summary_start_date(2i)"].to_i,
+                            params[:summary_form]["summary_start_date(3i)"].to_i, 0, 0)
+      summary_end_date = Time.zone.local(params[:summary_form]["summary_end_date(1i)"].to_i,
+                            params[:summary_form]["summary_end_date(2i)"].to_i,
+                            params[:summary_form]["summary_end_date(3i)"].to_i, 23, 59)
+      @form = SummaryForm.new
       
       # まず、ユーザーをすべて取得（ユーザーと部門名を取得）
       @users = User.all
@@ -26,24 +32,30 @@ class StaticPagesController < ApplicationController
       bumons = Bumon.where(activeflg: true)
       @bumonname_hash = get_name_hash(bumons)
       
-      binding.pry
+      # binding.pry
   
       # 画面で指定された範囲に作成されたBadgepostを集計
       if Rails.env == 'production'
         @sentbadgeposts = Badgepost.select(:sent_user_id, :badge_id, "to_char(created_at, 'yyyymm') AS create_month", "COUNT(*) AS count")
-                            .where('created_at >= ?', @form.summary_start_date)
+                            .where('created_at >= ?', summary_start_date)
+                            .where('created_at <= ?', summary_end_date)
                             .group(:sent_user_id, :badge_id, "to_char(created_at, 'yyyymm')").order('count DESC')
         @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "to_char(created_at, 'yyyymm') AS create_month", "COUNT(*) AS count")
-                            .where('created_at >= ?', @form.summary_start_date)
+                            .where('created_at >= ?', summary_start_date)
+                            .where('created_at <= ?', summary_end_date)
                             .group(:recept_user_id, :badge_id, "to_char(created_at, 'yyyymm')").order('count DESC')
       elsif Rails.env == 'development' or Rails.env == 'test'
         @sentbadgeposts = Badgepost.select(:sent_user_id, :badge_id, "strftime('%Y%m', created_at) AS create_month", "COUNT(*) AS count")
-                            .where('created_at >= ?', @form.summary_start_date)
+                            .where('created_at >= ?', summary_start_date)
+                            .where('created_at <= ?', summary_end_date)
                             .group(:sent_user_id, :badge_id, "strftime('%Y%m', created_at)").order('count DESC')
         @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "strftime('%Y%m', created_at) AS create_month", "COUNT(*) AS count")
-                            .where('created_at >= ?', @form.summary_start_date)
+                            .where('created_at >= ?', summary_start_date)
+                            .where('created_at <= ?', summary_end_date)
                             .group(:recept_user_id, :badge_id, "strftime('%Y%m', created_at)").order('count DESC')
       end
+      
+      # binding.pry
     end
   end
   
