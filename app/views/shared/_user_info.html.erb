@@ -5,30 +5,39 @@
       バッジを贈る！！
     <% end %>
   </h3>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="name_block">
+        <p><%= current_user.bumon.name %></p>
+        <h3><%= current_user.name %></h3>
+      </div>
+      
+      <% if current_user.image? %>
+        <div class="largeimage" style="background-image: url(<%= current_user.image.url %>);">
+          <%= link_to image_tag('empty.gif'), current_user %>
+        </div>
+      <% else %>
+        <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+          <%= link_to image_tag('empty.gif'), current_user %>
+        </div>
+      <% end %>
+    
+      <div class="user_badge_info">
+        <p><i class="fa fa-user fa-fw"></i><%= link_to "自分のプロフィールを見る", current_user %></p>
+        <p><%= "30日間に " + current_user.recept_badgeposts.where("created_at > ?", 30.days.ago).count.to_s + "個のバッジを獲得しました。" %></p>
+        <p><%= "今までに " + current_user.recept_badgeposts.count.to_s + "個のバッジを獲得しました。" %></p>
+        <p><%= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジを贈りました。" %></p>
+      </div>
+    </div>
   
-  <br/>
-  
-  <div class="name_block">
-    <p><%= current_user.bumon.name %></p>
-    <h3><%= current_user.name %></h3>
+    <div class="col-md-7">
+      <!--過去30日間に獲得したバッジグラフ表示-->
+      <%= high_chart("radar", @feedgraph_recept30days) %>
+    </div>
+  </div>
   </div>
   
-  <% if current_user.image? %>
-    <div class="largeimage" style="background-image: url(<%= current_user.image.url %>);">
-      <%= link_to image_tag('empty.gif'), current_user %>
-    </div>
-  <% else %>
-    <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
-      <%= link_to image_tag('empty.gif'), current_user %>
-    </div>
-  <% end %>
-
-  <div class="user_badge_info">
-    <p><i class="fa fa-user fa-fw"></i><%= link_to "自分のプロフィールを見る", current_user %></p>
-    <p><%= "30日間に " + current_user.recept_badgeposts.where("created_at > ?", 30.days.ago).count.to_s + "個のバッジを獲得しました。" %></p>
-    <p><%= "今までに " + current_user.recept_badgeposts.count.to_s + "個のバッジを獲得しました。" %></p>
-    <p><%= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジを贈りました。" %></p>
-  </div>
-  
-  <br/>
 </div>
+
+<%= render 'shared/feed' %>
