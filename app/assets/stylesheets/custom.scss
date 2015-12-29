@@ -31,7 +31,9 @@ $badge_back_white_color: #F8F8F8;
       margin: 0 !important;
       padding: 0 !important;
     }
-    
+    .col-md-5 {
+      @extend .margin_padding_clear;
+    }
     .col-md-6 {
       @extend .margin_padding_clear;
     }
@@ -755,6 +757,9 @@ span.picture {
 
 
 .user_info {
+  .minismile {
+    margin-left: 15px;
+  }
   .name_block {
     margin-bottom: 10px;
     padding: 10px;
