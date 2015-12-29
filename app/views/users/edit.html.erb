@@ -77,6 +77,9 @@
     <%= f.label "ニックネーム" %>
     <%= f.text_field :nickname %>
     
+    <%= f.label "一言メッセージ" %>
+    <%= f.text_field :message %>
+    
     <%= f.label "キャッチフレーズ" %>
     <%= f.text_field :catchphrase %>
 
@@ -85,9 +88,6 @@
     
     <%= f.label "趣味" %>
     <%= f.text_area :hobby, :size => "10x5" %>
-    
-    <%= f.label "一言メッセージ" %>
-    <%= f.text_field :message %>
 
     <%= f.label "パスワード（変更する場合は入力してください）" %>
     <%= f.password_field :password, class: 'form-control' %>
