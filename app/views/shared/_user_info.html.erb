@@ -24,7 +24,7 @@
       <% end %>
     
       <div class="user_badge_info">
-        <p><i class="fa fa-user fa-fw"></i><%= link_to "自分のプロフィールを見る", current_user %></p>
+        <p><i class="fa fa-user fa-fw"></i><%= link_to "マイページ", current_user %></p>
         <p><%= "30日間に " + current_user.recept_badgeposts.where("created_at > ?", 30.days.ago).count.to_s + "個のバッジを獲得しました。" %></p>
         <p><%= "今までに " + current_user.recept_badgeposts.count.to_s + "個のバッジを獲得しました。" %></p>
         <p><%= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジを贈りました。" %></p>
