@@ -75,7 +75,7 @@ class UsersController < ApplicationController
       params.require(:user)
         .permit(:activeflg, :bumon_id, :name, :kananame, :nickname, :adminflg,
               :email, :password, :password_confirmation,
-              :catchphrase, :myword, :hobby, :message,
+              :myjob, :myword, :hobby, :message,
               :image, :remove_image, :image_cache)
     end
     

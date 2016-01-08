@@ -728,15 +728,15 @@ span.picture {
       margin: 0px;
     }
   }
-  .catchphrase {
-    @extend .prof_box;
-    p {
-      font-size: 0.8em;
-    }
-    span {
-      font-size: 1.3em;
-    }
-  }
+  // .myjob {
+  //   @extend .prof_box;
+  //   p {
+  //     font-size: 0.8em;
+  //   }
+  //   span {
+  //     font-size: 1.3em;
+  //   }
+  // }
   .long_sentence {
     @extend .prof_box;
     border: 2px solid $flat_green;
@@ -746,6 +746,9 @@ span.picture {
     span {
       font-size: 0.7em;
     }
+  }
+  .long_sentence, .myjob {
+    @extend .long_sentence;
   }
   .long_sentence, .myrule {
     @extend .long_sentence;

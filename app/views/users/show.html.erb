@@ -2,8 +2,8 @@
   <p class="badgesendlink">
     <% unless current_user?(@user) %>
       <%= link_to new_badgepost_path(recept_user_id: @user.id) do %>
-        <strong><span class="minismile"><%= image_tag asset_path "smile.png" %></span>
-        <span class="username"><%= @user.name %></span>さんにバッジを贈る！！</strong>
+        <b><span class="minismile"><%= image_tag asset_path "smile.png" %></span>
+        <span class="username"><%= @user.name %></span>さんにバッジを贈る！！</b>
       <% end %>
     <% end %>
   </p>
@@ -23,9 +23,9 @@
         
         <p class="kananame"><%= @user.kananame %></p>
         
-        <p class="name"><strong><%= @user.name %></strong></p>
+        <p class="name"><b><%= @user.name %></b></p>
         
-        <p class="nickname">ニックネーム：<strong><span class="nicknamevalue"><%= @user.nickname %></span></strong></p>
+        <p class="nickname">ニックネーム：<b><span class="nicknamevalue"><%= @user.nickname %></span></b></p>
         
         <p class="email">メールアドレス：<%= @user.email %></p>
       </div>
@@ -50,13 +50,13 @@
             </div>
           <% end %>
         </p>
-        <p class="message"><strong><%= @user.message %></strong></p>
+        <p class="message"><b><%= @user.message %></b></p>
       </section>
       
-      <div class="catchphrase">
-          <p>キャッチフレーズ</p>
+      <div class="myjob">
+          <p><b>こんな仕事をしています</b></p>
           <hr>
-          <span><strong><%= @user.catchphrase %></strong></span>
+          <span><%= simple_format(h(@user.myjob)) %></span>
       </div>
     </div>
 
@@ -64,7 +64,7 @@
 
     <div class="col-md-4">
       <div class="myrule">
-        <p><strong>好きな言葉・座右の銘・マイルール</strong></p>
+        <p><b>好きな言葉・座右の銘・マイルール</b></p>
         <hr>
         <span><%= simple_format(h(@user.myword)) %></span>
       </div>
@@ -73,7 +73,7 @@
 
     <div class="col-md-4">
       <div class="hobby">
-        <p><strong>趣味</strong></p>
+        <p><b>趣味</b></p>
         <hr>
         <span><%= simple_format(h(@user.hobby)) %></span>
       </div>
