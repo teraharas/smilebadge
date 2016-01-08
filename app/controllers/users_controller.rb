@@ -7,13 +7,13 @@ class UsersController < ApplicationController
   
   def index
     # カレントユーザーを表示しない
-    @users = get_index_users(false, params[:initial_letter])
+    @users = get_index_users(false, params[:initial_letter], params[:bumon_id])
   end
   
   
   def full_index
     # カレントユーザー含め全ユーザーを表示する
-    @users = get_index_users(true, params[:initial_letter])
+    @users = get_index_users(true, params[:initial_letter], params[:bumon_id])
   end
   
   
@@ -83,7 +83,9 @@ class UsersController < ApplicationController
       params.require(:user_find_form).permit(:searchword)
     end
     
-    def get_index_users(display_current_user, initial_letter)
+    def get_index_users(display_current_user, initial_letter, bumon_id)
+      @bumons = Bumon.all
+      
       if params[:user_find_form] == nil
         # 検索未入力時（初回表示時）
         @form = UserFindForm.new
@@ -95,6 +97,9 @@ class UsersController < ApplicationController
           if initial_letter.present?
             @users = User.paginate(page: params[:page])
                           .where(t[:kananame].matches(initial_letter + '%'))
+          elsif bumon_id.present?
+            @users = User.paginate(page: params[:page])
+                          .where(bumon_id: bumon_id)
           else
             @users = User.paginate(page: params[:page])
           end
@@ -104,6 +109,11 @@ class UsersController < ApplicationController
                     .where('id <> ?', current_user.id)
                     .where(activeflg: true)
                     .where(t[:kananame].matches(initial_letter + '%'))
+          elsif bumon_id.present?
+            @users = User.paginate(page: params[:page])
+                    .where('id <> ?', current_user.id)
+                    .where(activeflg: true)
+                    .where(bumon_id: bumon_id)
           else
             @users = User.paginate(page: params[:page])
                     .where('id <> ?', current_user.id)

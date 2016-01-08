@@ -1,0 +1,13 @@
+<div class="user_initial_dropdown">
+  <span class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      部門で絞る
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <% @bumons.each do |bumon| %>
+        <li><%= link_to(bumon.name, :action => @index_action_name, :bumon_id => bumon.id) %></li>
+      <% end %>
+    </ul>
+  </span>
+</div>
