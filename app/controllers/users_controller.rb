@@ -84,7 +84,7 @@ class UsersController < ApplicationController
     end
     
     def get_index_users(display_current_user, initial_letter, bumon_id)
-      @bumons = Bumon.all
+      @bumons = Bumon.where(activeflg: true).order(:outputnumber)
       
       if params[:user_find_form] == nil
         # 検索未入力時（初回表示時）
