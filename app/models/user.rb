@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
   validates :password,
     :length => { :minimum => 8, :if => :validate_password? },
     :confirmation => { :if => :validate_password? }
+  validates :nickname, length: { maximum: 15 }
+  validates :myjob, length: { maximum: 255 }
+  validates :myword, length: { maximum: 255 }
+  validates :hobby, length: { maximum: 255 }
+  validates :message, length: { maximum: 20 }
 
   
   belongs_to :bumon, class_name: "Bumon"

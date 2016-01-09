@@ -2,8 +2,8 @@
   <p class="badgesendlink">
     <% unless current_user?(@user) %>
       <%= link_to new_badgepost_path(recept_user_id: @user.id) do %>
-        <b><span class="minismile"><%= image_tag asset_path "smile.png" %></span>
-        <span class="username"><%= @user.name %></span>さんにバッジを贈る！！</b>
+        <span class="minismile"><%= image_tag asset_path "smile.png" %></span>
+        <b><span class="username"><%= @user.name %></span>さんにバッジを贈る！！</b>
       <% end %>
     <% end %>
   </p>
@@ -59,11 +59,10 @@
           <span><%= simple_format(h(@user.myjob)) %></span>
       </div>
     </div>
-
-    <br/>
+    
 
     <div class="col-md-4">
-      <div class="myrule">
+      <div class="myword">
         <p><b>好きな言葉・座右の銘・マイルール</b></p>
         <hr>
         <span><%= simple_format(h(@user.myword)) %></span>

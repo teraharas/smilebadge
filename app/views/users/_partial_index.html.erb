@@ -76,7 +76,8 @@
                       </span>
                       <span class="user">
                         <%= link_to new_badgepost_path(recept_user_id: user.id) do %>
-                          <div class="minismile"><%= image_tag asset_path "smile.png" %></div><span class="badgesendlink"><strong><span class="username"><%= user.name %></span>さんにバッジを贈る！！</strong></span>
+                          <div class="minismile_float"><%= image_tag asset_path "smile.png" %></div>
+                          <span class="badgesendlink"><b><span class="username"><%= user.name %></span>さんにバッジを贈る！！</b></span>
                         <% end %>
                       </span>
                       <br/>

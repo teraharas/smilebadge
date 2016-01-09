@@ -172,12 +172,15 @@ p {
 
 
 /* header */
-.minismile{
-  float: left;
+.minismile {
   img{
     width: 20px;
     height: 20px;
   }
+}
+.minismile_float {
+  @extend .minismile;
+  float: left;
 }
 
 .minihelp{
@@ -750,7 +753,7 @@ span.picture {
   .long_sentence, .myjob {
     @extend .long_sentence;
   }
-  .long_sentence, .myrule {
+  .long_sentence, .myword {
     @extend .long_sentence;
   }
   .hobby {
