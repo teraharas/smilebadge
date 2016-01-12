@@ -696,32 +696,26 @@ span.picture {
     }
   }
   
-  .user_info {
-    background: white;
-    max-width: 254px;
-    min-height: 300px;
-    border: 2px solid $flat_blue;
-    margin-left: 10px;
-    margin-right: 10px;
-    // border-radius: 10px;
-    // padding: 0px;
-    // margin: 0px;
-    .gravatar {
-      // padding: 10px;
-      margin: 0px;
-    }
-    // .largeimage {
-    //   border-radius: 10px 10px 0px 0px;
-    //   padding: 0px;
+  // .user_info {
+    // background: white;
+    // max-width: 254px;
+    // min-height: 300px;
+    // border: 2px solid $flat_blue;
+    // margin-left: 10px;
+    // margin-right: 10px;
+    // .gravatar {
     //   margin: 0px;
     // }
-    .message {
-      padding-left: 10px;
-    }
-  }
+    // .message {
+    //   padding-left: 10px;
+    // }
+  // }
   
   .prof_box {
-    margin: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
     padding: 10px;
     max-width: 350px;
     background: white;
@@ -767,6 +761,7 @@ span.picture {
     margin-left: 15px;
   }
   .name_block {
+    margin-left: 10px;
     margin-bottom: 10px;
     padding: 10px;
     max-width: 250px;
@@ -779,6 +774,7 @@ span.picture {
   //   border: 1px solid blue;
   // }
   .user_badge_info {
+    margin-left: 10px;
     margin-top: 10px;
     padding: 10px;
     max-width: 350px;
@@ -805,3 +801,38 @@ span.picture {
 }
 
 
+// 吹き出し
+.arrow_box {
+  padding: 10px;
+  margin-left: 10px;
+	position: relative;
+	background: $back_color_gray;
+	border: 2px solid $flat_blue;
+	min-width: 250px;
+	max-width: 300px;
+	min-height: 40px;
+	border-radius: 10px;
+}
+.arrow_box:after, .arrow_box:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: $back_color_gray;
+	border-width: 10px;
+	margin-left: -70px;
+}
+.arrow_box:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-bottom-color: $flat_blue;
+	border-width: 13px;
+	margin-left: -73px;
+}

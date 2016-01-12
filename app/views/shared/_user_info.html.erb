@@ -20,15 +20,19 @@
         <h3><%= current_user.name %></h3>
       </div>
       
-      <% if current_user.image? %>
-        <div class="largeimage" style="background-image: url(<%= current_user.image.url %>);">
-          <%= link_to image_tag('empty.gif'), current_user %>
-        </div>
-      <% else %>
-        <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
-          <%= link_to image_tag('empty.gif'), current_user %>
-        </div>
-      <% end %>
+      <p class="gravatar">
+        <% if current_user.image? %>
+          <div class="largeimage" style="background-image: url(<%= current_user.image.url %>);">
+            <%= link_to image_tag('empty.gif'), current_user %>
+          </div>
+        <% else %>
+          <div class="largeimage" style="background-image: url(<%= asset_path "user_noimage.gif" %>);">
+            <%= link_to image_tag('empty.gif'), current_user %>
+          </div>
+        <% end %>
+      </p>
+
+      <div class="arrow_box"><b><%= current_user.message %></b></div>
     
       <div class="user_badge_info">
         <p><i class="fa fa-user fa-fw"></i><%= link_to "マイページ", current_user %></p>
