@@ -71,13 +71,6 @@ ActiveRecord::Schema.define(version: 20160112062259) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
-  create_table "information", force: :cascade do |t|
-    t.integer  "kubun"
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "mongons", force: :cascade do |t|
     t.integer  "kubun"
     t.text     "content"

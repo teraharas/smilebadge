@@ -36,6 +36,12 @@ class MongonsController < ApplicationController
     end
   end
 
+  def destroy
+    @mongon = Mongon.find(params[:id])
+    @mongon.destroy
+    flash[:success] = "文言を削除しました"
+    redirect_to request.referrer || root_url
+  end
 
   private
   def mongon_params

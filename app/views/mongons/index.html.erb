@@ -9,6 +9,8 @@
         <ol class="mongons">
           <% @mongons.each do |mongon| %>
             <li>
+              <%= link_to "削除", mongon, method: :delete,
+                                  data: { confirm: "削除してよろしいですか？" } %>
               <p class="mongon">区分：<%= link_to mongon.kubun, edit_mongon_path(mongon) %></p>
               <span class="mongon"><%= simple_format(h(mongon.content)) %></span>
             </li>
