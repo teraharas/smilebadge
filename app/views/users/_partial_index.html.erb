@@ -99,6 +99,9 @@
   <div class="will_paginate"><%= will_paginate %></div>
 </div>
 
+<!--過去30日間に獲得したバッジグラフ表示-->
+<%= high_chart("radar", @graph_recept30days) if @graph_recept30days.present? %>
+
 <script>
 // ユーザーの画像に一言メッセージをポップアップ
 $(".gravatar").balloon({ position: "right", offsetX: 0, offsetY: -30, 

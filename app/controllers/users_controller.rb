@@ -26,13 +26,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     # 30日間に獲得したバッジのグラフ
-    @graph_recept30days = get_graph(@user.id, "30DAYS_RECEPT")
+    @graph_recept30days = get_graph(@user.id, "", "30DAYS_RECEPT")
    
     # 今までに獲得したバッジのグラフ
-    @graph_recept = get_graph(@user.id, "ALL_RECEPT")
+    @graph_recept = get_graph(@user.id, "", "ALL_RECEPT")
     
     # 今までに贈ったバッジのグラフ
-    @graph_sent = get_graph(@user.id, "ALL_SENT")
+    @graph_sent = get_graph(@user.id, "", "ALL_SENT")
   end
   
   
@@ -114,6 +114,8 @@ class UsersController < ApplicationController
                     .where('id <> ?', current_user.id)
                     .where(activeflg: true)
                     .where(bumon_id: bumon_id)
+            # 30日間に獲得したバッジのグラフ
+            @graph_recept30days = get_graph("", bumon_id, "30DAYS_RECEPT")
           else
             @users = User.paginate(page: params[:page])
                     .where('id <> ?', current_user.id)

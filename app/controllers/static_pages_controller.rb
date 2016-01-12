@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
       @feedbadgeposts = Badgepost.limit(10).where(recept_user_id: current_user.id).where("created_at > ?", 30.days.ago).order(created_at: :desc)
       
       # 30日間に獲得したバッジのグラフ
-      @feedgraph_recept30days = get_graph(current_user.id, "30DAYS_RECEPT")
+      @feedgraph_recept30days = get_graph(current_user.id, "", "30DAYS_RECEPT")
     end
   end
   
