@@ -100,6 +100,8 @@ class UsersController < ApplicationController
           elsif bumon_id.present?
             @users = User.paginate(page: params[:page])
                           .where(bumon_id: bumon_id)
+            # 30日間に獲得したバッジのグラフ
+            @graph_recept30days = get_graph("", bumon_id, "30DAYS_RECEPT")
           else
             @users = User.paginate(page: params[:page])
           end
