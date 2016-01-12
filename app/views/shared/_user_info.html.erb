@@ -1,9 +1,9 @@
-<div class="toppage_info">
-  <% @mongon = Mongon.find_by(kubun: 1) %>
-  <% if @mongon.present? %>
+<% @mongon = Mongon.find_by(kubun: 1) %>
+<% if @mongon.present? %>
+  <div class="toppage_info">
     <%= simple_format(h(@mongon.content)) %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
 <div class="user_info">
   <h3>
