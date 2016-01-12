@@ -1,0 +1,20 @@
+<% provide(:title, '全文言') %>
+
+<h2>文言一覧</h2>
+
+<div class="row">
+  <div class="col-md-12">
+    <section>
+      <% if @mongons.any? %>
+        <ol class="mongons">
+          <% @mongons.each do |mongon| %>
+            <li>
+              <p class="mongon">区分：<%= link_to mongon.kubun, edit_mongon_path(mongon) %></p>
+              <span class="mongon"><%= simple_format(h(@mongon.content)) %></span>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
+    </section>
+  </div>
+</div>

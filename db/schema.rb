@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209000602) do
+ActiveRecord::Schema.define(version: 20160112062259) do
 
   create_table "badgeposts", force: :cascade do |t|
     t.integer  "sent_user_id"
@@ -71,6 +71,20 @@ ActiveRecord::Schema.define(version: 20151209000602) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "information", force: :cascade do |t|
+    t.integer  "kubun"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mongons", force: :cascade do |t|
+    t.integer  "kubun"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.boolean  "activeflg",       default: true
     t.integer  "bumon_id"
@@ -86,7 +100,7 @@ ActiveRecord::Schema.define(version: 20151209000602) do
     t.string   "image"
     t.boolean  "remove_image"
     t.string   "image_cache"
-    t.string   "myjob"
+    t.text     "myjob"
     t.text     "myword"
     t.text     "hobby"
     t.string   "message"

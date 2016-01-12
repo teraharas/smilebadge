@@ -5,6 +5,8 @@ class StaticPagesController < ApplicationController
       
       # 30日間に獲得したバッジのグラフ
       @feedgraph_recept30days = get_graph(current_user.id, "", "30DAYS_RECEPT")
+      
+      @mongon = Mongon.where(kubun: 1)
     end
   end
   

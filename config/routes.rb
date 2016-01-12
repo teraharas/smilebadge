@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :badges
   resources :badgeposts
-  
+  resources :mongons
 end

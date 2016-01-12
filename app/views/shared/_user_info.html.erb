@@ -1,23 +1,8 @@
 <div class="toppage_info">
-  <p>《 私たちでイキキした活気ある会社にしませんか！》</p>
-  <p>         -  Sunshine Award  Smile Badge 2016 -</p>
-  <p> </p>
-  <p>　　　　　　「全員経営」＝「全員投票」</p>
-  <p> </p>
-  <p>31期よりSunshine　Aeard の 投票スタイルを Smile badge として</p>
-  <p>リニューアルスタートします！</p>
-  <p></p>
-  <p>社員同士が思いやり、感謝しあることを通じて、遣り甲斐のある</p>
-  <p>イキイキと活気あふれる職場を31期も目指します。</p>
-  <p> </p>
-  <p>会社が大切にしているOPSをSmaie Badgeで具現化し、私たち</p>
-  <p>1人ひとりが意識を高め、働きやすく、風通しの良い環境を</p>
-  <p>社員全員で作りましょう！</p>
-  <p>adgeを贈ったり、貰ったりと今まで以上にタイムリー確認ができ、</p>
-  <p>スマホでも投票が出来ます！</p>
-  <p> </p>
-  <p>会社の大切な取組です。是非「全員経営」＝「全員投票」で積極的な</p>
-  <p>参加をお願いします。</p>
+  <% @mongon = Mongon.find_by(kubun: 1) %>
+  <% if @mongon.present? %>
+    <%= simple_format(h(@mongon.content)) %>
+  <% end %>
 </div>
 
 <div class="user_info">
