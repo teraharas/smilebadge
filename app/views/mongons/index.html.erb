@@ -10,7 +10,7 @@
           <% @mongons.each do |mongon| %>
             <li>
               <p class="mongon">区分：<%= link_to mongon.kubun, edit_mongon_path(mongon) %></p>
-              <span class="mongon"><%= simple_format(h(@mongon.content)) %></span>
+              <span class="mongon"><%= simple_format(h(mongon.content)) %></span>
             </li>
           <% end %>
         </ol>
