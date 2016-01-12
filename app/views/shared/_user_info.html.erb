@@ -1,7 +1,7 @@
 <% @mongon = Mongon.find_by(kubun: 1) %>
 <% if @mongon.present? %>
   <div class="toppage_info">
-    <%= simple_format(h(@mongon.content)) %>
+    <%= simple_format(h(@mongon.content.html_safe)) %>
   </div>
 <% end %>
 
