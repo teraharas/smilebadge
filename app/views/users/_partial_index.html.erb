@@ -99,8 +99,13 @@
   <div class="will_paginate"><%= will_paginate %></div>
 </div>
 
-<!--過去30日間に獲得したバッジグラフ表示-->
-<%= high_chart("radar", @graph_recept30days) if @graph_recept30days.present? %>
+<% if current_user.sent_badgeposts.count >= 1 %>
+  <!--過去30日間に獲得したバッジグラフ表示-->
+  <%= high_chart("radar", @graph_recept30days) if @graph_recept30days.present? %>
+<% else %>
+  <h3>まずはバッジを1個贈ってみよう！</h3>
+  <h3>この部門がもらったグラフが表示されるよ！</h3>
+<% end %>
 
 <script>
 // ユーザーの画像に一言メッセージをポップアップ

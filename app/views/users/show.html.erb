@@ -77,13 +77,20 @@
   </div>
   
   <br/>
-  <!--過去30日間に獲得したバッジグラフ表示-->
-  <%= high_chart("radar1", @graph_recept30days) %>
-  
-  <!--今までに獲得したバッジグラフ表示-->
-  <%= high_chart("radar2", @graph_recept) %>
-  
-  <!--今までに贈ったバッジグラフ表示-->
-  <%= high_chart("radar3", @graph_sent) %>  
+  <% if current_user.sent_badgeposts.count >= 1 %>
+    <!--過去30日間に獲得したバッジグラフ表示-->
+    <%= high_chart("radar1", @graph_recept30days) %>
+    
+    <!--今までに獲得したバッジグラフ表示-->
+    <%= high_chart("radar2", @graph_recept) %>
+    
+    <!--今までに贈ったバッジグラフ表示-->
+    <%= high_chart("radar3", @graph_sent) %>
+  <% else %>
+    <div class="graph_blank">
+      <h3>まずはバッジを1個贈ってみよう！</h3>
+      <h3>やり取りしたバッジのグラフが表示されるよ！</h3>
+    </div>
+  <% end %>
 
 </div>

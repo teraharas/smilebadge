@@ -801,6 +801,18 @@ span.picture {
 }
 
 
+.graph_blank {
+  margin: auto;
+  margin-top: 10px;
+  padding: 10px;
+  max-width: 798px;
+  background: white;
+  border: 2px solid $flat_blue;
+  border-radius: 10px;
+  text-align: center;
+}
+
+
 // 吹き出し
 .arrow_box {
   padding: 10px;

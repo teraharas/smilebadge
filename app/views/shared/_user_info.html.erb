@@ -43,8 +43,15 @@
     </div>
   
     <div class="col-md-7">
-      <!--過去30日間に獲得したバッジグラフ表示-->
-      <%= high_chart("radar", @feedgraph_recept30days) %>
+      <% if current_user.sent_badgeposts.count >= 1 %>
+        <!--過去30日間に獲得したバッジグラフ表示-->
+        <%= high_chart("radar", @feedgraph_recept30days) %>
+      <% else %>
+        <div class="graph_blank">
+          <h3>まずはバッジを1個贈ってみよう！</h3>
+          <h3>グラフが表示されるよ！</h3>
+        </div>
+      <% end %>
     </div>
   </div>
   </div>
