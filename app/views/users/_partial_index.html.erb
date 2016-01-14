@@ -99,9 +99,9 @@
   <div class="will_paginate"><%= will_paginate %></div>
 </div>
 
-<% if current_user.sent_badgeposts.count >= 1 %>
+<% if current_user.sent_badgeposts.count >= 1 && @graph_recept30days.present? %>
   <!--過去30日間に獲得したバッジグラフ表示-->
-  <%= high_chart("radar", @graph_recept30days) if @graph_recept30days.present? %>
+  <%= high_chart("radar", @graph_recept30days) %>
 <% else %>
   <h3>まずはバッジを1個贈ってみよう！</h3>
   <h3>この部門がもらったグラフが表示されるよ！</h3>
