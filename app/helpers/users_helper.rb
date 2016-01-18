@@ -33,7 +33,6 @@ module UsersHelper
                     .where(badgepostjoin[:recept_user_id].in(taisyou_user_ids))
                     .where(badgepostjoin[:created_at].gt 30.days.ago)
                     .order('cnt DESC').order(badgejoin[:id])
-          # binding.pry
         end
       elsif type == "ALL_RECEPT"
         @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)

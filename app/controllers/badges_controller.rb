@@ -5,18 +5,14 @@ class BadgesController < ApplicationController
    @badges = Badge.all.order(:outputnumber)
   end
 
-  
   def new
     @badge = Badge.new
   end
-  
-  
-  
+
   def edit
     @badge = Badge.find(params[:id])
   end
-  
-  
+
   def create
     @badge = Badge.new(badge_params)
     if @badge.save
@@ -26,8 +22,7 @@ class BadgesController < ApplicationController
       render controller: 'badges', action: 'new'
     end
   end
-  
-  
+
   def update
     @badge = Badge.find(params[:id])
     

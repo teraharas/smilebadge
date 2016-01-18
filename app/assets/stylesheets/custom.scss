@@ -10,8 +10,6 @@ $nickname_color: #A52A2A;
 $flat_green: #16A6B6;
 $flat_blue: #40AAEF;
 $flat_denim: #0E7AC4;
-// $flat_red: #F58E7E;
-// $flat_red: #EE6557;
 $flat_red: #F27398;
 $flat_silver: #BFBFBF;
 $flat_gray: #7C858E;
@@ -430,7 +428,6 @@ aside {
     padding-bottom: 20px;
     padding-left: 40px;
     padding-right: 40px;
-    // background: $back_color_gray;
     border-radius: 10px;
     @media(max-width: 500px) {
       padding: 10px;
@@ -553,7 +550,6 @@ aside {
     display: block;
     overflow: auto;
   	background: white;
-    // border: 2px outset;
     border: 2px solid $flat_green;
     width: auto;
     max-width: 380px;
@@ -656,7 +652,6 @@ span.picture {
 
 /* プロフィール画面 */
 .profile_show {
-  // background: $back_color_gray;
   hr {
       margin: 2px;
   }
@@ -685,7 +680,6 @@ span.picture {
       font-size: 2.5em;
     }
     .nickname {
-      // margin-left: 60px;
       font-size: 1.0em;
       .nicknamevalue {
         color: $nickname_color;
@@ -695,21 +689,6 @@ span.picture {
       font-size: 0.8em;
     }
   }
-  
-  // .user_info {
-    // background: white;
-    // max-width: 254px;
-    // min-height: 300px;
-    // border: 2px solid $flat_blue;
-    // margin-left: 10px;
-    // margin-right: 10px;
-    // .gravatar {
-    //   margin: 0px;
-    // }
-    // .message {
-    //   padding-left: 10px;
-    // }
-  // }
   
   .prof_box {
     margin-top: 20px;
@@ -725,15 +704,6 @@ span.picture {
       margin: 0px;
     }
   }
-  // .myjob {
-  //   @extend .prof_box;
-  //   p {
-  //     font-size: 0.8em;
-  //   }
-  //   span {
-  //     font-size: 1.3em;
-  //   }
-  // }
   .long_sentence {
     @extend .prof_box;
     border: 2px solid $flat_green;
@@ -769,10 +739,6 @@ span.picture {
     border: 2px solid $flat_red;
     border-radius: 10px;
   }
-  // .largeimage {
-  //   max-width: 252px;
-  //   border: 1px solid blue;
-  // }
   .user_badge_info {
     margin-left: 10px;
     margin-top: 10px;
