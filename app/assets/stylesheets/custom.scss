@@ -29,6 +29,16 @@ $badge_back_white_color: #F8F8F8;
       margin: 0 !important;
       padding: 0 !important;
     }
+    .margin_padding_mini {
+      margin: 5px !important;
+      padding: 5px !important;
+    }
+    .col-sm-2 {
+      @extend .margin_padding_clear;
+    }
+    .col-sm-10 {
+      @extend .margin_padding_clear;
+    }
     .col-md-5 {
       @extend .margin_padding_clear;
     }
@@ -37,6 +47,9 @@ $badge_back_white_color: #F8F8F8;
     }
     .col-md-7 {
       @extend .margin_padding_clear;
+    }
+    .container {
+      @extend .margin_padding_mini;
     }
 }
 

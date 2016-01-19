@@ -1,16 +1,5 @@
 @import "custom";
 
-@media(max-width: 500px) {
-  .container {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .container-fluid {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-}
-
 .ranking {
   list-style: none;
   font-size: 1.5em;
@@ -27,9 +16,6 @@
         margin: 5px;
         padding: 5px;
       }
-    }
-    
-    .ranking_block {
     }
     .rank {
       @extend .abstruct_block;

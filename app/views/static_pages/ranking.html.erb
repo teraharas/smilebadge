@@ -11,14 +11,12 @@
           <% ranking_count = 1 %>
           <% @badgeposts.each do |badgepost| %>
             <li>
-              <div class="ranking_block">
-                <span class="rank">
-                  <%= ranking_count.to_s + " 位" %>
-                </span>
-                <% ranking_count += 1 %>
-                <div class="bumon_name"><%= @bumonname_hash[badgepost.bumon_id] if @bumonname_hash.has_key?(badgepost.bumon_id) %></div>
-                <span class="badge_count"><%= badgepost.cnt %>個</span>
-              </div>
+              <span class="rank">
+                <%= ranking_count.to_s + " 位" %>
+              </span>
+              <% ranking_count += 1 %>
+              <div class="bumon_name"><%= @bumonname_hash[badgepost.bumon_id] if @bumonname_hash.has_key?(badgepost.bumon_id) %></div>
+              <span class="badge_count"><%= badgepost.cnt %>個</span>
             </li>
             <br/>
             <br/>
