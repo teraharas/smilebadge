@@ -24,6 +24,9 @@ $badge_back_white_color: #F8F8F8;
 @media(max-width: 768px) {
 }
 @media(max-width: 500px) {
+  header {
+    height: 5px;
+  }
   .margin_padding_clear {
     margin: 0 !important;
     padding: 0 !important;
