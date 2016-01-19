@@ -1,20 +1,32 @@
 @import "custom";
 
+@media(max-width: 500px) {
+  .container {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .container-fluid {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
 .ranking {
   list-style: none;
   font-size: 1.5em;
+  margin: 0;
+  padding: 0;
   li {
-    height: 60px;
-    margin: 10px;
-    padding: 10px;
-    width: 500px;
-    
     .abstruct_block {
-      margin: 10px;
-      padding: 10px;
+      margin: 5px;
+      padding: 5px;
       background: white;
       border-radius: 10px;
       float: left;
+      @media(max-width: 500px) {
+        margin: 5px;
+        padding: 5px;
+      }
     }
     
     .ranking_block {
@@ -24,13 +36,21 @@
     }
     .bumon_name {
       @extend .abstruct_block;
-      width: 300px;
+      width: 230px;
       border: 2px solid $flat_blue;
+      @media(max-width: 500px) {
+        width: 150px;
+      }
     }
     .badge_count {
       @extend .abstruct_block;
       border: 2px solid $flat_red;
       text-align: right;
     }
+  }
+  @media(max-width: 500px) {
+    margin: 2px;
+    padding: 2px;
+    font-size: 1.0em;
   }
 }
