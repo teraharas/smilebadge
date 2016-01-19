@@ -17,8 +17,8 @@ class StaticPagesController < ApplicationController
     
     @badgeposts = User.joins(join_condition).group(:bumon_id)
               .select(userjoin[:bumon_id], userjoin[:bumon_id].count.as('cnt'))
-                    .where(badgepostjoin[:created_at].gt 30.days.ago)
-                    .order('cnt DESC')
+                    .where(badgepostjoin[:created_at].gt Date.today.beginning_of_month)
+                    .order('cnt DESC').order(:bumon_id)
     # 辞書用に部門情報を取得
     bumons = Bumon.where(activeflg: true)
     @bumonname_hash = get_name_hash(bumons)
