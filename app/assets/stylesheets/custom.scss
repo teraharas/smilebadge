@@ -24,33 +24,32 @@ $badge_back_white_color: #F8F8F8;
 @media(max-width: 768px) {
 }
 @media(max-width: 500px) {
-
-    .margin_padding_clear {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    .margin_padding_mini {
-      margin: 5px !important;
-      padding: 5px !important;
-    }
-    .col-sm-2 {
-      @extend .margin_padding_clear;
-    }
-    .col-sm-10 {
-      @extend .margin_padding_clear;
-    }
-    .col-md-5 {
-      @extend .margin_padding_clear;
-    }
-    .col-md-6 {
-      @extend .margin_padding_clear;
-    }
-    .col-md-7 {
-      @extend .margin_padding_clear;
-    }
-    .container {
-      @extend .margin_padding_mini;
-    }
+  .margin_padding_clear {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .margin_padding_mini {
+    margin: 5px !important;
+    padding: 5px !important;
+  }
+  .col-sm-2 {
+    @extend .margin_padding_clear;
+  }
+  .col-sm-10 {
+    @extend .margin_padding_clear;
+  }
+  .col-md-5 {
+    @extend .margin_padding_clear;
+  }
+  .col-md-6 {
+    @extend .margin_padding_clear;
+  }
+  .col-md-7 {
+    @extend .margin_padding_clear;
+  }
+  .container {
+    @extend .margin_padding_mini;
+  }
 }
 
 
@@ -771,6 +770,11 @@ span.picture {
   border: 2px solid $flat_blue;
   border-radius: 10px;
   text-align: center;
+  @media(max-width: 500px) {
+    font-size: 0.8em;
+    overflow: auto;
+    max-height: 200px;
+  }
 }
 
 .loginbadgecount {
