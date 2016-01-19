@@ -1,6 +1,6 @@
 <% provide(:title, 'ヘルプ') %>
 
-<% if logged_in_adminuser? %>
+<% if logged_in? && logged_in_adminuser? %>
   <%= link_to "管理者メニュー", adminpage_path %>
 <% end %>
 
