@@ -1,4 +1,9 @@
 <% provide(:title, 'ヘルプ') %>
+
+<% if logged_in_adminuser? %>
+  <%= link_to "管理者メニュー", adminpage_path %>
+<% end %>
+
 <h1>ヘルプ</h1>
 
 <h3>使い方ガイド</h3>

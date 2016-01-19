@@ -7,6 +7,6 @@ class Badge < ActiveRecord::Base
                         
     # 画像アップロード
     mount_uploader :image, ImageUploader
-                        
+    
     has_many :badgeposts, :class_name => "Badgepost", :foreign_key => "badge_id"
 end

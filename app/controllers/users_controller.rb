@@ -149,12 +149,12 @@ class UsersController < ApplicationController
                       .or(t[:kananame].matches('%' + @searchword + '%'))
                       .or(t[:email].matches('%' + @searchword + '%')))
         else
-        @users = User.paginate(page: params[:page])
-                    .where('id <> ?', current_user.id)
-                    .where(t[:activeflg].eq(true))
-                    .where(t[:name].matches('%' + @searchword + '%')
-                      .or(t[:kananame].matches('%' + @searchword + '%'))
-                      .or(t[:email].matches('%' + @searchword + '%')))
+          @users = User.paginate(page: params[:page])
+                      .where('id <> ?', current_user.id)
+                      .where(t[:activeflg].eq(true))
+                      .where(t[:name].matches('%' + @searchword + '%')
+                        .or(t[:kananame].matches('%' + @searchword + '%'))
+                        .or(t[:email].matches('%' + @searchword + '%')))
         end
   
         if Rails.env == 'production'

@@ -21,7 +21,7 @@ module UsersHelper
               .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
                     .where(badgepostjoin[:recept_user_id].eq(user_id))
                     .where(badgepostjoin[:created_at].gt 30.days.ago)
-                    .order('cnt DESC').order(badgejoin[:id])
+                    .order('cnt DESC').order(badgejoin[:outputnumber])
         else
           taisyou_users = User.where(bumon_id: bumon_id)
           taisyou_user_ids = Array.new
@@ -32,18 +32,18 @@ module UsersHelper
               .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
                     .where(badgepostjoin[:recept_user_id].in(taisyou_user_ids))
                     .where(badgepostjoin[:created_at].gt 30.days.ago)
-                    .order('cnt DESC').order(badgejoin[:id])
+                    .order('cnt DESC').order(badgejoin[:outputnumber])
         end
       elsif type == "ALL_RECEPT"
         @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
               .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
                     .where(badgepostjoin[:recept_user_id].eq(user_id))
-                    .order('cnt DESC').order(badgejoin[:id])
+                    .order('cnt DESC').order(badgejoin[:outputnumber])
       else
         @badgeposts = Badge.joins(join_condition).group(:id, :name, :image, :outputnumber)
               .select(badgejoin[:id], badgejoin[:name], badgejoin[:image], badgejoin[:outputnumber], badgejoin[:id].count.as('cnt'))
                     .where(badgepostjoin[:sent_user_id].eq(user_id))
-                    .order('cnt DESC').order(badgejoin[:id])
+                    .order('cnt DESC').order(badgejoin[:outputnumber])
       end
   
       data = Array.new

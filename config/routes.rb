@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get    'adminpage'   => 'static_pages#adminpage'
   get    'help'   => 'static_pages#help'
   get    'summary' => 'static_pages#summary'
+  get    'ranking' => 'static_pages#ranking'
 
   get 'badgeposts/recepting'
   get 'badgeposts/sending'

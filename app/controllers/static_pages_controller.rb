@@ -8,6 +8,22 @@ class StaticPagesController < ApplicationController
     end
   end
   
+  # 部門別ランキング
+  def ranking
+    userjoin = User.arel_table
+    badgepostjoin = Badgepost.arel_table
+    join_condition = userjoin.join(badgepostjoin, Arel::Nodes::OuterJoin)
+                .on(userjoin[:id].eq(badgepostjoin[:sent_user_id])).join_sources
+    
+    @badgeposts = User.joins(join_condition).group(:bumon_id)
+              .select(userjoin[:bumon_id], userjoin[:bumon_id].count.as('cnt'))
+                    .where(badgepostjoin[:created_at].gt 30.days.ago)
+                    .order('cnt DESC')
+    # 辞書用に部門情報を取得
+    bumons = Bumon.where(activeflg: true)
+    @bumonname_hash = get_name_hash(bumons)
+  end
+  
   def summary
     if params[:summary_form] == nil
       # 検索未入力時（初回表示時）
