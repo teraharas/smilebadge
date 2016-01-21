@@ -19,10 +19,10 @@
       <%= f.label "メールアドレス" %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label "パスワード" %>
+      <%= f.label "パスワード：8文字以上" %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "パスワード（確認）" %>
+      <%= f.label :password_confirmation, "パスワード（確認）：8文字以上" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "会員登録実行！", class: "btn btn-large btn-primary" %>

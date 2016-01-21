@@ -89,10 +89,10 @@
     <%= f.label "趣味" %>
     <%= f.text_area :hobby, :size => "10x8" %>
 
-    <%= f.label "パスワード（変更する場合は入力してください）" %>
+    <%= f.label "パスワード：8文字以上（変更する場合は入力してください）" %>
     <%= f.password_field :password, class: 'form-control' %>
     
-    <%= f.label :password_confirmation, "パスワード（確認）" %>
+    <%= f.label :password_confirmation, "パスワード（確認）：8文字以上" %>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
       
   <%= f.submit "プロフィールを更新", class: "btn btn-sm btn-primary" %>
