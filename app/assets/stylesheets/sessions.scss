@@ -52,11 +52,16 @@
     }
     h3 {
       margin: 0px 0px 0px 0px;
-      padding-top: 40px;
+      padding-top: 30px;
       padding-bottom: 10px;
-      font-size: 20px;
+      font-size: 16px;
       color: white;
       text-align: center;
+      .loginbadgecount {
+        font-size: 1.6em;
+        margin: 10px;
+        // color: #0E7AC4;
+      }
     }
     .ex {
       font-size: 18px;
