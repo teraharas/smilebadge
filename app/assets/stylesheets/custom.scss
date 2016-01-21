@@ -59,13 +59,16 @@ $badge_back_white_color: #F8F8F8;
 /* 全体 */
 html {
   background-color: white;
+  height:100%;
 }
 
 body {
   padding-top: 60px;
   background-color: $back_color_gray;
   font-family: "Open Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  height:100%;
 }
+
 .container {
   min-height: 100%;
 }

@@ -1,3 +1,85 @@
-// Place all the styles related to the sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#login {
+  header {
+    display: none;
+  }
+  background-image : url(toppage_background.jpg);
+  background-color:		rgba(255,255,255,0);
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-color: #050911;
+  .body_back_image {
+    background-image : none;
+    background-attachment: fixed;
+  }
+  .layerTransparent{
+  	background-color: rgba(255,255,255,0);
+  }
+  width: 100%;
+  height: 100%;
+  .left-content {
+    margin-top: 45px;
+    padding: 0px 45px;
+    @media(max-width: 500px) {
+      margin-top: 5px;
+      padding: 0px 5px;
+    }
+    color: white;
+    h1 {
+      font-size: 50px;
+      margin: {
+        top: 0;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+      }
+      margin-top: 10px;
+    }
+    h2 {
+      margin: 0px 0px 0px 0px;
+      padding-bottom: 10px;
+      font-size: 20px;
+      color: white;
+    }
+    .ex {
+      font-size: 18px;
+      margin: 45px 0px;
+    }
+  }
+  .right-content {
+    padding: 0px 45px;
+    @media(max-width: 500px) {
+      padding: 0px 5px;
+    }
+    form {
+      margin: 45px 0px;
+      padding: 30px 35px;
+      border: 1px solid #fff;
+      border-radius: 6px;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: white;
+    }
+    h2 {
+      margin: 0px 0px 20px 0px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      padding-bottom: 10px;
+      font-size: 20px;
+      color: white;
+      text-align: left;
+    }
+    .control-label {
+      font-weight: 400;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    a {
+      color: white;
+    }
+  }
+}

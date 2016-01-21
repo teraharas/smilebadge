@@ -3,11 +3,12 @@
   <%= render 'shared/user_info' %>
 </section>
 <% else %>
-  <div class="center jumbotron toppage">
-    <p><%= link_to image_tag('LogoToppage.png'), root_path, id:"logo" %></p>
-    <br/>
-    <p><%= link_to "ログイン", 'login', class: "btn btn-lg btn-primary" %></p>
-    <br/>
-    <h3><b>TOTAL<span class="loginbadgecount"><%= number_with_delimiter(Badgepost.count) %></span>BADGES !!</b></h3>
-  </div>
+  <!--<div class="center jumbotron toppage">-->
+  <!--  <p><%#= link_to image_tag('LogoToppage.png'), root_path, id:"logo" %></p>-->
+  <!--  <br/>-->
+  <!--  <p><%#= link_to "ログイン", 'login', class: "btn btn-lg btn-primary" %></p>-->
+  <!--  <br/>-->
+  <!--  <h3><b>TOTAL<span class="loginbadgecount"><%#= number_with_delimiter(Badgepost.count) %></span>BADGES !!</b></h3>-->
+  <!--</div>-->
+  <%= render 'sessions/new_form' %>
 <% end %>
