@@ -33,30 +33,73 @@
 <script>
 $(function() {
   var i = 2;
+  var fadeOut_time = 1000;
+  var fadeIn_time = 3000;
+  var slide_interval_time = 10000;
     setInterval(function() {
       if(i > 10) i = 1;
-        if(i == 1 )
-          $("#login").css("background-image","url(<%= asset_path "background/1.jpg" %>)");
-        else if(i == 2)
-          $("#login").css("background-image","url(<%= asset_path "background/2.jpg" %>)");
-        else if(i == 3)
-          $("#login").css("background-image","url(<%= asset_path "background/3.jpg" %>)");
-        else if(i == 4)
-          $("#login").css("background-image","url(<%= asset_path "background/4.jpg" %>)");
-        else if(i == 5)
-          $("#login").css("background-image","url(<%= asset_path "background/5.jpg" %>)");
-        else if(i == 6)
-          $("#login").css("background-image","url(<%= asset_path "background/6.jpg" %>)");
-        else if(i == 7)
-          $("#login").css("background-image","url(<%= asset_path "background/7.jpg" %>)");
-        else if(i == 8)
-          $("#login").css("background-image","url(<%= asset_path "background/8.jpg" %>)");
-        else if(i == 9)
-          $("#login").css("background-image","url(<%= asset_path "background/9.jpg" %>)");
-        else if(i == 10)
-          $("#login").css("background-image","url(<%= asset_path "background/10.jpg" %>)");
+        if(i == 1 ){
+          $("#login").fadeOut(fadeOut_time, function(){
+            $("#login").css("background-image","url(<%= asset_path "background/1.jpg" %>)");
+          });
+          $("#login").fadeIn(fadeOut_time);
+        }
+        else if(i == 2){
+          $("#login").fadeOut(fadeOut_time, function(){
+            $("#login").css("background-image","url(<%= asset_path "background/2.jpg" %>)");
+          });
+          $("#login").fadeIn(fadeOut_time);
+        }
+        else if(i == 3){
+          $("#login").fadeOut(fadeOut_time, function(){
+            $("#login").css("background-image","url(<%= asset_path "background/3.jpg" %>)");
+          });
+          $("#login").fadeIn(fadeOut_time);
+        }
+        else if(i == 4){
+          $("#login").fadeOut(fadeOut_time, function(){
+            $("#login").css("background-image","url(<%= asset_path "background/4.jpg" %>)");
+          });
+          $("#login").fadeIn(fadeOut_time);
+        }
+        else if(i == 5){
+          $("#login").fadeOut(fadeOut_time, function(){
+            $("#login").css("background-image","url(<%= asset_path "background/5.jpg" %>)");
+          });
+          $("#login").fadeIn(fadeOut_time);
+        }
+        else if(i == 6){
+          $("#login").fadeOut(fadeOut_time, function(){
+            $("#login").css("background-image","url(<%= asset_path "background/6.jpg" %>)");
+          });
+          $("#login").fadeIn(fadeOut_time);
+        }
+        else if(i == 7){
+          $("#login").fadeOut(fadeOut_time, function(){
+            $("#login").css("background-image","url(<%= asset_path "background/7.jpg" %>)");
+          });
+          $("#login").fadeIn(fadeOut_time);
+        }
+        else if(i == 8){
+          $("#login").fadeOut(fadeOut_time, function(){
+            $("#login").css("background-image","url(<%= asset_path "background/8.jpg" %>)");
+          });
+          $("#login").fadeIn(fadeOut_time);
+        }
+        else if(i == 9){
+          $("#login").fadeOut(fadeOut_time, function(){
+            $("#login").css("background-image","url(<%= asset_path "background/9.jpg" %>)");
+          });
+          $("#login").fadeIn(fadeOut_time);
+        }
+        else if(i == 10){
+          $("#login").fadeOut(fadeOut_time, function(){
+            $("#login").css("background-image","url(<%= asset_path "background/10.jpg" %>)");
+          });
+          $("#login").fadeIn(fadeOut_time);
+        }
       i++;
-    }, 10000
+    }, slide_interval_time
   );
 });
 </script>
