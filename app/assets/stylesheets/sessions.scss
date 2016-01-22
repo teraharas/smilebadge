@@ -1,17 +1,148 @@
 #login {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  .container {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    #bgimg {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-image : url(toppage_background.jpg);
+      background-color:		rgba(255,255,255,0);
+      background-position: center;
+      background-size: cover;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-color: #050911;
+      position: absolute;
+      z-index: 1;
+    }
+  }
+  .content {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding-top: 60px;
+    .left-content {
+      margin-top: 45px;
+      padding: 0px 45px;
+      color: white;
+      h1 {
+        font-size: 50px;
+        margin: {
+          top: 0;
+          bottom: 20px;
+          left: 0;
+          right: 0;
+        }
+        margin-top: 10px;
+      }
+      h2 {
+        margin: 0px 0px 0px 0px;
+        padding-bottom: 10px;
+        font-size: 20px;
+        color: white;
+        @media(min-width: 798px) {
+          br {
+            display: none;
+          }
+        }
+      }
+      h3 {
+        margin: 0px 0px 0px 0px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        .loginbadgecount {
+          font-size: 1.6em;
+          margin: 10px;
+        }
+      }
+    }
+    .right-content {
+      padding: 0px 45px;
+      form {
+        margin: 45px 0px;
+        padding: 30px 35px;
+        border: 1px solid #fff;
+        border-radius: 6px;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+      }
+      h2 {
+        margin: 0px 0px 20px 0px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        padding-bottom: 10px;
+        font-size: 20px;
+        color: white;
+        text-align: left;
+      }
+      .control-label {
+        font-weight: 400;
+      }
+      .btn {
+        margin-bottom: 10px;
+      }
+      a {
+        color: white;
+      }
+    }
+    @media(max-width: 798px) {
+      padding-top: 20px;
+    }
+    @media(max-width: 320px) {
+      padding: 5px;
+      .left-content {
+        margin-top: 5px;
+        padding: 0px 5px;
+        h1 {
+          font-size: 40px;
+          margin-top: 30px;
+        }
+        h2 {
+          padding-top: 15px;
+          font-size: 20px;
+        }
+        h3 {
+          font-size: 14px;
+          padding-top: 15px;
+          padding-bottom: 60px;
+          .loginbadgecount {
+            margin: 5px;
+          }
+        }
+      }
+      .right-content {
+        padding: 0;
+        form {
+          margin: 0;
+          padding: 10px;
+          font-size: 12px;
+        }
+        h2 {
+          display: none;
+        }
+        .btn {
+          font-size: 10px;
+        }
+      }
+    }
+  }
   header {
     display: none;
   }
   footer {
     display: none;
   }
-  background-image : url(toppage_background.jpg);
-  background-color:		rgba(255,255,255,0);
-  background-position: center;
-  background-size: cover;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-color: #050911;
   .body_back_image {
     background-image : none;
     background-attachment: fixed;
@@ -19,139 +150,4 @@
   .layerTransparent{
   	background-color: rgba(255,255,255,0);
   }
-  width: 100%;
-  height: 100%;
-  .left-content {
-    margin-top: 45px;
-    padding: 0px 45px;
-    color: white;
-    h1 {
-      font-size: 50px;
-      margin: {
-        top: 0;
-        bottom: 20px;
-        left: 0;
-        right: 0;
-      }
-      margin-top: 10px;
-    }
-    h2 {
-      margin: 0px 0px 0px 0px;
-      padding-bottom: 10px;
-      font-size: 20px;
-      color: white;
-      @media(min-width: 798px) {
-        br {
-          display: none;
-        }
-      }
-    }
-    h3 {
-      margin: 0px 0px 0px 0px;
-      padding-top: 20px;
-      padding-bottom: 10px;
-      font-size: 16px;
-      color: white;
-      text-align: center;
-      .loginbadgecount {
-        font-size: 1.6em;
-        margin: 10px;
-      }
-    }
-  }
-  .right-content {
-    padding: 0px 45px;
-    form {
-      margin: 45px 0px;
-      padding: 30px 35px;
-      border: 1px solid #fff;
-      border-radius: 6px;
-      background-color: rgba(0, 0, 0, 0.3);
-      color: white;
-    }
-    h2 {
-      margin: 0px 0px 20px 0px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-      padding-bottom: 10px;
-      font-size: 20px;
-      color: white;
-      text-align: left;
-    }
-    .control-label {
-      font-weight: 400;
-    }
-    .btn {
-      margin-bottom: 10px;
-    }
-    a {
-      color: white;
-    }
-  }
-  @media(max-width: 798px) {
-    padding-top: 20px;
-  }
-  @media(max-width: 320px) {
-    padding: 5px;
-    .left-content {
-      margin-top: 5px;
-      padding: 0px 5px;
-      h1 {
-        font-size: 40px;
-        margin-top: 30px;
-      }
-      h2 {
-        padding-top: 15px;
-        font-size: 20px;
-      }
-      h3 {
-        font-size: 14px;
-        padding-top: 15px;
-        padding-bottom: 60px;
-        .loginbadgecount {
-          margin: 5px;
-        }
-      }
-    }
-    .right-content {
-      padding: 0;
-      form {
-        margin: 0;
-        padding: 10px;
-        font-size: 12px;
-      }
-      h2 {
-        display: none;
-      }
-      .btn {
-        font-size: 10px;
-      }
-    }
-  }
-}
-
-#animation {
-margin: 50px 0;
-font-size: 40px;
-font-weight: bold;
-color: #ff0000;
-}
-
-.fadeInDown {
- -webkit-animation-fill-mode:both;
- -ms-animation-fill-mode:both;
- animation-fill-mode:both;
- -webkit-animation-duration:1s;
- -ms-animation-duration:1s;
- animation-duration:1s;
- -webkit-animation-name: fadeInDown;
- animation-name: fadeInDown;
- visibility: visible !important;
-}
-@-webkit-keyframes fadeInDown {
- 0% { opacity: 0; -webkit-transform: translateY(-20px); }
- 100% { opacity: 1; -webkit-transform: translateY(0); }
-}
-@keyframes fadeInDown {
- 0% { opacity: 0; -webkit-transform: translateY(-20px); -ms-transform: translateY(-20px); transform: translateY(-20px); }
- 100% { opacity: 1; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }
 }

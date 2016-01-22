@@ -28,12 +28,12 @@ $badge_back_white_color: #F8F8F8;
     height: 5px;
   }
   .margin_padding_clear {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
   }
   .margin_padding_mini {
-    margin: 5px !important;
-    padding: 5px !important;
+    margin: 5px;
+    padding: 5px;
   }
   .col-sm-2 {
     @extend .margin_padding_clear;
