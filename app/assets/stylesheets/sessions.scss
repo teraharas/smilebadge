@@ -24,10 +24,6 @@
   .left-content {
     margin-top: 45px;
     padding: 0px 45px;
-    @media(max-width: 500px) {
-      margin-top: 5px;
-      padding: 0px 5px;
-    }
     color: white;
     h1 {
       font-size: 50px;
@@ -60,19 +56,11 @@
       .loginbadgecount {
         font-size: 1.6em;
         margin: 10px;
-        // color: #0E7AC4;
       }
-    }
-    .ex {
-      font-size: 18px;
-      margin: 45px 0px;
     }
   }
   .right-content {
     padding: 0px 45px;
-    @media(max-width: 500px) {
-      padding: 0px 5px;
-    }
     form {
       margin: 45px 0px;
       padding: 30px 35px;
@@ -97,6 +85,47 @@
     }
     a {
       color: white;
+    }
+  }
+  @media(max-width: 500px) {
+    padding: 5px;
+    .left-content {
+      margin-top: 5px;
+      padding: 0px 5px;
+      h1 {
+        font-size: 30px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+      }
+      h2 {
+        padding-bottom: 0px;
+        font-size: 16px;
+      }
+      h3 {
+        font-size: 14px;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        .loginbadgecount {
+          margin: 5px;
+        }
+      }
+    }
+    .right-content {
+      padding: 0px 5px;
+      form {
+        margin: 5px 0px;
+        padding: 5px 5px;
+        font-size: 10px;
+      }
+      h2 {
+        // margin: 0px 0px 5px 0px;
+        // padding-bottom: 5px;
+        // font-size: 14px;
+        display: none;
+      }
+      .btn {
+        font-size: 10px;
+      }
     }
   }
 }
