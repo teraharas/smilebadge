@@ -21,9 +21,7 @@ $badge_back_white_color: #F8F8F8;
 // メディアサイズでの切り分け
 @media(max-width: 1000px) {
 }
-@media(max-width: 768px) {
-}
-@media(max-width: 500px) {
+@media(max-width: 767px) {
   header {
     height: 5px;
   }
@@ -447,7 +445,7 @@ aside {
     padding-left: 40px;
     padding-right: 40px;
     border-radius: 10px;
-    @media(max-width: 500px) {
+    @media(max-width: 767px) {
       padding: 10px;
     }
   }
@@ -585,10 +583,7 @@ aside {
   
   @media(max-width: 1000px) {
   }
-  
-  @media(max-width: 768px) {
-  }
-  @media(max-width: 500px) {
+  @media(max-width: 767px) {
     .gravatarsent_sent {
       display: none;
     }
@@ -771,12 +766,12 @@ span.picture {
 .toppage_info {
   margin-top: 10px;
   padding: 10px;
-  max-width: 798px;
+  max-width: 767px;
   background: white;
   border: 2px solid $flat_blue;
   border-radius: 10px;
   text-align: center;
-  @media(max-width: 500px) {
+  @media(max-width: 767px) {
     h1, h2, h3, h4, h5, h6 {
       font-size: 1.2em;
     }
@@ -790,7 +785,7 @@ span.picture {
   margin: auto;
   margin-top: 10px;
   padding: 10px;
-  max-width: 798px;
+  max-width: 767px;
   background: white;
   border: 2px solid $flat_blue;
   border-radius: 10px;

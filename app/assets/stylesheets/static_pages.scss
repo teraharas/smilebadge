@@ -12,7 +12,7 @@
       background: white;
       border-radius: 10px;
       float: left;
-      @media(max-width: 500px) {
+      @media(max-width: 767px) {
         margin: 5px;
         padding: 5px;
       }
@@ -24,7 +24,7 @@
       @extend .abstruct_block;
       width: 230px;
       border: 2px solid $flat_blue;
-      @media(max-width: 500px) {
+      @media(max-width: 767px) {
         width: 150px;
       }
     }
@@ -34,7 +34,7 @@
       text-align: right;
     }
   }
-  @media(max-width: 500px) {
+  @media(max-width: 767px) {
     margin: 2px;
     padding: 2px;
     font-size: 1.0em;

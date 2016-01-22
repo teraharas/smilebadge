@@ -49,7 +49,7 @@
         padding-bottom: 10px;
         font-size: 20px;
         color: white;
-        @media(min-width: 798px) {
+        @media(min-width: 767px) {
           br {
             display: none;
           }
@@ -96,10 +96,7 @@
         color: white;
       }
     }
-    @media(max-width: 798px) {
-      padding-top: 20px;
-    }
-    @media(max-width: 320px) {
+    @media(max-width: 767px) {
       padding: 5px;
       .left-content {
         margin-top: 5px;
