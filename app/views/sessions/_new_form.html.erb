@@ -39,18 +39,6 @@ $(function() {
   var fadeIn_time = 6000;
   var slide_interval_time = 15000;
   var layer = $("#bgimg");
-  // 最初に全部読み込んで後の処理を高速化する。
-  layer.css("background-image","url(<%= asset_path "background/2.jpg" %>)");
-  layer.css("background-image","url(<%= asset_path "background/3.jpg" %>)");
-  layer.css("background-image","url(<%= asset_path "background/4.jpg" %>)");
-  layer.css("background-image","url(<%= asset_path "background/5.jpg" %>)");
-  layer.css("background-image","url(<%= asset_path "background/6.jpg" %>)");
-  layer.css("background-image","url(<%= asset_path "background/7.jpg" %>)");
-  layer.css("background-image","url(<%= asset_path "background/8.jpg" %>)");
-  layer.css("background-image","url(<%= asset_path "background/9.jpg" %>)");
-  layer.css("background-image","url(<%= asset_path "background/10.jpg" %>)");
-  // 最後に読み込んだ画像がデフォルトの背景
-  layer.css("background-image","url(<%= asset_path "background/1.jpg" %>)");
   var i = 1;
     setInterval(function() {
       var random_number = Math.floor( ( Math.random() * ( ( 10 + 1 ) - 1 ) ) + 1 )
