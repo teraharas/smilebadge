@@ -382,6 +382,9 @@ aside {
   	display: none;
   	pointer-events: none;
   }
+  @media(max-width: 767px) {
+    margin: 5px;
+  }
 }
 
 
@@ -436,7 +439,7 @@ aside {
   }
   .badgeplace {
     ul {
-      padding: 0px !important;
+      padding: 0 !important;
     }
     margin-top: 20px;
     margin-bottom: 20px;
@@ -461,10 +464,17 @@ aside {
     font-weight: normal;
     font-size: 1.2em;
   }
-}
-
-.badgecount {
-  font-size: 1.5em;
+  .badgecount {
+    font-size: 1.2em;
+  }
+  @media(max-width: 767px) {
+    li {
+      margin-top: 10px;
+    }
+    p {
+      margin: 0px;
+    }
+  }
 }
 
 
