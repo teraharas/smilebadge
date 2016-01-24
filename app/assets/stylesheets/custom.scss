@@ -99,9 +99,8 @@ ol {
 .center {
   text-align: center;
 }
-
-.center h1 {
-  margin-bottom: 10px;
+.center * {
+  margin: 0 auto;
 }
 
 /* typography */
@@ -116,13 +115,6 @@ h1 {
 
 h2 {
   text-align: center;
-}
-
-.center {
-  text-align: center;
-}
-.center * {
-  margin: 0 auto;
 }
 
 
