@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   validates :bumon, presence: true
   validates :name, presence: true, length: { maximum: 50 }
-  VALID_KANANAME_REGEX = /\p{Hiragana}/
+  VALID_KANANAME_REGEX = /\A[\p{Hiragana}]+\z/
   validates :kananame, presence: true, length: { maximum: 50 },
                     format: { with: VALID_KANANAME_REGEX }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

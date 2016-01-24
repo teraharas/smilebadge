@@ -39,6 +39,13 @@ group :development, :test do
   gem 'quiet_assets'      # ログのassetsを表示しないようにし、ログを見やすくしてくれる
 end
 
+group :development do
+  # viewの構造を表示 (Ctrl + Shift + x)
+  gem 'xray-rails'
+  # セキュリティチェック
+  gem 'brakeman', require: false
+end
+
 # .ENV対応
 gem 'dotenv-rails'
 
