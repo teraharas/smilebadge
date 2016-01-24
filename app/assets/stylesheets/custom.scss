@@ -118,6 +118,13 @@ h2 {
   text-align: center;
 }
 
+.center {
+  text-align: center;
+}
+.center * {
+  margin: 0 auto;
+}
+
 
 /* fontawesome */
 .fa-user {
