@@ -11,7 +11,7 @@
         </div>
       <% end %>
     </div>
-    <h2><%= link_to "全ユーザーを表示", users_full_index_path %></h2>
+    <h4><center><%= link_to "全ユーザーを表示", users_full_index_path %></center></h4>
     <h1>プロフィールを編集するメンバーを選んでね！！</h1>
     <% @index_action_name = "full_index" %>
   <% else %>
@@ -23,7 +23,7 @@
         </div>
       <% end %>
     </div>
-    <h2><%= link_to "全ユーザーを表示", users_path %></h2>
+    <h4><center><%= link_to "全ユーザーを表示", users_path %></center></h4>
     <h1>バッジを贈るメンバーを選んでね！！</h1>
     <% @index_action_name = "index" %>
   <% end %>
