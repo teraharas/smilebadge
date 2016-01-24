@@ -16,7 +16,7 @@ class MongonsController < ApplicationController
   def create
     @mongon = Mongon.new(mongon_params)
     if @mongon.save
-      flash[:success] = "新しい部門を登録しました！"
+      flash[:success] = "新しい文言を登録しました！"
       redirect_to adminpage_path
     else
       render controller: 'mongons', action: 'new'
@@ -28,7 +28,7 @@ class MongonsController < ApplicationController
     
     if @mongon.update(mongon_params)
       # 保存に成功した場合はトップページへリダイレクト
-      flash[:success] = "部門を編集しました。"
+      flash[:success] = "文言を編集しました。"
       redirect_to adminpage_path
     else
       # 保存に失敗した場合は編集画面へ戻す
