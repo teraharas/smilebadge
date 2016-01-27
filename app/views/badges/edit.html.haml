@@ -1,0 +1,39 @@
+%h1
+  = @badge.name
+= form_for(@badge) do |f|
+  - if @badge.errors.present?
+    .alert.alert-danger
+      = alert
+      %ul
+        - @badge.errors.full_messages.each do |full_message|
+          %li
+            = full_message
+  .field
+    - if @badge.image?
+      .thumbnail
+        = image_tag @badge.image.url
+    %br/
+    = f.label :image
+    %br/
+    = f.file_field :image
+    = f.hidden_field :image_cache
+  .field
+    - if @badge.persisted? && @badge.image?
+      %label
+        = f.check_box :remove_image
+        画像を削除
+  = f.label "バッジ有効フラグ"
+  = f.check_box 'activeflg'
+  = f.label "アソビバッジフラグ"
+  = f.check_box 'optionflg'
+  = f.label "出力順"
+  = f.number_field :outputnumber
+  = f.label "バッジ名"
+  = f.text_field :name
+  = f.label "バッジの説明"
+  = f.text_area :explanation
+  = f.label "称号（レベル１）"
+  = f.text_field :level1_title
+  = f.label "称号（レベル２）"
+  = f.text_field :level2_title
+  = f.submit "バッジ情報を更新", class: "btn btn-sm btn-primary"

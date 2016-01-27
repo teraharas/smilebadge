@@ -44,6 +44,8 @@ group :development do
   gem 'xray-rails'
   # セキュリティチェック
   gem 'brakeman', require: false
+  # haml変換
+  gem 'erb2haml'
 end
 
 # .ENV対応
@@ -77,3 +79,6 @@ gem 'bootstrap-will_paginate'
 
 # ピボットテーブル
 gem 'pivot_table'
+
+# haml
+gem 'haml-rails'

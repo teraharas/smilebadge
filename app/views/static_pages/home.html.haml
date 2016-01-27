@@ -1,0 +1,12 @@
+- if logged_in?
+  %section.user_info
+    = render 'shared/user_info'
+- else
+  / <div class="center jumbotron toppage">
+  / <p><haml_silent></haml_silent></p>
+  / <br/>
+  / <p><haml_silent></haml_silent></p>
+  / <br/>
+  / <h3><b>TOTAL<span class="loginbadgecount"><haml_silent></haml_silent></span>BADGES !!</b></h3>
+  / </div>
+  = render 'sessions/new_form'

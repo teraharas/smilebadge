@@ -1,0 +1,13 @@
+- provide(:title, '全部門')
+%h2
+  部門一覧 (#{@bumons.count})
+.row
+  .col-md-12
+    %section
+      - if @bumons.any?
+        %ol.bumons
+          - @bumons.each do |bumon|
+            %li
+              %span.bumon= bumon.activeflg ? "" : "【無効】"
+              %span.bumon= bumon.outputnumber
+              %span.bumon= link_to bumon.name, edit_bumon_path(bumon)

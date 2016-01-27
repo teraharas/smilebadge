@@ -1,0 +1,41 @@
+- @mongon = Mongon.find_by(kubun: 1)
+- if @mongon.present?
+  .toppage_info
+    = simple_format(h(@mongon.content.html_safe))
+.user_info
+  %h3
+    = link_to users_path do
+      %span.minismile= image_tag asset_path "smile.png"
+      バッジを贈る！！
+  .container-fluid
+    .row
+      .col-md-5
+        .name_block
+          %p= current_user.bumon.name
+          %h3= current_user.name
+        %p.gravatar
+          - if current_user.image?
+            .largeimage{:style => "background-image: url(#{current_user.image.url});"}
+              = link_to image_tag('empty.gif'), current_user
+          - else
+            .largeimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
+              = link_to image_tag('empty.gif'), current_user
+        .arrow_box
+          %b= current_user.message
+        .user_badge_info
+          %p
+            %i.fa.fa-user.fa-fw
+            = link_to "マイページ", current_user
+          %p= "30日間に " + current_user.recept_badgeposts.where("created_at > ?", 30.days.ago).count.to_s + "個のバッジを獲得しました。"
+          %p= "今までに " + current_user.recept_badgeposts.count.to_s + "個のバッジを獲得しました。"
+          %p= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジを贈りました。"
+      .col-md-7
+        - if current_user.sent_badgeposts.count >= 1
+          / 過去30日間に獲得したバッジグラフ表示
+          = high_chart("radar", @feedgraph_recept30days)
+        - else
+          .graph_blank
+            %h3 まずはバッジを1個贈ってみよう！
+            %h3 もらったバッジのバランスグラフ
+            %h3 が表示されるよ！
+= render 'shared/feed'

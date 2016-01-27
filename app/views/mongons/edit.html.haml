@@ -1,0 +1,6 @@
+= form_for(@mongon) do |f|
+  = f.label "区分"
+  = f.number_field :kubun
+  = f.label "文言"
+  = f.text_area :content
+  = f.submit "文言更新", class: "btn btn-sm btn-primary"

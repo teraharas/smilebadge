@@ -1,0 +1,72 @@
+%h1
+  = @user.name
+= form_for(@user) do |f|
+  - if @user.errors.present?
+    .alert.alert-danger
+      = alert
+      %ul
+        - @user.errors.full_messages.each do |full_message|
+          %li
+            = full_message
+  .field
+    - if @user.image?
+      .thumbnail
+        = image_tag @user.image.url
+    %br/
+    = f.label :image
+    %br/
+    = f.file_field :image, accept: 'image/jpeg,image/gif,image/png'
+    = f.hidden_field :image_cache
+  .field
+    - if @user.persisted? && @user.image?
+      %label
+        = f.check_box :remove_image
+        画像を削除
+    %br/
+    %br/
+    - if logged_in_adminuser?
+      / 管理者なら
+      = f.label "ユーザー有効フラグ"
+      = f.check_box 'activeflg'
+      = f.label "管理者フラグ"
+      = f.check_box 'adminflg'
+      = f.label "氏名"
+      = f.text_field :name, required: true
+      = f.label "ふりがな"
+      = f.text_field :kananame, required: true
+      = f.label "部門名"
+      = f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name)
+      = f.label "メールアドレス"
+      = f.email_field :email
+    - else
+      / 通常ユーザーなら
+      %p= f.label "氏名"
+      %p= @user.name
+      %p= f.label "ふりがな"
+      %p= @user.kananame
+      %p= f.label "部門名"
+      %p= @user.bumon.name
+      %p= f.label "メールアドレス"
+      %p= @user.email
+    = f.label "ニックネーム"
+    = f.text_field :nickname
+    = f.label "一言メッセージ"
+    = f.text_field :message
+    = f.label "こんな仕事をしています"
+    = f.text_area :myjob, :size => "10x8"
+    = f.label "好きな言葉・座右の銘・マイルール"
+    = f.text_area :myword, :size => "10x8"
+    = f.label "趣味"
+    = f.text_area :hobby, :size => "10x8"
+    = f.label "パスワード：8文字以上（変更する場合は入力してください）"
+    = f.password_field :password, class: 'form-control'
+    = f.label :password_confirmation, "パスワード（確認）：8文字以上"
+    = f.password_field :password_confirmation, class: 'form-control'
+    = f.submit "プロフィールを更新", class: "btn btn-sm btn-primary"
+    :javascript
+      $('#user_image').bind('change', function() {
+        var size_in_megabytes = this.files[0].size/1024/1024;
+        if (size_in_megabytes > 2) {
+          alert('ファイルの上限は2MBまでです。容量の小さいファイルを選択してください。');
+        }
+      });

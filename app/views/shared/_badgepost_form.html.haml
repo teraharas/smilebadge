@@ -1,0 +1,73 @@
+= javascript_include_tag 'btn'
+.badgepostsform
+  = form_for(@badgepost) do |f|
+    = render 'shared/error_messages', object: f.object
+    %p.gravatar
+      - if @recept_user.image?
+        .largeimage{:style => "background-image: url(#{@recept_user.image.url});"}
+      - else
+        .largeimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
+    %p
+      %span.username>= @recept_user.name
+      さんにバッジを贈ろう！！
+    = f.hidden_field :badge_id, :value => ""
+    - kaigyouflg = false
+    .container-fluid
+      .row
+        .col-md-7
+          %section.valuebadges
+            - if @valuebadges.any?
+              %ul
+                %h3
+                  %b バリューバッジ
+                %p バリューバッジはいくつでも贈れるよ！
+                - @valuebadges.each do |badge|
+                  %li
+                    - next if badge.optionflg
+                    .badgeicon_big{:id => "id_badge_#{badge.id}"}
+                      .gravatar{:onclick => "set_badge_id(#{badge.id}, #{badge.name.to_json}, 1)"}
+                        .largebadgeimage
+                          - if badge.image?
+                            = image_tag(badge.image.url)
+                          - else
+                            = image_tag('badge_noimage.gif')
+                        .badge_checked{:id => "badge_checked_#{badge.id}"}= image_tag('check_big.png', {:size => '30x30'})
+                        %span.badge_explanation= simple_format(h(badge.explanation))
+                      %p.clear= badge.name
+          %section.optionbadges
+            - if @optionbadges.any?
+              %ul
+                %h3
+                  %b アソビバッジ
+                %p アソビバッジは1種類につき3個／月まで贈れるよ！
+                - @optionbadges.each do |badge|
+                  %li
+                    - next if !badge.optionflg
+                    .badgeicon_big{:id => "id_badge_#{badge.id}"}
+                      / バッジ送信可能数
+                      - @sentbadgecount = 0
+                      - @sentbadgecount = @badgecounthash[badge.id] if @badgecounthash.has_key?(badge.id)
+                      - @usablebadgecount = 0
+                      - @usablebadgecount = 3 - @sentbadgecount if @sentbadgecount <= 3
+                      .gravatar{:onclick => "set_badge_id(#{badge.id}, #{badge.name.to_json}, #{@usablebadgecount})"}
+                        .largebadgeimage
+                          - if badge.image?
+                            - if @usablebadgecount <= 0
+                              = image_tag('soldout.png')
+                            - else
+                              = image_tag(badge.image.url)
+                          - else
+                            = image_tag('badge_noimage.gif')
+                        .badge_checked{:id => "badge_checked_#{badge.id}"}= image_tag('check_big.png', {:size => '30x30'})
+                        %span.badge_explanation= simple_format(h(badge.explanation))
+                      %p.clear= badge.name
+                    .badgecount
+                      残り#{@usablebadgecount}回
+        %br/
+        .col-md-5
+          .field
+            %label#selected_badge_name バッジを選択してね！
+            = f.hidden_field :recept_user_id, :value => @recept_user.id
+            = f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かった書いてね！", |
+              :size => "10x6", :maxlength => "140"                                          |
+          = f.submit "バッジを贈る！！", class: "btn btn-primary"

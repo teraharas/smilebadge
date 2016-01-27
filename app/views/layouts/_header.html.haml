@@ -1,0 +1,51 @@
+%body
+  %header
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-inner
+          .navbar-header
+            %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %h1.logoheader
+              = link_to image_tag('LogoHeader.png'), root_path, class: "navbar-brand"
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            %ul.nav.navbar-nav.navbar-right
+              - unless logged_in?
+                - if !User.exists?(adminflg: true)
+                  %li= link_to "管理者", adminpage_path
+                %li= link_to "ログイン", login_path
+                %li
+                  = link_to help_path do
+                    %span.minihelp= image_tag asset_path "help.png"
+              - else
+                %li
+                  = link_to users_path do
+                    %span.minismile= image_tag asset_path "smile.png"
+                    バッジを贈る！！
+                %li= link_to "贈った", badgeposts_sending_path
+                %li= link_to "もらった", badgeposts_recepting_path
+                %li= link_to "ランキング", ranking_path
+                %li.dropdown
+                  %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                    %span.gravatar
+                      .smallimage
+                        - if current_user.image?
+                          = image_tag current_user.image.url
+                        - else
+                          = image_tag 'user_noimage.gif'
+                    = current_user.name
+                    %span.caret
+                  %ul.dropdown-menu
+                    %li= link_to "マイページ" , current_user
+                    %li= link_to "設定" , edit_user_path(current_user)
+                    %li.divider{:role => "separator"}
+                    %li
+                      = link_to help_path do
+                        %span.minihelp
+                          = image_tag asset_path "help.png"
+                          ヘルプ
+                    %li.divider{:role => "separator"}
+                    %li= link_to "ログアウト", logout_path, method: "delete"

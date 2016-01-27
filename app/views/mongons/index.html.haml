@@ -1,0 +1,14 @@
+- provide(:title, '全文言')
+%h2 文言一覧
+.row
+  .col-md-12
+    %section
+      - if @mongons.any?
+        %ol.mongons
+          - @mongons.each do |mongon|
+            %li
+              = link_to "削除", mongon, method: :delete, |
+                data: { confirm: "削除してよろしいですか？" }      |
+              %p.mongon
+                区分：#{link_to mongon.kubun, edit_mongon_path(mongon)}
+              %span.mongon= simple_format(h(mongon.content))

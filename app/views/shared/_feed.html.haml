@@ -1,0 +1,14 @@
+= javascript_include_tag 'balloon'
+- if @feedbadgeposts.any?
+  %h1 最近獲得したバッジ
+  .container-fluid
+    .row
+      - @feedbadgeposts.each do |badgepost|
+        .col-md-6
+          = render badgepost, type: "recept"
+:javascript
+  // ユーザーの画像に一言メッセージをポップアップ
+  $(".gravatarsent_recept").balloon({ position: "right", offsetX: 0, offsetY: -30, 
+                        css: { backgroundColor: '#EEFFFF', color: '#000' } });
+  $(".gravatarrecept_recept").balloon({ position: "right", offsetX: 0, offsetY: -30, 
+                        css: { backgroundColor: '#EEFFFF', color: '#000' } });

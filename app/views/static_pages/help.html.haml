@@ -1,0 +1,14 @@
+- provide(:title, 'ヘルプ')
+- if logged_in? && logged_in_adminuser?
+  = link_to "管理者メニュー", adminpage_path
+%h1 ヘルプ
+%h3 使い方ガイド
+%ol
+  %li
+    ヘッダーか、プロフィールページなどにある「
+    %span.minismile>= image_tag asset_path "smile.png"
+    バッジを贈る！！」をクリックします。
+  %li バッジを贈りたいメンバーをクリックします。
+  %li
+    相手に贈りたいバッジをクリックします。#{image_tag asset_path "check_small.png"}がついているバッジが選択されたバッジです。
+  %li 相手に贈りたいメッセージを書いて、「バッジを贈る！！」ボタンを押して完了です。

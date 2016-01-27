@@ -1,0 +1,21 @@
+- provide(:title, '部門別ランキング')
+%h1 贈ったバッジランキング（今月）
+.container-fluid
+  .row
+    .col-sm-2
+    .col-sm-10
+      - if @badgeposts.present?
+        %ul.ranking
+          - ranking_count = 1
+          - @badgeposts.each do |badgepost|
+            %li
+              %span.rank
+                = ranking_count.to_s + " 位"
+              - ranking_count += 1
+              .bumon_name= @bumonname_hash[badgepost.bumon_id] if @bumonname_hash.has_key?(badgepost.bumon_id)
+              %span.badge_count
+                = badgepost.cnt
+                個
+            %br/
+            %br/
+            %br/

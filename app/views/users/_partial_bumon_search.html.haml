@@ -1,0 +1,8 @@
+.user_initial_dropdown
+  %span.dropdown
+    %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+      部門で絞る
+      %span.caret
+    %ul.dropdown-menu
+      - @bumons.each do |bumon|
+        %li= link_to(bumon.name, :action => @index_action_name, :bumon_id => bumon.id)

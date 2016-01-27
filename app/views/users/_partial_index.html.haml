@@ -1,0 +1,86 @@
+- provide(:title, '全メンバー')
+= javascript_include_tag 'balloon'
+.userindex
+  - if adminModeFlg
+    .search
+      = form_for @form, url: users_full_index_path, method: :get do |f|
+        .searchbox{:style => "display:inline-flex"}
+          = f.text_field :searchword, placeholder: "名前、かな、アドレス", required: true
+          = f.submit '検索する', class: "btn btn-success", data: { disable_with: "検索中..."}
+    %h4.center= link_to "全ユーザーを表示", users_full_index_path
+    %h1 プロフィールを編集するメンバーを選んでね！！
+    - @index_action_name = "full_index"
+  - else
+    .search
+      = form_for @form, url: users_path, method: :get do |f|
+        .searchbox{:style => "display:inline-flex"}
+          = f.text_field :searchword, placeholder: "名前、かな、アドレス", required: true
+          = f.submit '検索する', class: "btn btn-success", data: { disable_with: "検索中..."}
+    %h4.center= link_to "全ユーザーを表示", users_path
+    %h1 バッジを贈るメンバーを選んでね！！
+    - @index_action_name = "index"
+  = render 'users/partial_bumon_search'
+  %br/
+  = render 'users/partial_initial_letter'
+  .will_paginate= will_paginate
+  %h2
+    全メンバー (#{@users.count})
+  .container-fluid
+    .row
+      %section
+        - if @users.any?
+          %ol.users
+            - @users.each do |user|
+              .col-md-6
+                %li
+                  - if adminModeFlg == true
+                    / 管理モード時
+                    %span.gravatar{:title => "#{user.message}"}
+                      - if user.image?
+                        .middleimage{:style => "background-image: url(#{user.image.url});"}
+                      - else
+                        .middleimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
+                    %span.user
+                      %b= user.name
+                    %br/
+                    %span= user.bumon.name
+                    %br/
+                    = user.activeflg ? "" : "【無効】"
+                    = user.adminflg ? "【管理者】" : ""
+                    = link_to "プロフィール編集", edit_user_path(user.id)
+                  - else
+                    / バッジ送付先選択画面時
+                    %span.gravatar{:title => "#{user.message}"}
+                      - if user.image?
+                        .middleimage{:style => "background-image: url(#{user.image.url});"}
+                          = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id)
+                      - else
+                        .middleimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
+                          = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id)
+                    %span.user
+                      = link_to new_badgepost_path(recept_user_id: user.id) do
+                        .minismile_float= image_tag asset_path "smile.png"
+                        %span.badgesendlink
+                          %b
+                            %span.username>= user.name
+                            さんにバッジを贈る！！
+                    %br/
+                    %span= user.bumon.name
+                    %br/
+                    %i.fa.fa-user.fa-fw
+                    = link_to "プロフィール", user
+                %br/
+                %br/
+  .will_paginate= will_paginate
+- if current_user.sent_badgeposts.count >= 1
+  / 過去30日間に獲得したバッジグラフ表示
+  = high_chart("radar", @graph_recept30days) if @graph_recept30days.present?
+- elsif @graph_recept30days.present?
+  .graph_blank
+    %h3 まずはバッジを1個贈ってみよう！
+    %h3 この部門がもらったバッジの
+    %h3 バランスグラフが表示されるよ！
+:javascript
+  // ユーザーの画像に一言メッセージをポップアップ
+  $(".gravatar").balloon({ position: "right", offsetX: 0, offsetY: -30, 
+                        css: { backgroundColor: '#EEFFFF', color: '#000' } });

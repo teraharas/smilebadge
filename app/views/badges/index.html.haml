@@ -1,0 +1,32 @@
+- provide(:title, 'バッジ一覧')
+%h1 バッジ一覧
+%h2
+  全バッジ (#{@badges.count})
+.container-fluid
+  .row
+    .col-md-12
+      %section
+        - if @badges.any?
+          %ol.users
+            - @badges.each do |badge|
+              %p
+              %li
+                %span= badge.outputnumber.to_s + "："
+                %span.gravatar
+                  .middlebadgeimage
+                    - if badge.image?
+                      = link_to image_tag(badge.image.url), edit_badge_path(badge)
+                    - else
+                      = link_to image_tag('badge_noimage.gif'), edit_badge_path(badge)
+                %span.user
+                  = badge.activeflg ? "" : "【無効】"
+                  = badge.optionflg ? "【アソビ】" : ""
+                  %b= link_to badge.name, edit_badge_path(badge)
+                  　レベル１：#{badge.level1_title}　　レベル２：#{badge.level2_title}
+                %br/
+                - if badge.explanation?
+                  %p= simple_format(h(badge.explanation))
+                - else
+                  %br/
+                  %br/
+              %br/
