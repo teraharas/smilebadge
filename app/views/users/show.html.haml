@@ -1,6 +1,11 @@
 .profile_show
   %p.badgesendlink
-    - unless current_user?(@user)
+    - if current_user?(@user)
+      %h3.badge_send_button_top
+        = link_to users_path do
+          %span.minismile= image_tag asset_path "smile.png"
+          バッジを贈る！！
+    - else
       %span.username
         %b
           = @user.name + "さんに"
