@@ -7,8 +7,9 @@
 /* universal */
 $back_color_gray: #FAFAFA;
 $nickname_color: #A52A2A;
-$flat_green: #59bb0c;
-$flat_green_hover: #4ea30a;
+$flat_green: #16A6B6;
+$flat_button_green: #59bb0c;
+$flat_button_green_hover: #4ea30a;
 $flat_blue: #40AAEF;
 $flat_denim: #0E7AC4;
 $flat_red: #F27398;
@@ -780,10 +781,10 @@ span.picture {
 }
 
 .abstruct_badge_send_button {
-  background-color: $flat_green;
+  background-color: $flat_button_green;
   border-radius: 3px;
   &:hover {
-    background-color: $flat_green_hover;
+    background-color: $flat_button_green_hover;
   }
   a, &:hover {
     text-decoration: none;
