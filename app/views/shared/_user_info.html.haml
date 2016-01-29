@@ -3,8 +3,8 @@
   .toppage_info
     = simple_format(h(@mongon.content.html_safe))
 .user_info
-  %h3.badge_send_button_top
-    = link_to users_path do
+  %h3
+    = link_to users_path, :class => "badge_send_button_top" do
       %span.minismile= image_tag asset_path "smile.png"
       バッジを贈る！！
   .container-fluid

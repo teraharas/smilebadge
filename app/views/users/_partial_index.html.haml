@@ -61,10 +61,9 @@
                       .badgesendlink
                         %b
                           .username>= user.name + "さんに"
-                      .badge_send_button_user_index
-                        = link_to new_badgepost_path(recept_user_id: user.id) do
-                          %span.minismile= image_tag asset_path "smile.png"
-                          バッジを贈る！！
+                      = link_to new_badgepost_path(recept_user_id: user.id), :class => "badge_send_button_user_index" do
+                        %span.minismile= image_tag asset_path "smile.png"
+                        バッジを贈る！！
                       .bumon_name
                         = user.bumon.name
                       .profile

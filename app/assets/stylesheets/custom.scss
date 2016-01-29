@@ -116,6 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   text-align: center;
+  margin-top: 50px;
 }
 
 h2 {
@@ -648,13 +649,19 @@ span.picture {
   }
   .user {
     float: left;
-    margin-top: 0;
+    margin-top: 2px;
   }
   .badgesendlink {
     margin-left: 2px;
+    margin-top: 2px;
+    margin-bottom: 8px;
   }
   .username {
     font-size: 1.2em;
+    margin-top: 2px;
+  }
+  .bumon_name {
+    margin-top: 10px;
   }
 }
 .user_initial_dropdown {
@@ -737,10 +744,12 @@ span.picture {
 
 
 .user_info {
+  padding-top: 20px;
   .minismile {
     margin-left: 15px;
   }
   .name_block {
+    margin-top: 30px;
     margin-left: 10px;
     margin-bottom: 10px;
     padding: 10px;
@@ -781,17 +790,17 @@ span.picture {
 }
 
 .abstruct_badge_send_button {
-  background-color: $flat_button_green;
+  background-color: $flat_button_green !important;
   border-radius: 3px;
+  text-decoration: none;
+  color: white;
+  text-align: center !important;
+  &:hover, &:link, &:visited, &:active {
+    text-decoration: none !important;
+    color: white !important;
+  }
   &:hover {
-    background-color: $flat_button_green_hover;
-  }
-  a, &:hover {
-    text-decoration: none;
-  }
-  a {
-    color: white;
-    text-align: center;
+    background-color: $flat_button_green_hover !important;
   }
   h3 {
     margin: 0;
@@ -800,33 +809,19 @@ span.picture {
 
 .badge_send_button_top {
   @extend .abstruct_badge_send_button;
-  width: 270px;
+  // width: 270px;
   margin: 10px;
-  padding: 10px;
+  padding: 10px 20px 10px 10px;
 }
 
 .badge_send_button_header {
   @extend .abstruct_badge_send_button;
   margin: 0 auto;
   width: 170px;
-  a {
-    color: white !important;
-  }
   @media(min-width: 768px) {
-    position: relative;
-    margin: 2px;
-    padding: 2px;
+    margin: 15px 5px 0 0;
+    padding: 5px 10px 0 10px !important;
     height: 30px;
-    margin-top: 16px;
-    margin-right: 15px;
-    li {
-      padding: 0;
-      height: 30px;
-    }
-    a {
-      padding: 2px !important;
-      height: 30px;
-    }
   }
 }
 
@@ -839,8 +834,8 @@ span.picture {
 .badge_send_button_user_index {
   @extend .abstruct_badge_send_button;
   // float: left;
-  width: 170px;
-  margin: 0 5px;
+  // width: 170px;
+  margin: 10px 5px;
   padding: 5px 10px;
 }
 

@@ -21,8 +21,8 @@
                   = link_to help_path do
                     %span.minihelp= image_tag asset_path "help.png"
               - else
-                %li.badge_send_button_header
-                  = link_to users_path do
+                %li
+                  = link_to users_path, :class => "badge_send_button_header" do
                     %span.minismile= image_tag asset_path "smile.png"
                     バッジを贈る！！
                 %li= link_to "贈った", badgeposts_sending_path
