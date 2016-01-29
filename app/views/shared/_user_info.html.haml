@@ -3,10 +3,11 @@
   .toppage_info
     = simple_format(h(@mongon.content.html_safe))
 .user_info
-  %h3
-    = link_to users_path do
-      %span.minismile= image_tag asset_path "smile.png"
-      バッジを贈る！！
+  .badge_send_button_top
+    %h3
+      = link_to users_path do
+        %span.minismile= image_tag asset_path "smile.png"
+        バッジを贈る！！
   .container-fluid
     .row
       .col-md-5

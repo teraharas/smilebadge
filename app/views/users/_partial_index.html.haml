@@ -50,27 +50,27 @@
                     = link_to "プロフィール編集", edit_user_path(user.id)
                   - else
                     / バッジ送付先選択画面時
-                    %span.gravatar{:title => "#{user.message}"}
+                    .gravatar{:title => "#{user.message}"}
                       - if user.image?
                         .middleimage{:style => "background-image: url(#{user.image.url});"}
                           = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id)
                       - else
                         .middleimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
                           = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: user.id)
-                    %span.user
-                      = link_to new_badgepost_path(recept_user_id: user.id) do
-                        .minismile_float= image_tag asset_path "smile.png"
-                        %span.badgesendlink
-                          %b
-                            %span.username>= user.name
-                            さんにバッジを贈る！！
-                    %br/
-                    %span= user.bumon.name
-                    %br/
-                    %i.fa.fa-user.fa-fw
-                    = link_to "プロフィール", user
-                %br/
-                %br/
+                    .user
+                      .badgesendlink
+                        %b
+                          .username>= user.name + "さんに"
+                      .badge_send_button_user_index
+                        = link_to new_badgepost_path(recept_user_id: user.id) do
+                          %span.minismile= image_tag asset_path "smile.png"
+                          バッジを贈る！！
+                      .bumon_name
+                        = user.bumon.name
+                      .profile
+                        %i.fa.fa-user.fa-fw
+                        = link_to "プロフィール", user
+                    .clear_both
   .will_paginate= will_paginate
 - if current_user.sent_badgeposts.count >= 1
   / 過去30日間に獲得したバッジグラフ表示

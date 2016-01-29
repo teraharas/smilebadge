@@ -7,7 +7,8 @@
 /* universal */
 $back_color_gray: #FAFAFA;
 $nickname_color: #A52A2A;
-$flat_green: #16A6B6;
+$flat_green: #59bb0c;
+$flat_green_hover: #4ea30a;
 $flat_blue: #40AAEF;
 $flat_denim: #0E7AC4;
 $flat_red: #F27398;
@@ -15,7 +16,6 @@ $flat_silver: #BFBFBF;
 $flat_gray: #7C858E;
 $badge_backcolor : #B2EBF2;
 $badge_back_white_color: #F8F8F8;
-
 
 
 // メディアサイズでの切り分け
@@ -90,6 +90,10 @@ textarea {
 
 ol {
   padding: 30px;
+}
+
+.clear_both {
+  clear: both;
 }
 
 .container-fluid {
@@ -638,6 +642,13 @@ span.picture {
 
 /* userindex */
 .userindex {
+  .gravatar {
+    float: left;
+  }
+  .user {
+    float: left;
+    margin-top: 0;
+  }
   .badgesendlink {
     margin-left: 2px;
   }
@@ -661,8 +672,6 @@ span.picture {
     }
   }
   .name_block {
-    // float: right;
-    // margin: 0 auto;
     margin: 10px;
     padding: 10px;
     max-width: 350px;
@@ -769,6 +778,71 @@ span.picture {
     max-height: 140px;
   }
 }
+
+.abstruct_badge_send_button {
+  background-color: $flat_green;
+  border-radius: 3px;
+  &:hover {
+    background-color: $flat_green_hover;
+  }
+  a, &:hover {
+    text-decoration: none;
+  }
+  a {
+    color: white;
+    text-align: center;
+  }
+  h3 {
+    margin: 0;
+  }
+}
+
+.badge_send_button_top {
+  @extend .abstruct_badge_send_button;
+  width: 270px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.badge_send_button_header {
+  @extend .abstruct_badge_send_button;
+  margin: 0 auto;
+  width: 170px;
+  a {
+    color: white !important;
+  }
+  @media(min-width: 768px) {
+    position: relative;
+    margin: 2px;
+    padding: 2px;
+    height: 30px;
+    margin-top: 16px;
+    margin-right: 15px;
+    li {
+      padding: 0;
+      height: 30px;
+    }
+    a {
+      padding: 2px !important;
+      height: 30px;
+    }
+  }
+}
+
+.badge_send_button_profile {
+  @extend .abstruct_badge_send_button;
+  margin: 0 5px;
+  padding: 5px 10px;
+}
+
+.badge_send_button_user_index {
+  @extend .abstruct_badge_send_button;
+  // float: left;
+  width: 170px;
+  margin: 0 5px;
+  padding: 5px 10px;
+}
+
 
 .graph_blank {
   margin: auto;
