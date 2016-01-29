@@ -7,7 +7,7 @@
 /* universal */
 $back_color_gray: #FAFAFA;
 $nickname_color: #A52A2A;
-$flat_green: #16A6B6;
+$flat_green: #8DCF3F;
 $flat_button_green: #8DCF3F;
 $flat_button_green_hover: #4ea30a;
 $flat_blue: #40AAEF;
@@ -639,6 +639,7 @@ span.picture {
   }
   .edit_profile {
     text-align: right;
+    margin-top: 40px;
   }
 }
 
