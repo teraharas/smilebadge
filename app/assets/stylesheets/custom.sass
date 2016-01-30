@@ -20,34 +20,25 @@ $badge_back_white_color: #F8F8F8
 
 // メディアサイズでの切り分け
 @media (max-width: 1000px)
-
 @media (max-width: 767px)
   header
     height: 5px
-
   .margin_padding_clear
     margin: 0
     padding: 0
-
   .margin_padding_mini
     margin: 5px
     padding: 5px
-
   .col-sm-2
     @extend .margin_padding_clear
-
   .col-sm-10
     @extend .margin_padding_clear
-
   .col-md-5
     @extend .margin_padding_clear
-
   .col-md-6
     @extend .margin_padding_clear
-
   .col-md-7
     @extend .margin_padding_clear
-
   .container
     @extend .margin_padding_mini
 
@@ -119,7 +110,6 @@ h2
 .checkbox
   margin-top: -10px
   margin-bottom: 10px
-
   span
     margin-left: 20px
     font-weight: normal
@@ -142,7 +132,6 @@ h2
   float: left
   width: 100%
   margin-top: 45px
-
   +box_sizing
 
 /* header
@@ -185,7 +174,6 @@ h2
   height: 20px
   overflow: hidden
   background-size: cover
-
   img
     width: 20px
     height: 20px
@@ -196,7 +184,6 @@ h2
   overflow: hidden
   border: 1px solid #ccc
   background-size: cover
-
   img
     width: 80px
     height: 80px
@@ -207,7 +194,6 @@ h2
   height: 60px
   overflow: hidden
   background-size: cover
-
   img
     width: 60px
     height: 60px
@@ -218,7 +204,6 @@ h2
   overflow: hidden
   border: 1px solid #ccc
   background-size: cover
-
   img
     width: 250px
     height: 250px
@@ -228,7 +213,6 @@ h2
   height: 90px
   overflow: hidden
   background-size: cover
-
   img
     width: 90px
     height: 90px
@@ -239,7 +223,6 @@ input, textarea, select, .uneditable-input
   border: 1px solid #bbb
   width: 100%
   margin-bottom: 15px
-
   +box_sizing
 
 input
@@ -247,14 +230,12 @@ input
 
 #error_explanation
   color: red
-
   ul
     color: red
     margin: 0 0 30px 0
 
 .field_with_errors
   @extend .has-error
-
   .form-control
     color: $state-danger-text
 
@@ -263,20 +244,16 @@ input
 aside
   section.user_info
     margin-top: 20px
-
   section
     padding: 10px 0
     margin-top: 20px
-
     &:first-child
       border: 0
       padding-top: 0
-
     span
       display: block
       margin-bottom: 3px
       line-height: 1
-
     h1
       font-size: 1.4em
       text-align: left

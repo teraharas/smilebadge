@@ -1,23 +1,18 @@
 @import custom
 
 /* badgepostsform
-
 .badgepostsform
   li
     list-style: none
     float: left
-
   .listbreak
     float: right
-
   .username
     margin-left: 10px
     font-size: 1.5em
-
   .badgeplace
     ul
       padding: 0 !important
-
     margin-top: 20px
     margin-bottom: 20px
     padding-top: 20px
@@ -25,53 +20,39 @@
     padding-left: 40px
     padding-right: 40px
     border-radius: 10px
-
     @media (max-width: 767px)
       padding: 10px
-
   .valuebadges
     @extend .badgeplace
-
     border: 2px solid $flat_blue
-
   .optionbadges
     @extend .badgeplace
-
     border: 2px solid $flat_red
-
   #selected_badge_name
     font-weight: normal
     font-size: 1.2em
-
   .badgecount
     font-size: 1.2em
-
   @media (max-width: 767px)
     li
       margin-top: 10px
-
     p
       margin: 0px
 
 /* badgeposts
-
 .badgeposts
   list-style: none
   margin-top: 20px
   margin-left: 0px
   margin-right: 0px
-
   li
     background-color: $back_color_gray
     padding-top: 10px
     border-top: 1px solid #e8e8e8
-
   span
     line-height: 180%
-
   .badgemove
     list-style: none
-
   .gravatarsent
     background-color: $badge_back_white_color
     float: left
@@ -79,13 +60,10 @@
     padding-left: 5px
     padding-bottom: 0px
     padding-right: 20px
-
   .gravatarsent_recept
     @extend .gravatarsent
-
   .gravatarsent_sent
     @extend .gravatarsent
-
   .badgeicon_mini
     background-color: $badge_back_white_color
     float: left
@@ -94,37 +72,28 @@
     padding-bottom: 8px
     padding-right: 5px
     font-size: 0.8em
-
   .badgeicon_mini img
     -webkit-animation-duration: 10s
     -webkit-animation-timing-fanction: ease-in-out
     -webkit-animation-iteration-count: infinite
     -webkit-animation-name: flash
-
   @-webkit-keyframes flash
     0%
       -webkit-transform: rotate(0deg)
-
     30%
       -webkit-transform: rotate(360deg)
-
     100%
       -webkit-transform: rotate(360deg)
-
   .triangle
     float: left
     border: 55px solid $badge_backcolor
     border-left-color: $badge_back_white_color
-
     // 	矢印マークの角度
     border-left: 20px solid $badge_back_white_color
-
   .triangle_sent
     @extend .triangle
-
   .triangle_recept
     @extend .triangle
-
   .gravatarrecept
     position: relative
     left: -55px
@@ -134,13 +103,10 @@
     padding-left: 5px
     padding-bottom: 0px
     padding-right: 5px
-
   .gravatarrecept_sent
     @extend .gravatarrecept
-
   .gravatarrecept_recept
     @extend .gravatarrecept
-
   .content
     display: block
     overflow: auto
@@ -152,21 +118,16 @@
     padding: 10px
     border-radius: 10px
     font-size: 0.9em
-
   .timestamp
     color: $gray-light
     display: block
     margin-left: 5px
-
   @media (max-width: 1000px)
-
   @media (max-width: 767px)
     .gravatarsent_sent
       display: none
-
     // 小さい画面のときは三角と送り主を消す
     .triangle_recept
       display: none
-
     .gravatarrecept_recept
       display: none
