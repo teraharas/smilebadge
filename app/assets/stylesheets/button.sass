@@ -1,0 +1,92 @@
+@import custom
+
+body
+  margin: 0px
+
+.box
+  width: 60px
+  margin: 5px
+  border: 5px solid black
+  float: left
+  font-size: 4.6em
+  font-weight: 900
+  text-align: center
+  padding: 30px 20px 30px 20px
+  color: white
+  -webkit-text-stroke: 1px black
+
+.box:hover
+  border: 5px solid gray
+
+.pt01
+  background-color: rgb(181, 181, 181)
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255, 255, 255, 0.5) 15px, rgba(255, 255, 255, 0.5) 30px)
+
+.pt02
+  background-color: #eee
+  background-image: linear-gradient(45deg, gray 25%, transparent 25%, transparent 75%, gray 75%, gray), linear-gradient(45deg, gray 25%, transparent 25%, transparent 75%, gray 75%, gray)
+  background-size: 10px 10px
+  background-position: 0 0, 5px 5px
+
+.pt03
+  background-color: rgb(181, 181, 181)
+  background-image: linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, 0.5) 50%)
+  background-size: 15px 15px
+
+.pt04
+  background-color: white
+  background-image: radial-gradient(black 15%, transparent 16%), radial-gradient(white 15%, transparent 16%)
+  background-size: 10px 10px
+  background-position: 0 0, 5px 5px
+
+.red
+  background-color: red
+
+// バッジを贈るボタン
+.abstruct_badge_send_button
+  background-color: $flat_button_green !important
+  border-radius: 3px
+  text-decoration: none
+  color: white
+  text-align: center !important
+
+  &:hover, &:link, &:visited, &:active
+    text-decoration: none !important
+    color: white !important
+
+  &:hover
+    background-color: $flat_button_green_hover !important
+
+  h3
+    margin: 0
+
+.badge_send_button_top
+  @extend .abstruct_badge_send_button
+
+  margin: 10px
+  padding: 10px 20px 10px 10px
+
+.badge_send_button_header
+  @extend .abstruct_badge_send_button
+
+  margin: 0 auto
+
+  @media (min-width: 768px)
+    margin: 15px 20px 0 0
+    padding: 5px 5px 0 5px !important
+    height: 30px
+
+  @media (max-width: 767px)
+    width: 170px
+
+.badge_send_button_profile
+  @extend .abstruct_badge_send_button
+
+  margin: 0 5px
+  padding: 5px 10px
+
+.badge_send_button_user_index
+  @extend .abstruct_badge_send_button
+
+  margin: 10px 5px
+  padding: 5px 10px

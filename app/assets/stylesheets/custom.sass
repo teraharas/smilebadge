@@ -1,0 +1,303 @@
+@import variables
+@import bootstrap-sprockets
+@import bootstrap
+@import font-awesome-sprockets
+@import font-awesome
+
+/* universal
+$back_color_gray: #FAFAFA
+$nickname_color: #A52A2A
+$flat_green: #4ea30a
+$flat_button_green: #8DCF3F
+$flat_button_green_hover: #4ea30a
+$flat_blue: #40AAEF
+$flat_denim: #0E7AC4
+$flat_red: #F27398
+$flat_silver: #BFBFBF
+$flat_gray: #7C858E
+$badge_backcolor: #B2EBF2
+$badge_back_white_color: #F8F8F8
+
+// メディアサイズでの切り分け
+@media (max-width: 1000px)
+
+@media (max-width: 767px)
+  header
+    height: 5px
+
+  .margin_padding_clear
+    margin: 0
+    padding: 0
+
+  .margin_padding_mini
+    margin: 5px
+    padding: 5px
+
+  .col-sm-2
+    @extend .margin_padding_clear
+
+  .col-sm-10
+    @extend .margin_padding_clear
+
+  .col-md-5
+    @extend .margin_padding_clear
+
+  .col-md-6
+    @extend .margin_padding_clear
+
+  .col-md-7
+    @extend .margin_padding_clear
+
+  .container
+    @extend .margin_padding_mini
+
+/* 全体
+html
+  background-color: white
+  height: 100%
+
+body
+  padding-top: 60px
+  background-color: white
+  font-family: "Open Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif
+  height: 100%
+
+.container
+  min-height: 100%
+
+// 背景画像
+.body_back_image
+  background-image: url(smile.png)
+  background-attachment: fixed
+
+// 背景画像を透過にする
+.layerTransparent
+  background-color: rgba(255, 255, 255, 0.96)
+
+section
+  overflow: auto
+
+textarea
+  resize: vertical
+
+ol
+  padding: 30px
+
+.clear_both
+  clear: both
+
+.container-fluid
+  padding: 5
+
+.center
+  text-align: center
+
+.center *
+  margin: 0 auto
+
+/* typography
+
+h1, h2, h3, h4, h5, h6
+  line-height: 1
+
+h1
+  text-align: center
+  margin-top: 50px
+
+h2
+  text-align: center
+
+/* fontawesome
+.fa-user
+  color: $flat_denim
+
+.fa-cog
+  color: $flat_gray
+
+/* forms
+
+.checkbox
+  margin-top: -10px
+  margin-bottom: 10px
+
+  span
+    margin-left: 20px
+    font-weight: normal
+
+#session_remember_me
+  width: auto
+  margin-left: 0
+
+/* mixins, variables, etc.
+
+=box_sizing
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+/* miscellaneous
+
+.debug_dump
+  clear: both
+  float: left
+  width: 100%
+  margin-top: 45px
+
+  +box_sizing
+
+/* header
+.minismile
+  img
+    width: 20px
+    height: 20px
+
+.minismile_float
+  @extend .minismile
+
+  float: left
+
+.minihelp
+  img
+    width: 20px
+    height: 20px
+    margin-right: 5px
+
+#logo
+  img
+    max-width: 100%
+    height: auto
+
+#logo:hover
+  color: #fff
+  text-decoration: none
+
+.logoheader
+  img
+    width: auto
+    height: 35px
+
+.toppage
+  background-color: white
+
+// Image
+.smallimage
+  width: 20px
+  height: 20px
+  overflow: hidden
+  background-size: cover
+
+  img
+    width: 20px
+    height: 20px
+
+.middleimage
+  width: 80px
+  height: 80px
+  overflow: hidden
+  border: 1px solid #ccc
+  background-size: cover
+
+  img
+    width: 80px
+    height: 80px
+
+.middlebadgeimage
+  margin-top: 17px
+  width: 60px
+  height: 60px
+  overflow: hidden
+  background-size: cover
+
+  img
+    width: 60px
+    height: 60px
+
+.largeimage
+  width: 250px
+  height: 250px
+  overflow: hidden
+  border: 1px solid #ccc
+  background-size: cover
+
+  img
+    width: 250px
+    height: 250px
+
+.largebadgeimage
+  width: 90px
+  height: 90px
+  overflow: hidden
+  background-size: cover
+
+  img
+    width: 90px
+    height: 90px
+
+/* forms
+
+input, textarea, select, .uneditable-input
+  border: 1px solid #bbb
+  width: 100%
+  margin-bottom: 15px
+
+  +box_sizing
+
+input
+  height: auto !important
+
+#error_explanation
+  color: red
+
+  ul
+    color: red
+    margin: 0 0 30px 0
+
+.field_with_errors
+  @extend .has-error
+
+  .form-control
+    color: $state-danger-text
+
+/* sidebar
+
+aside
+  section.user_info
+    margin-top: 20px
+
+  section
+    padding: 10px 0
+    margin-top: 20px
+
+    &:first-child
+      border: 0
+      padding-top: 0
+
+    span
+      display: block
+      margin-bottom: 3px
+      line-height: 1
+
+    h1
+      font-size: 1.4em
+      text-align: left
+      letter-spacing: -1px
+      margin-bottom: 3px
+      margin-top: 0px
+
+.gravatar
+  float: left
+  margin-right: 10px
+
+.gravatar_edit
+  margin-top: 15px
+
+aside
+  textarea
+    height: 100px
+    margin-bottom: 5px
+
+span.picture
+  margin-top: 10px
+
+  input
+    border: 0

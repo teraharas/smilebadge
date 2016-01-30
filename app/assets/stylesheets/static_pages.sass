@@ -1,0 +1,60 @@
+@import custom
+
+.ranking
+  list-style: none
+  font-size: 1.5em
+  margin: 0
+  padding: 0
+
+  li
+    .abstruct_block
+      margin: 5px
+      padding: 5px
+      background: white
+      border-radius: 10px
+      float: left
+
+      @media (max-width: 767px)
+        margin: 5px
+        padding: 5px
+
+    .rank
+      @extend .abstruct_block
+
+    .bumon_name
+      @extend .abstruct_block
+
+      width: 230px
+      border: 2px solid $flat_blue
+
+      @media (max-width: 767px)
+        width: 150px
+
+    .badge_count
+      @extend .abstruct_block
+
+      border: 2px solid $flat_red
+      text-align: right
+
+  @media (max-width: 767px)
+    margin: 2px
+    padding: 2px
+    font-size: 1.0em
+
+.toppage_info
+  margin: 0 auto
+  padding: 10px
+  max-width: 940px
+  background: white
+  border: 2px solid $flat_blue
+  border-radius: 10px
+  text-align: center
+  font-size: 1.2em
+
+  @media (max-width: 767px)
+    h1, h2, h3, h4, h5, h6
+      font-size: 1.2em
+
+    font-size: 0.8em
+    overflow: auto
+    max-height: 140px
