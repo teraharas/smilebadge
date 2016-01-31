@@ -1,5 +1,5 @@
 class BadgepostsController < ApplicationController
-  before_action :logged_in_user, only: [:create]
+  before_action :logged_in_user
 
   def recepting
     @badgeposts = Badgepost.paginate(page: params[:page]).where(recept_user_id: current_user.id).order(created_at: :desc)
