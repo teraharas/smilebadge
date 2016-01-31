@@ -1,18 +1,5 @@
 .profile_show
-  %p.badgesendlink
-    - if current_user?(@user)
-      %h3
-        = link_to users_path, :class => "badge_send_button_top" do
-          %span.minismile= image_tag asset_path "smile.png"
-          バッジを贈る！！
-    - else
-      %span.username
-        %b= @user.name
-        さんに
-      = link_to new_badgepost_path(recept_user_id: @user.id), :class => "badge_send_button_profile" do
-        %span.minismile
-          = image_tag asset_path "smile.png"
-          バッジを贈る！！
+  = render 'users/badge_send_link', user: @user
   .users
     - if current_user?(@user) || logged_in_adminuser?
       / 自分自身か、管理者ユーザーは編集OK
@@ -74,3 +61,4 @@
       %h3 まずはバッジを1個贈ってみよう！
       %h3 やり取りしたバッジのバランスグラフ
       %h3 が表示されるよ！
+  = render 'users/badge_send_link', user: @user
