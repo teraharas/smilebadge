@@ -48,5 +48,7 @@
                         %span.minihelp
                           = image_tag asset_path "help.png"
                           ヘルプ
+                          - if logged_in? && logged_in_adminuser?
+                            = "・管理"
                     %li.divider{:role => "separator"}
                     %li= link_to "ログアウト", logout_path, method: "delete"
