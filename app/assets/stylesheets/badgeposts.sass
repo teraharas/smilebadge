@@ -40,18 +40,26 @@
   margin-top: 20px
   margin-left: 0
   margin-right: 0
+  .col-sm-12
+    padding-right: 0
+  .container-fluid
+    padding-left: 0
+    padding-right: 0
   li
     background-color: $back_color_gray
     padding-top: 10px
     border-top: 1px solid #e8e8e8
+    list-style: none
   span
     line-height: 180%
-  .badgemove
-    list-style: none
+  .username
+    font-size: 0.8em
+  // .badgemove
+    // list-style: none
   .gravatarsent
     background-color: $badge_back_white_color
     float: left
-    padding: 5px 20px 0 5px
+    padding: 5px 14px 0 5px
   .gravatarsent_recept
     @extend .gravatarsent
   .gravatarsent_sent
@@ -59,7 +67,7 @@
   .badgeicon_mini
     background-color: $badge_back_white_color
     float: left
-    padding: 5px 5px 8px
+    padding: 5px 0 8px
     font-size: 0.8em
   .badgeicon_mini img
     -webkit-animation-duration: 10s
@@ -109,7 +117,7 @@
     display: block
     margin-left: 5px
   @media (max-width: 1000px)
-  @media (max-width: 461px)
+  @media (max-width: 374px)
     .gravatarsent_sent
       display: none
     // 小さい画面のときは三角と送り主を消す
