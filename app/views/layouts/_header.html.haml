@@ -17,10 +17,14 @@
               - unless logged_in?
                 - if !User.exists?(adminflg: true)
                   %li= link_to "管理者", adminpage_path
-                %li= link_to "ログイン", login_path
+                %li
+                  = link_to login_path do
+                    %i.fa.fa-sign-in
+                    ログイン
                 %li
                   = link_to help_path do
-                    %span.minihelp= image_tag asset_path "help.png"
+                    %i.fa.fa-question-circle
+                    ヘルプ
               - else
                 %li
                   = link_to users_path, :class => "badge_send_button_header" do
