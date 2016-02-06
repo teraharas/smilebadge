@@ -26,9 +26,19 @@
                   = link_to users_path, :class => "badge_send_button_header" do
                     %span.minismile= image_tag asset_path "smile.png"
                     バッジを贈る！！
-                %li= link_to "贈った", badgeposts_sending_path
-                %li= link_to "もらった", badgeposts_recepting_path
-                %li= link_to "ランキング", ranking_path
+                %li
+                  = link_to badgeposts_sending_path do
+                    %i.fa.fa-paper-plane-o
+                    贈った
+                %li
+                  = link_to badgeposts_recepting_path do
+                    %i.fa.fa-gift
+                    もらった
+                %li
+                  = link_to ranking_path do
+                    %i.fa.fa-list-ol
+                    .visible_mini_device
+                      ランキング
                 %li.dropdown
                   %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
                     %span.gravatar
@@ -40,8 +50,14 @@
                     = current_user.name
                     %span.caret
                   %ul.dropdown-menu
-                    %li= link_to "マイページ" , current_user
-                    %li= link_to "設定" , edit_user_path(current_user)
+                    %li
+                      = link_to current_user do
+                        %i.fa.fa-user.fa-fw
+                        マイページ
+                    %li
+                      = link_to edit_user_path(current_user) do
+                        %i.fa.fa-cog.fa-fw
+                        設定
                     %li.divider{:role => "separator"}
                     %li
                       = link_to help_path do
@@ -51,4 +67,7 @@
                           - if logged_in? && logged_in_adminuser?
                             = "・管理"
                     %li.divider{:role => "separator"}
-                    %li= link_to "ログアウト", logout_path, method: "delete"
+                    %li
+                      = link_to logout_path, method: "delete" do
+                        %i.fa.fa-sign-out
+                        ログアウト

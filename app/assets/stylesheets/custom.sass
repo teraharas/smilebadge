@@ -20,6 +20,8 @@ $badge_backcolor: #B2EBF2
 $badge_back_white_color: #F8F8F8
 
 // メディアサイズでの切り分け
+.visible_mini_device
+  display: none
 @media (max-width: 1000px)
 @media (max-width: 767px)
   header
@@ -28,8 +30,8 @@ $badge_back_white_color: #F8F8F8
     margin: 0
     padding: 0
   .margin_padding_mini
-    margin: 5px
-    padding: 5px
+    margin: 5px 8px 5px
+    padding: 5px 8px 5px
   .col-sm-2
     @extend .margin_padding_clear
   .col-sm-10
@@ -42,6 +44,16 @@ $badge_back_white_color: #F8F8F8
     @extend .margin_padding_clear
   .container
     @extend .margin_padding_mini
+  .center_mini_device
+    text-align: center
+  .visible_mini_device
+    display: inline
+  .br_mini_device
+    content: "\A"
+@media (min-width: 767px)
+  .br_mini_device
+    br
+      display: none
 
 /* 全体
 html
@@ -100,11 +112,21 @@ h2
   text-align: center
 
 /* fontawesome
+.fa-paper-plane-o
+  color: $flat_green
+
+.fa-gift
+  color: $flat_red
+
+.fa-list-ol
+  color: $flat_green
+
 .fa-user
   color: $flat_denim
 
 .fa-cog
   color: $flat_gray
+
 
 /* forms
 
