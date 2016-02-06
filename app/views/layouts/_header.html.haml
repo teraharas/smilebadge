@@ -61,11 +61,10 @@
                     %li.divider{:role => "separator"}
                     %li
                       = link_to help_path do
-                        %span.minihelp
-                          = image_tag asset_path "help.png"
-                          ヘルプ
-                          - if logged_in? && logged_in_adminuser?
-                            = "・管理"
+                        %i.fa.fa-question-circle
+                        ヘルプ
+                        - if logged_in? && logged_in_adminuser?
+                          = "・管理"
                     %li.divider{:role => "separator"}
                     %li
                       = link_to logout_path, method: "delete" do
