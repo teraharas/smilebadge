@@ -4,9 +4,9 @@
     = render 'shared/error_messages', object: f.object
     %p.gravatar
       - if @recept_user.image?
-        .largeimage{:style => "background-image: url(#{@recept_user.image.url});"}
+        .middleimage{:style => "background-image: url(#{@recept_user.image.url});"}
       - else
-        .largeimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
+        .middleimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
     %p
       %span.username>= @recept_user.name
       さんにバッジを贈ろう！！
