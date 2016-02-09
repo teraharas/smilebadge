@@ -1,0 +1,148 @@
+@import custom
+
+/**
+ * $Variables 
+ *
+$color-bg: #cff09e !default
+$color-btn: #fe4365 !default
+$color-btn-active: #4ecdc4 !default
+
+/**
+ * $Mixins 
+ *
+=fontsize($size: 24, $base: 16)
+  font-size: $size + px
+  font-size: $size / $base * 1rem
+
+/* http://www.sitepoint.com/sass-mixins-kickstart-project/
+
+=transition-timing-function($timing)
+  -webkit-transition-timing-function: $timing
+  -moz-transition-timing-function: $timing
+  -o-transition-timing-function: $timing
+  transition-timing-function: $timing
+
+=animation($animation)
+  -webkit-animation: $animation
+  -moz-animation: $animation
+  -o-animation: $animation
+  animation: $animation
+
+=transition-duration($duration)
+  -webkit-transition-duration: $duration
+  -moz-transition-duration: $duration
+  -o-transition-duration: $duration
+  transition-duration: $duration
+
+/* $Buttom
+a.abstruct_badge_send_button
+  display: inline-block
+  background-color: $flat_button_green !important
+  border-radius: 3px
+  text-decoration: none
+  color: white
+  text-align: center !important
+  &:hover, &:link, &:visited, &:active
+    text-decoration: none !important
+    color: white !important
+  &:hover
+    background-color: $flat_button_green_hover !important
+  h3
+    margin: 0
+  -webkit-transition: -webkit-box-shadow .3s
+  transition: box-shadow .3s
+  &:hover, &:focus
+    box-shadow: 0 0 0 2px $color-bg, 0 0 0 4px darken($flat_button_green, 5%)
+    +transition-timing-function(cubic-bezier(0.6, 4, 0.3, 0.8))
+    +animation(gelatine 0.5s 1)
+
+a.abstruct_badge_send_button:active
+  background: $color-btn-active
+    +transition-duration(0)
+    box-shadow: 0 0 0 2px $color-bg, 0 0 0 4px darken($color-btn-active, 5%)
+
+/**
+ * $keyframes \ gelatine 
+ *
+@keyframes gelatine
+  from,to
+    -webkit-transform: scale(1, 1)
+    transform: scale(1, 1)
+  25%
+    -webkit-transform: scale(0.9, 1.1)
+    transform: scale(0.9, 1.1)
+  50%
+    -webkit-transform: scale(1.1, 0.9)
+    transform: scale(1.1, 0.9)
+  75%
+    -webkit-transform: scale(0.95, 1.05)
+    transform: scale(0.95, 1.05)
+  from,to
+    -webkit-transform: scale(1, 1)
+    transform: scale(1, 1)
+  25%
+    -webkit-transform: scale(0.9, 1.1)
+    transform: scale(0.9, 1.1)
+  50%
+    -webkit-transform: scale(1.1, 0.9)
+    transform: scale(1.1, 0.9)
+  75%
+    -webkit-transform: scale(0.95, 1.05)
+    transform: scale(0.95, 1.05)
+
+
+@-webkit-keyframes gelatine
+  from,to
+    -webkit-transform: scale(1, 1)
+    transform: scale(1, 1)
+  25%
+    -webkit-transform: scale(0.9, 1.1)
+    transform: scale(0.9, 1.1)
+  50%
+    -webkit-transform: scale(1.1, 0.9)
+    transform: scale(1.1, 0.9)
+  75%
+    -webkit-transform: scale(0.95, 1.05)
+    transform: scale(0.95, 1.05)
+  from,to
+    -webkit-transform: scale(1, 1)
+    transform: scale(1, 1)
+  25%
+    -webkit-transform: scale(0.9, 1.1)
+    transform: scale(0.9, 1.1)
+  50%
+    -webkit-transform: scale(1.1, 0.9)
+    transform: scale(1.1, 0.9)
+  75%
+    -webkit-transform: scale(0.95, 1.05)
+    transform: scale(0.95, 1.05)
+
+
+
+.badge_send_button_top
+  @extend .abstruct_badge_send_button
+  margin: 10px 10px 10px 18px
+  padding: 10px 20px 10px 10px
+  width: 270px
+  @media (max-width: 767px)
+    margin-left: 10px
+
+.badge_send_button_header
+  @extend .abstruct_badge_send_button
+  margin: 0 auto
+  @media (min-width: 768px)
+    margin: 15px 20px 0 0
+    padding: 5px 5px 0 !important
+    height: 30px
+  @media (max-width: 767px)
+    width: 170px
+
+.badge_send_button_profile
+  @extend .abstruct_badge_send_button
+  margin: 0 5px
+  padding: 5px 10px
+
+.badge_send_button_user_index
+  @extend .abstruct_badge_send_button
+  margin: 5px 5px
+  padding: 5px 10px
