@@ -7,11 +7,11 @@
       = f.label "部門名"
       = f.collection_select(:bumon_id, Bumon.where(activeflg: true).order(:outputnumber), :id, :name, {:class => "form-control"})
       = f.label "氏名"
-      = f.text_field :name, class: 'form-control'
+      = f.text_field :name, :placeholder => "姓名の間は半角スペースを空けてください", class: 'form-control'
       = f.label "ふりがな"
-      = f.text_field :kananame, class: 'form-control'
+      = f.text_field :kananame, :placeholder => "スペースを空けず連続して入力してください", class: 'form-control'
       = f.label "メールアドレス"
-      = f.email_field :email, class: 'form-control'
+      = f.email_field :email, :placeholder => "...@" + ENV["EMAIL_DOMAIN"], class: 'form-control'
       = f.label "パスワード：8文字以上"
       = f.password_field :password, class: 'form-control'
       = f.label :password_confirmation, "パスワード（確認）：8文字以上"
