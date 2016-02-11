@@ -20,7 +20,7 @@
           = form_for(:session, url: login_path) do |f|
             %h2 ログインする
             = f.label "メールアドレス"
-            = f.email_field :email, class: 'form-control'
+            = f.email_field :email, :placeholder => "...@" + ENV["EMAIL_DOMAIN"], class: 'form-control'
             = f.label "パスワード"
             = f.password_field :password, class: 'form-control'
             = f.label :remember_me, class: "checkbox inline" do
