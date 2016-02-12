@@ -26,14 +26,15 @@
                     .badgeicon_big{:id => "id_badge_#{badge.id}"}
                       .slideRight
                         .gravatar{:onclick => "set_badge_id(#{badge.id}, #{badge.name.to_json})"}
-                          .largebadgeimage
-                            - if badge.image?
-                              = image_tag(badge.image.url)
-                            - else
-                              = image_tag('badge_noimage.gif')
+                          .largebadgeimage{:id => "id_badgelargeimage_#{badge.id}"}
+                            .largebadgeimage_spin
+                              - if badge.image?
+                                = image_tag(badge.image.url)
+                              - else
+                                = image_tag('badge_noimage.gif')
                           .badge_checked{:id => "badge_checked_#{badge.id}"}= image_tag('check_big.png', {:size => '30x30'})
                           %span.badge_explanation= simple_format(h(badge.explanation))
-                      %p.clear= badge.name
+                      %p.clear_both= badge.name
           %section.optionbadges
             - if @optionbadges.any?
               %ul
@@ -45,14 +46,15 @@
                     .badgeicon_big{:id => "id_badge_#{badge.id}"}
                       .slideRight
                         .gravatar{:onclick => "set_badge_id(#{badge.id}, #{badge.name.to_json})"}
-                          .largebadgeimage
-                            - if badge.image?
-                              = image_tag(badge.image.url)
-                            - else
-                              = image_tag('badge_noimage.gif')
+                          .largebadgeimage{:id => "id_badgelargeimage_#{badge.id}"}
+                            .largebadgeimage_spin
+                              - if badge.image?
+                                = image_tag(badge.image.url)
+                              - else
+                                = image_tag('badge_noimage.gif')
                           .badge_checked{:id => "badge_checked_#{badge.id}"}= image_tag('check_big.png', {:size => '30x30'})
                           %span.badge_explanation= simple_format(h(badge.explanation))
-                      %p.clear= badge.name
+                      %p.clear_both= badge.name
         %br/
         .col-md-5
           .field

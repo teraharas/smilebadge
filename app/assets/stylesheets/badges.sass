@@ -7,23 +7,17 @@
   height: auto
   position: relative
   overflow: hidden
-  .clear
-    clear: both
-  .badge_checked
-    display: none
-    position: absolute
-    top: 60px
-    right: 1px
-  .badgeicon_big:target .badge_checked
-    display: none
-    pointer-events: none
   @media (max-width: 767px)
     margin: 5px
+.badge_checked
+  display: none
+  position: absolute
+  top: 60px
+  right: 1px
 
-.badgeicon_big img
-  -webkit-animation-duration: 10s
+.largebadgeimage_spin
+  -webkit-animation-duration: 4s
   -webkit-animation-timing-fanction: ease-in-out
-  -webkit-animation-iteration-count: infinite
   -webkit-animation-name: flash
 
 @-webkit-keyframes flash
@@ -50,3 +44,29 @@
 
 .badgeicon_big:hover .badge_explanation
   opacity: 1
+
+
+// バッジの小刻みな回転アクションの追加
+@keyframes shake
+  0%
+    transform: rotate(0deg)
+  0.5%
+    transform: rotate(45deg)
+  1%
+    transform: rotate(0deg)
+  1.5%
+    transform: rotate(-45deg)
+  2%
+    transform: rotate(0deg)
+  2.5%
+    transform: rotate(45deg)
+  3%
+    transform: rotate(0deg)
+  3.5%
+    transform: rotate(-45deg)
+  4%
+    transform: rotate(0deg)
+  4.5%
+    transform: rotate(45deg)
+  5%
+    transform: rotate(0deg)

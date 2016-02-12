@@ -1,4 +1,5 @@
 @import custom
+@import badges
 
 /* badgepostsform
 .badgepostsform
@@ -68,17 +69,9 @@
     padding: 5px 0 8px
     font-size: 0.8em
   .badgeicon_mini img
-    -webkit-animation-duration: 10s
-    -webkit-animation-timing-fanction: ease-in-out
+    -webkit-animation: shake 0.5s infinite linear
     -webkit-animation-iteration-count: infinite
-    -webkit-animation-name: flash
-  @-webkit-keyframes flash
-    0%
-      -webkit-transform: rotate(0deg)
-    30%
-      -webkit-transform: rotate(360deg)
-    100%
-      -webkit-transform: rotate(360deg)
+    -webkit-animation-duration: 10s
   .triangle
     float: left
     border: 55px solid $badge_backcolor
