@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get 'badgeposts/recepting'
   get 'badgeposts/sending'
+  get 'badgeposts/sending_all'
   get 'users/full_index'
 
   resources :users

@@ -1,0 +1,4 @@
+%h1 贈ったバッジ
+%h2
+  みんなが贈ったバッジは (#{@badgeposts.count}) 個です。
+= render 'badgeposts/index' , badgeposts: @badgeposts, type: "sent"

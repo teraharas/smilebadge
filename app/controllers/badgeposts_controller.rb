@@ -9,6 +9,10 @@ class BadgepostsController < ApplicationController
     @badgeposts = Badgepost.paginate(page: params[:page]).where(sent_user_id: current_user.id).order(created_at: :desc)
   end
   
+  def sending_all
+    @badgeposts = Badgepost.paginate(page: params[:page]).order(created_at: :desc)
+  end
+  
   def new
     @badgepost = Badgepost.new
     @recept_user = User.find(params[:recept_user_id])
