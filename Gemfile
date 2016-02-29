@@ -50,6 +50,8 @@ end
 
 # .ENV対応
 gem 'dotenv-rails'
+# Googleアナリティクス
+gem 'google-analytics-rails'
 
 # かみなり
 gem 'kaminari'
