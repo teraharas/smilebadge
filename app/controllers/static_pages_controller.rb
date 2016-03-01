@@ -18,9 +18,13 @@ class StaticPagesController < ApplicationController
     join_condition = userjoin.join(badgepostjoin, Arel::Nodes::OuterJoin)
                 .on(userjoin[:id].eq(badgepostjoin[:sent_user_id])).join_sources
     
+    # ランキング表示、3月だけタイムゾーンおかしいので絞りこまずに対応
+    # @badgeposts = User.joins(join_condition).group(:bumon_id)
+    #           .select(userjoin[:bumon_id], userjoin[:bumon_id].count.as('cnt'))
+    #                 .where(badgepostjoin[:created_at].gteq Time.now.beginning_of_month)
+    #                 .order('cnt DESC').order(:bumon_id)
     @badgeposts = User.joins(join_condition).group(:bumon_id)
               .select(userjoin[:bumon_id], userjoin[:bumon_id].count.as('cnt'))
-                    .where(badgepostjoin[:created_at].gteq Time.now.beginning_of_month)
                     .order('cnt DESC').order(:bumon_id)
     # 辞書用に部門情報を取得
     bumons = Bumon.where(activeflg: true)
