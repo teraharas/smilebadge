@@ -4,8 +4,13 @@ class StaticPagesController < ApplicationController
   
   def home
     if logged_in?
+      redirect_to :action => "login_top"
+    end
+  end
+  
+  def login_top
+    if logged_in?
       @feedbadgeposts = Badgepost.limit(10).where(recept_user_id: current_user.id).where("created_at > ?", 30.days.ago).order(created_at: :desc)
-      
       # 30日間に獲得したバッジのグラフ
       @feedgraph_recept30days = get_graph(current_user.id, "", "30DAYS_RECEPT")
     end
