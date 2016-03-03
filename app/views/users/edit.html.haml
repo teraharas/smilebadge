@@ -48,15 +48,15 @@
       %p= @user.bumon.name
       %p= f.label "メールアドレス"
       %p= @user.email
-    = f.label "ニックネーム"
+    = f.label "ニックネーム（15字以内）"
     = f.text_field :nickname
-    = f.label "一言メッセージ"
+    = f.label "一言メッセージ（20字以内）"
     = f.text_field :message
-    = f.label "こんな仕事をしています"
+    = f.label "こんな仕事をしています（255字以内）"
     = f.text_area :myjob, :size => "10x8"
-    = f.label "好きな言葉・座右の銘・マイルール"
+    = f.label "好きな言葉・座右の銘・マイルール（255字以内）"
     = f.text_area :myword, :size => "10x8"
-    = f.label "趣味"
+    = f.label "趣味（255字以内）"
     = f.text_area :hobby, :size => "10x8"
     = f.label "パスワード：8文字以上（変更する場合は入力してください）"
     = f.password_field :password, class: 'form-control'
