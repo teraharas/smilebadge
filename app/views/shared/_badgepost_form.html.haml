@@ -58,6 +58,7 @@
         %br/
         .col-md-5
           .field
+            .recept_user_name #{@recept_user.name}さん宛
             %label#selected_badge_name バッジを選択してね！
             = f.hidden_field :recept_user_id, :value => @recept_user.id
             = f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かったかを書いてね！", |
