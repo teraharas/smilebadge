@@ -59,6 +59,13 @@ class StaticPagesController < ApplicationController
       
       # 辞書用にバッジ情報を取得
       badges = Badge.where(activeflg: true)
+      badges.each do |badge|
+        if badge.optionflg
+          badge.name = "【2】" + badge.outputnumber.to_s + "." + badge.name
+        else
+          badge.name = "【1】" + badge.outputnumber.to_s + "." + badge.name
+        end
+      end
       @badgename_hash = get_name_hash(badges)
       
       # 辞書用に部門情報を取得
