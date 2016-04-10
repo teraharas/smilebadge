@@ -63,4 +63,4 @@
             = f.hidden_field :recept_user_id, :value => @recept_user.id
             = f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かったかを書いてね！", |
               :size => "10x6", :maxlength => "140", required: true |
-          = f.submit "バッジを贈る！！", class: "btn btn-primary"
+          = f.submit "バッジを贈る！！", class: "btn btn-primary", data: { disable_with: "バッジを送信中..."}
