@@ -15,7 +15,7 @@
     %br/
     = f.label :image
     %br/
-    = f.file_field :image, accept: 'image/jpeg,image/gif,image/png'
+    = f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control'
     = f.hidden_field :image_cache
   .field
     - if @user.persisted? && @user.image?
@@ -31,13 +31,13 @@
       = f.label "管理者フラグ"
       = f.check_box 'adminflg'
       = f.label "氏名"
-      = f.text_field :name, required: true
+      = f.text_field :name, required: true, class: 'form-control'
       = f.label "ふりがな"
-      = f.text_field :kananame, required: true
+      = f.text_field :kananame, required: true, class: 'form-control'
       = f.label "部門名"
       = f.collection_select(:bumon_id, Bumon.all.order(:outputnumber), :id, :name)
       = f.label "メールアドレス"
-      = f.email_field :email
+      = f.email_field :email, class: 'form-control'
     - else
       / 通常ユーザーなら
       %p= f.label "氏名"
@@ -49,15 +49,15 @@
       %p= f.label "メールアドレス"
       %p= @user.email
     = f.label "ニックネーム（15字以内）"
-    = f.text_field :nickname
+    = f.text_field :nickname, class: 'form-control'
     = f.label "一言メッセージ（20字以内）"
-    = f.text_field :message
+    = f.text_field :message, class: 'form-control'
     = f.label "こんな仕事をしています（255字以内）"
-    = f.text_area :myjob, :size => "10x8"
+    = f.text_area :myjob, :size => "10x8", class: 'form-control'
     = f.label "好きな言葉・座右の銘・マイルール（255字以内）"
-    = f.text_area :myword, :size => "10x8"
+    = f.text_area :myword, :size => "10x8", class: 'form-control'
     = f.label "趣味（255字以内）"
-    = f.text_area :hobby, :size => "10x8"
+    = f.text_area :hobby, :size => "10x8", class: 'form-control'
     = f.label "パスワード：8文字以上（変更する場合は入力してください）"
     = f.password_field :password, class: 'form-control'
     = f.label :password_confirmation, "パスワード（確認）：8文字以上"

@@ -61,6 +61,6 @@
             .recept_user_name #{@recept_user.name}さん宛
             %label#selected_badge_name バッジを選択してね！
             = f.hidden_field :recept_user_id, :value => @recept_user.id
-            = f.text_area :content, placeholder: @recept_user.name + "さんのどんなところが良かったかを書いてね！", |
+            = f.text_area :content, class: 'form-control', placeholder: @recept_user.name + "さんのどんなところが良かったかを書いてね！", |
               :size => "10x6", :maxlength => "140", required: true |
           = f.submit "バッジを贈る！！", class: "btn btn-primary", data: { disable_with: "バッジを送信中..."}
