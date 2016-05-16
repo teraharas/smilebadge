@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   get    'help'   => 'static_pages#help'
   get    'ranking' => 'static_pages#ranking'
   get    'summary' => 'static_pages#summary'
-  get    'summary_value' => 'static_pages#summary_value'
-  get    'summary_asobi' => 'static_pages#summary_asobi'
+  get    'summary_recept_badge_user' => 'static_pages#summary_recept_badge_user'
   get    'summary_value_send' => 'static_pages#summary_value_send'
   get    'summary_value_bumon_send' => 'static_pages#summary_value_bumon_send'
 

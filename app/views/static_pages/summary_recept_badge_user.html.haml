@@ -1,7 +1,7 @@
-- provide(:title, 'バリューバッジ集計')
+- provide(:title, '（受信）バッジ別ユーザー別集計')
 .summary
-  %h2 もらったバリューバッジ集計
-  = form_for @form, url: summary_value_path, method: :get do |f|
+  %h2 （受信）バッジ別ユーザー別集計
+  = form_for @form, url: summary_recept_badge_user_path, method: :get do |f|
     %div{:style => "display:inline-flex"}
       = f.date_select :summary_start_date
       ～

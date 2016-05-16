@@ -65,7 +65,7 @@ class StaticPagesController < ApplicationController
     end
   end
   
-  def summary_value
+  def summary_recept_badge_user
     if params[:summary_form] == nil
       # 検索未入力時（初回表示時）
       @form = SummaryForm.new
