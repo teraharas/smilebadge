@@ -126,6 +126,7 @@ class StaticPagesController < ApplicationController
                 .select(userjoin[:bumon_id], userjoin[:bumon_id].count.as('count'))
                       .where(badgepostjoin[:created_at].gteq @form.summary_start_date)
                       .where(badgepostjoin[:created_at].lteq @form.summary_end_date)
+                      .where(badgepostjoin[:badge_id].in(value_badge_ids.map{|badge| badge.id }))
                       .order('count DESC').order(:bumon_id)
     end
   end
