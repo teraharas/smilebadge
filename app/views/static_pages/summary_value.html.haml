@@ -15,9 +15,9 @@
         %th
           %font{:color => "white"} バッジ名
         %th
-          %font{:color => "white"} ユーザー名
-        %th
           %font{:color => "white"} 部門名
+        %th
+          %font{:color => "white"} ユーザー名
         %th
           %font{:color => "white"} バッジ数
       - @receptbadgeposts.each do |receptbadgepost|
@@ -30,12 +30,12 @@
           - if user_info.nil?
             %td
           - else
+            %td= @bumonname_hash.has_key?(user_info.bumon_id)? @bumonname_hash[user_info.bumon_id] : ""
+          - if user_info.nil?
+            %td
+          - else
             %td
               - unless user_info.activeflg?
                 【無効】
               = user_info.name
-          - if user_info.nil?
-            %td
-          - else
-            %td= @bumonname_hash.has_key?(user_info.bumon_id)? @bumonname_hash[user_info.bumon_id] : ""
           %td= receptbadgepost.count
