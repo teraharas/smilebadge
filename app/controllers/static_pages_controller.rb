@@ -38,35 +38,9 @@ class StaticPagesController < ApplicationController
       # 検索未入力時（初回表示時）
       @form = SummaryForm.new
     else
-      # 検索欄入力時
-      summary_start_date = Time.zone.local(params[:summary_form]["summary_start_date(1i)"].to_i,
-                            params[:summary_form]["summary_start_date(2i)"].to_i,
-                            params[:summary_form]["summary_start_date(3i)"].to_i, 0, 0)
-      summary_end_date = Time.zone.local(params[:summary_form]["summary_end_date(1i)"].to_i,
-                            params[:summary_form]["summary_end_date(2i)"].to_i,
-                            params[:summary_form]["summary_end_date(3i)"].to_i, 23, 59)
-      @form = SummaryForm.new
-      @form.summary_start_date = summary_start_date
-      @form.summary_end_date = summary_end_date
+      set_search_form_params
       
-      # まず、ユーザーをすべて取得（ユーザーと部門名を取得）
-      @users = User.all
-      @userinfo_hash = get_user_hash(@users)
-      
-      # 辞書用にバッジ情報を取得
-      badges = Badge.where(activeflg: true)
-      badges.each do |badge|
-        if badge.optionflg
-          badge.name = "【2】" + badge.outputnumber.to_s + "." + badge.name
-        else
-          badge.name = "【1】" + badge.outputnumber.to_s + "." + badge.name
-        end
-      end
-      @badgename_hash = get_name_hash(badges)
-      
-      # 辞書用に部門情報を取得
-      bumons = Bumon.where(activeflg: true)
-      @bumonname_hash = get_name_hash(bumons)
+      set_master_data
       
       # 画面で指定された範囲に作成されたBadgepostを集計
       if Rails.env == 'production'
@@ -91,9 +65,60 @@ class StaticPagesController < ApplicationController
     end
   end
   
+  def summary_value
+    if params[:summary_form] == nil
+      # 検索未入力時（初回表示時）
+      @form = SummaryForm.new
+    else
+      # 検索欄入力時
+      set_search_form_params
+      
+      # マスター情報関連取得
+      set_master_data
+      
+      @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "COUNT(*) AS count")
+                            .where('created_at >= ?', @form.summary_start_date)
+                            .where('created_at <= ?', @form.summary_end_date)
+                            .group(:recept_user_id, :badge_id).order('badge_id, count DESC, recept_user_id')
+    end
+  end
+  
   private
     def find_params
       params.require(:summary_form).permit(:summary_start_date, :summary_end_date)
+    end
+    
+    def set_search_form_params
+      summary_start_date = Time.zone.local(params[:summary_form]["summary_start_date(1i)"].to_i,
+                            params[:summary_form]["summary_start_date(2i)"].to_i,
+                            params[:summary_form]["summary_start_date(3i)"].to_i, 0, 0)
+      summary_end_date = Time.zone.local(params[:summary_form]["summary_end_date(1i)"].to_i,
+                            params[:summary_form]["summary_end_date(2i)"].to_i,
+                            params[:summary_form]["summary_end_date(3i)"].to_i, 23, 59)
+      @form = SummaryForm.new
+      @form.summary_start_date = summary_start_date
+      @form.summary_end_date = summary_end_date
+    end
+    
+    def set_master_data
+      # まず、ユーザーをすべて取得（ユーザーと部門名を取得）
+      @users = User.all
+      @userinfo_hash = get_user_hash(@users)
+      
+      # 辞書用にバッジ情報を取得
+      badges = Badge.where(activeflg: true)
+      badges.each do |badge|
+        if badge.optionflg
+          badge.name = "【2】" + badge.outputnumber.to_s + "." + badge.name
+        else
+          badge.name = "【1】" + badge.outputnumber.to_s + "." + badge.name
+        end
+      end
+      @badgename_hash = get_name_hash(badges)
+      
+      # 辞書用に部門情報を取得
+      bumons = Bumon.where(activeflg: true)
+      @bumonname_hash = get_name_hash(bumons)
     end
   
     def get_user_hash(users)

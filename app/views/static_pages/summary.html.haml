@@ -1,6 +1,6 @@
 - provide(:title, '集計')
 .summary
-  %h1 集計
+  %h2 ピボットテーブル用集計
   = form_for @form, url: summary_path, method: :get do |f|
     %div{:style => "display:inline-flex"}
       = f.date_select :summary_start_date
