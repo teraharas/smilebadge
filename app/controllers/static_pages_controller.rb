@@ -76,10 +76,32 @@ class StaticPagesController < ApplicationController
       # マスター情報関連取得
       set_master_data
       
-      @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "COUNT(*) AS count")
+      @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, :outputnumber, "COUNT(*) AS count")
                             .where('created_at >= ?', @form.summary_start_date)
                             .where('created_at <= ?', @form.summary_end_date)
-                            .group(:recept_user_id, :badge_id).order('badge_id, count DESC, recept_user_id')
+                            .group(:recept_user_id, :badge_id, :outputnumber)
+                            .order('outputnumber, badge_id, count DESC, recept_user_id')
+    end
+  end
+  
+  def summary_value_send
+    if params[:summary_form] == nil
+      # 検索未入力時（初回表示時）
+      @form = SummaryForm.new
+    else
+      # 検索欄入力時
+      set_search_form_params
+      
+      # マスター情報関連取得
+      set_master_data
+      
+      value_badge_ids = Badge.select(:id).where(optionflg: false)
+
+      @sentbadgeposts = Badgepost.select(:sent_user_id, "COUNT(*) AS count")
+                            .where('created_at >= ?', @form.summary_start_date)
+                            .where('created_at <= ?', @form.summary_end_date)
+                            .where(badge_id: value_badge_ids)
+                            .group(:sent_user_id).order('count DESC, sent_user_id')
     end
   end
   
