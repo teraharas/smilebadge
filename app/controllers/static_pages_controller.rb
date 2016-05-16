@@ -76,11 +76,11 @@ class StaticPagesController < ApplicationController
       # マスター情報関連取得
       set_master_data
       
-      @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, :outputnumber, "COUNT(*) AS count")
+      @receptbadgeposts = Badgepost.select(:recept_user_id, :badge_id, "COUNT(*) AS count")
                             .where('created_at >= ?', @form.summary_start_date)
                             .where('created_at <= ?', @form.summary_end_date)
-                            .group(:recept_user_id, :badge_id, :outputnumber)
-                            .order('outputnumber, badge_id, count DESC, recept_user_id')
+                            .group(:recept_user_id, :badge_id)
+                            .order('badge_id, count DESC, recept_user_id')
     end
   end
   
