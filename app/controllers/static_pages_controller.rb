@@ -23,7 +23,6 @@ class StaticPagesController < ApplicationController
     join_condition = userjoin.join(badgepostjoin, Arel::Nodes::OuterJoin)
                 .on(userjoin[:id].eq(badgepostjoin[:sent_user_id])).join_sources
     
-    # ランキング表示、3月だけタイムゾーンおかしいので絞りこまずに対応
     @badgeposts = User.joins(join_condition).group(:bumon_id)
               .select(userjoin[:bumon_id], userjoin[:bumon_id].count.as('cnt'))
                     .where(badgepostjoin[:created_at].gteq Time.now.beginning_of_month)
@@ -102,6 +101,32 @@ class StaticPagesController < ApplicationController
                             .where('created_at <= ?', @form.summary_end_date)
                             .where(badge_id: value_badge_ids)
                             .group(:sent_user_id).order('count DESC, sent_user_id')
+    end
+  end
+  
+  def summary_value_bumon_send
+    if params[:summary_form] == nil
+      # 検索未入力時（初回表示時）
+      @form = SummaryForm.new
+    else
+      # 検索欄入力時
+      set_search_form_params
+      
+      # マスター情報関連取得
+      set_master_data
+      
+      value_badge_ids = Badge.select(:id).where(optionflg: false)
+      
+      userjoin = User.arel_table
+      badgepostjoin = Badgepost.arel_table
+      join_condition = userjoin.join(badgepostjoin, Arel::Nodes::OuterJoin)
+                  .on(userjoin[:id].eq(badgepostjoin[:sent_user_id])).join_sources
+      
+      @sentbadgeposts = User.joins(join_condition).group(:bumon_id)
+                .select(userjoin[:bumon_id], userjoin[:bumon_id].count.as('count'))
+                      .where(badgepostjoin[:created_at].gteq @form.summary_start_date)
+                      .where(badgepostjoin[:created_at].lteq @form.summary_end_date)
+                      .order('count DESC').order(:bumon_id)
     end
   end
   
