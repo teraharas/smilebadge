@@ -2,65 +2,66 @@
   .container-fluid
     .row
       .col-sm-12
-        / 送った人のユーザー情報
-        %span{:class => "gravatarsent_#{type}", :title => "#{badgepost.sent_user.message}"}
-          - if type=="sent"
-            - if badgepost.sent_user.image?
-              .middleimage{:style => "background-image: url(#{badgepost.sent_user.image.url});"}
+        .badge_header_info
+          / 送った人のユーザー情報
+          %div.pull-left{:class => "gravatarsent_#{type}", :title => "#{badgepost.sent_user.message}"}
+            - if type=="sent"
+              - if badgepost.sent_user.image?
+                .middleimage{:style => "background-image: url(#{badgepost.sent_user.image.url});"}
+              - else
+                .middleimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
+              .username
+                %b= badgepost.sent_user.name
             - else
-              .middleimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
-            .username
-              %b= badgepost.sent_user.name
-          - else
-            - if badgepost.sent_user.image?
-              .middleimage{:style => "background-image: url(#{badgepost.sent_user.image.url});"}
-                = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.sent_user.id)
+              - if badgepost.sent_user.image?
+                .middleimage{:style => "background-image: url(#{badgepost.sent_user.image.url});"}
+                  = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.sent_user.id)
+              - else
+                .middleimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
+                  = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.sent_user.id)
+              .username
+                %b= link_to badgepost.sent_user.name, new_badgepost_path(recept_user_id: badgepost.sent_user.id)
+          / 送られたバッジの情報
+          .badgeicon_mini.pull-left
+            .middlebadgeimage
+              - if badgepost.badge.image?
+                = image_tag(badgepost.badge.image.url)
+              - else
+                = image_tag('badge_noimage.gif')
+            = badgepost.badge.name
+          / 三角形を表示
+          %div.pull-left{:class => "triangle_#{type}"}
+          / 受け取った人のユーザー情報
+          %div.pull-left{:class => "gravatarrecept_#{type}", :title => "#{badgepost.recept_user.message}"}
+            - if type=="sent"
+              - if badgepost.recept_user.image?
+                .middleimage{:style => "background-image: url(#{badgepost.recept_user.image.url});"}
+                  = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.recept_user.id)
+              - else
+                .middleimage{:style => "background-image: url(#{asset_path "user_noimageleft.gif"});"}
+                  = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.recept_user.id)
+              .username
+                %b= link_to badgepost.recept_user.name, new_badgepost_path(recept_user_id: badgepost.recept_user.id)
             - else
-              .middleimage{:style => "background-image: url(#{asset_path "user_noimage.gif"});"}
-                = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.sent_user.id)
-            .username
-              %b= link_to badgepost.sent_user.name, new_badgepost_path(recept_user_id: badgepost.sent_user.id)
-        / 送られたバッジの情報
-        %span.badgeicon_mini
-          .middlebadgeimage
-            - if badgepost.badge.image?
-              = image_tag(badgepost.badge.image.url)
+              - if badgepost.recept_user.image?
+                .middleimage{:style => "background-image: url(#{badgepost.recept_user.image.url});"}
+              - else
+                .middleimage{:style => "background-image: url(#{asset_path "user_noimageleft.gif"});"}
+              .username
+                %b= badgepost.recept_user.name
+        .clearfix
+        .detail
+          / コメント
+          .content
+            - if badgepost.content == ""
+              = badgepost.recept_user.name
+              さんへ#{badgepost.badge.name}バッジを贈ります！
             - else
-              = image_tag('badge_noimage.gif')
-          = badgepost.badge.name
-        / 三角形を表示
-        %div{:class => "triangle_#{type}"}
-        / 受け取った人のユーザー情報
-        %span{:class => "gravatarrecept_#{type}", :title => "#{badgepost.recept_user.message}"}
-          - if type=="sent"
-            - if badgepost.recept_user.image?
-              .middleimage{:style => "background-image: url(#{badgepost.recept_user.image.url});"}
-                = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.recept_user.id)
+              = simple_format(h(badgepost.content))
+          / タイムスタンプ
+          .timestamp
+            = badgepost.created_at.in_time_zone('Tokyo').to_s(:published_on)
+            - if type=="sent"
+              に贈りました。
             - else
-              .middleimage{:style => "background-image: url(#{asset_path "user_noimageleft.gif"});"}
-                = link_to image_tag('empty.gif'), new_badgepost_path(recept_user_id: badgepost.recept_user.id)
-            .username
-              %b= link_to badgepost.recept_user.name, new_badgepost_path(recept_user_id: badgepost.recept_user.id)
-          - else
-            - if badgepost.recept_user.image?
-              .middleimage{:style => "background-image: url(#{badgepost.recept_user.image.url});"}
-            - else
-              .middleimage{:style => "background-image: url(#{asset_path "user_noimageleft.gif"});"}
-            .username
-              %b= badgepost.recept_user.name
-    .clear_both
-    %footer
-      / コメント
-      %span.content
-        - if badgepost.content == ""
-          = badgepost.recept_user.name
-          さんへ#{badgepost.badge.name}バッジを贈ります！
-        - else
-          = simple_format(h(badgepost.content))
-      / タイムスタンプ
-      %span.timestamp
-        = badgepost.created_at.in_time_zone('Tokyo').to_s(:published_on)
-        - if type=="sent"
-          に贈りました。
-        - else
-          に獲得しました。
+              に獲得しました。

@@ -41,75 +41,75 @@
   margin-top: 20px
   margin-left: 0
   margin-right: 0
-  .col-sm-12
-    padding-right: 0
   .container-fluid
     padding-left: 0
     padding-right: 0
-  li
-    background-color: $back_color_gray
-    padding-top: 10px
-    border-top: 1px solid #e8e8e8
-    list-style: none
-  span
-    line-height: 180%
-  .username
-    font-size: 0.9em
-  .gravatarsent
-    background-color: $badge_back_white_color
-    float: left
-    padding: 5px 14px 0 5px
-  .gravatarsent_recept
-    @extend .gravatarsent
-  .gravatarsent_sent
-    @extend .gravatarsent
-  .badgeicon_mini
-    background-color: $badge_back_white_color
-    float: left
-    padding: 5px 0 8px
-    font-size: 0.8em
-  .badgeicon_mini img
-    // バッジの小刻みな回転アクション追加
-    -webkit-animation: shake 5.08s infinite linear
-    -webkit-animation-iteration-count: infinite
-    -webkit-animation-duration: 10s
-  .triangle
-    float: left
-    border: 55px solid $badge_backcolor
-    border-left-color: $badge_back_white_color
-    // 	矢印マークの角度
-    border-left: 20px solid $badge_back_white_color
-  .triangle_sent
-    @extend .triangle
-  .triangle_recept
-    @extend .triangle
-  .gravatarrecept
-    position: relative
-    left: -55px
-    background-color: $badge_backcolor
-    float: left
-    padding: 5px 5px 0
-  .gravatarrecept_sent
-    @extend .gravatarrecept
-  .gravatarrecept_recept
-    @extend .gravatarrecept
-  .content
-    display: block
-    overflow: auto
-    background: white
-    border: 1px solid $flat_blue
-    width: auto
-    max-width: 380px
-    height: 120px
-    padding: 10px
-    border-radius: 4px
-    font-size: 0.9em
-  .timestamp
-    color: $gray-light
-    display: block
-    margin-left: 5px
+    .col-sm-12
+      padding-right: 0
+      .badge_header_info
+        .username
+          font-size: 0.9em
+        .gravatarsent
+          background-color: $badge_back_white_color
+          padding: 5px 4px 0 4px
+          height: 104px
+          width: 92px
+        .gravatarsent_recept
+          @extend .gravatarsent
+        .gravatarsent_sent
+          @extend .gravatarsent
+        .badgeicon_mini
+          background-color: $badge_back_white_color
+          padding: 5px 0 8px
+          font-size: 0.8em
+          min-width: 60px
+        .badgeicon_mini img
+          // バッジの小刻みな回転アクション追加
+          -webkit-animation: shake 5.08s infinite linear
+          -webkit-animation-iteration-count: infinite
+          -webkit-animation-duration: 10s
+        .triangle
+          border: 52px solid $badge_backcolor
+          border-right: none
+          border-left-color: $badge_back_white_color
+          // 	矢印マークの角度
+          border-left: 20px solid $badge_back_white_color
+          // width: 24px
+        .triangle_sent
+          @extend .triangle
+        .triangle_recept
+          @extend .triangle
+        .gravatarrecept
+          position: relative
+          background-color: $badge_backcolor
+          padding: 5px 4px 0
+          height: 104px
+          min-width: 88px
+        .gravatarrecept_sent
+          @extend .gravatarrecept
+        .gravatarrecept_recept
+          @extend .gravatarrecept
+      .detail
+        .content
+          display: block
+          overflow: auto
+          background: white
+          border: 1px solid $flat_blue
+          width: auto
+          max-width: 380px
+          height: 120px
+          margin-top: 6px
+          padding: 10px
+          border-radius: 4px
+          font-size: 0.9em
+        .timestamp
+          color: $gray-light
+          display: block
+          margin-top: 4px
+          margin-left: 6px
+          font-size: 0.86em
   @media (max-width: 1000px)
-  @media (max-width: 374px)
+  @media (max-width: 319px)
     .gravatarsent_sent
       display: none
     // 小さい画面のときは三角と送り主を消す
