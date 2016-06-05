@@ -28,7 +28,8 @@
                 = image_tag(badgepost.badge.image.url)
               - else
                 = image_tag('badge_noimage.gif')
-            = badgepost.badge.name
+            .badgename.center
+              = badgepost.badge.name
           / 三角形を表示
           %div.pull-left{:class => "triangle_#{type}"}
           / 受け取った人のユーザー情報
