@@ -1,21 +1,24 @@
 - provide(:title, '（送信）バリューバッジ部門別集計')
-.summary
-  %h2 （送信）バリューバッジ部門別集計
-  = form_for @form, url: summary_value_bumon_send_path, method: :get do |f|
-    %div{:style => "display:inline-flex"}
-      = f.date_select :summary_start_date
-      ～
-      \#{f.date_select :summary_end_date}
-      %p= f.submit '集計実行', class: "btn btn-success", data: { disable_with: "集計中..."}
-  %br/
-  - if !@users.nil?
-    %table{:border => ""}
-      %tr{:bgcolor => "green"}
-        %th
-          %font{:color => "white"} 部門名
-        %th
-          %font{:color => "white"} バッジ数
-      - @sentbadgeposts.each do |sentbadgepost|
-        %tr
-          %td= @bumonname_hash.has_key?(sentbadgepost.bumon_id)? @bumonname_hash[sentbadgepost.bumon_id] : ""
-          %td= sentbadgepost.count
+.one_column_container
+  .summary
+    %h2 （送信）バリューバッジ部門別集計
+    = form_for @form, url: summary_value_bumon_send_path, method: :get do |f|
+      %div{:style => "display:inline-flex"}
+        = f.date_select :summary_start_date
+        ～
+        \#{f.date_select :summary_end_date}
+        %p= f.submit '集計実行', class: "btn btn-success", data: { disable_with: "集計中..."}
+    %br/
+    - if !@users.nil?
+      .one_column_container_mini
+        %table.table
+          %tr{:bgcolor => "green"}
+            %th
+              %font{:color => "white"} 部門名
+            %th
+              %font.pull-right{:color => "white"} バッジ数
+          - @sentbadgeposts.each do |sentbadgepost|
+            %tr
+              %td= @bumonname_hash.has_key?(sentbadgepost.bumon_id)? @bumonname_hash[sentbadgepost.bumon_id] : ""
+              %td
+                .pull-right= sentbadgepost.count

@@ -1,87 +1,92 @@
 - provide(:title, '集計')
-.summary
-  %h2 ピボットテーブル用集計
-  = form_for @form, url: summary_path, method: :get do |f|
-    %div{:style => "display:inline-flex"}
-      = f.date_select :summary_start_date
-      ～
-      \#{f.date_select :summary_end_date}
-      %p= f.submit '集計実行', class: "btn btn-success", data: { disable_with: "集計中..."}
-  %br/
-  - if !@users.nil?
-    - sent_user_set_id_list = Array.new
-    - recept_user_set_id_list = Array.new
-    %table{:border => ""}
-      %tr{:bgcolor => "green"}
-        %th
-          %font{:color => "white"} 送受信区分
-        %th
-          %font{:color => "white"} ユーザー名
-        %th
-          %font{:color => "white"} 部門名
-        %th
-          %font{:color => "white"} バッジ名
-        %th
-          %font{:color => "white"} 年月
-        %th
-          %font{:color => "white"} バッジ数
-      - @sentbadgeposts.each do |sentbadgepost|
-        %tr
-          %td 送信
-          - user_info = @userinfo_hash[sentbadgepost.sent_user_id] if @userinfo_hash.has_key?(sentbadgepost.sent_user_id)
-          - if user_info.nil?
+.one_column_container
+  .summary
+    %h2 ピボットテーブル用集計
+    = form_for @form, url: summary_path, method: :get do |f|
+      %div{:style => "display:inline-flex"}
+        = f.date_select :summary_start_date
+        ～
+        \#{f.date_select :summary_end_date}
+        %p= f.submit '集計実行', class: "btn btn-success", data: { disable_with: "集計中..."}
+    %br/
+    - if !@users.nil?
+      - sent_user_set_id_list = Array.new
+      - recept_user_set_id_list = Array.new
+      %table.table
+        %tr{:bgcolor => "green"}
+          %th
+            %font{:color => "white"} 送受信区分
+          %th
+            %font{:color => "white"} ユーザー名
+          %th
+            %font{:color => "white"} 部門名
+          %th
+            %font{:color => "white"} バッジ名
+          %th
+            %font{:color => "white"} 年月
+          %th
+            %font.pull-right{:color => "white"} バッジ数
+        - @sentbadgeposts.each do |sentbadgepost|
+          %tr
+            %td 送信
+            - user_info = @userinfo_hash[sentbadgepost.sent_user_id] if @userinfo_hash.has_key?(sentbadgepost.sent_user_id)
+            - if user_info.nil?
+              %td
+            - else
+              %td
+                - if user_info.activeflg?
+                  / 有効なユーザーで、セット済みユーザーIDリストにまだなければセットする。
+                  - sent_user_set_id_list.push(sentbadgepost.sent_user_id) if !sent_user_set_id_list.include?(sentbadgepost.sent_user_id)
+                - else
+                  【無効】
+                = user_info.name
+            - if user_info.nil?
+              %td
+            - else
+              %td= @bumonname_hash.has_key?(user_info.bumon_id)? @bumonname_hash[user_info.bumon_id] : ""
+            %td= @badgename_hash.has_key?(sentbadgepost.badge_id)? @badgename_hash[sentbadgepost.badge_id] : ""
+            %td= sentbadgepost.create_month
             %td
-          - else
+              .pull-right= sentbadgepost.count
+        - @users.each do |user|
+          - next if (!user.activeflg || sent_user_set_id_list.include?(user.id))
+          %tr
+            %td 送信
+            %td= user.name
+            %td= user.bumon.name
             %td
-              - if user_info.activeflg?
-                / 有効なユーザーで、セット済みユーザーIDリストにまだなければセットする。
-                - sent_user_set_id_list.push(sentbadgepost.sent_user_id) if !sent_user_set_id_list.include?(sentbadgepost.sent_user_id)
-              - else
-                【無効】
-              = user_info.name
-          - if user_info.nil?
             %td
-          - else
-            %td= @bumonname_hash.has_key?(user_info.bumon_id)? @bumonname_hash[user_info.bumon_id] : ""
-          %td= @badgename_hash.has_key?(sentbadgepost.badge_id)? @badgename_hash[sentbadgepost.badge_id] : ""
-          %td= sentbadgepost.create_month
-          %td= sentbadgepost.count
-      - @users.each do |user|
-        - next if (!user.activeflg || sent_user_set_id_list.include?(user.id))
-        %tr
-          %td 送信
-          %td= user.name
-          %td= user.bumon.name
-          %td
-          %td
-          %td 0
-      - @receptbadgeposts.each do |receptbadgepost|
-        %tr
-          %td 受信
-          - user_info = @userinfo_hash[receptbadgepost.recept_user_id] if @userinfo_hash.has_key?(receptbadgepost.recept_user_id)
-          - if user_info.nil?
             %td
-          - else
+              .pull-right 0
+        - @receptbadgeposts.each do |receptbadgepost|
+          %tr
+            %td 受信
+            - user_info = @userinfo_hash[receptbadgepost.recept_user_id] if @userinfo_hash.has_key?(receptbadgepost.recept_user_id)
+            - if user_info.nil?
+              %td
+            - else
+              %td
+                - if user_info.activeflg?
+                  / 有効なユーザーで、セット済みユーザーIDリストにまだなければセットする。
+                  - recept_user_set_id_list.push(receptbadgepost.recept_user_id) if !recept_user_set_id_list.include?(receptbadgepost.recept_user_id)
+                - else
+                  【無効】
+                = user_info.name
+            - if user_info.nil?
+              %td
+            - else
+              %td= @bumonname_hash.has_key?(user_info.bumon_id)? @bumonname_hash[user_info.bumon_id] : ""
+            %td= @badgename_hash.has_key?(receptbadgepost.badge_id)? @badgename_hash[receptbadgepost.badge_id] : ""
+            %td= receptbadgepost.create_month
             %td
-              - if user_info.activeflg?
-                / 有効なユーザーで、セット済みユーザーIDリストにまだなければセットする。
-                - recept_user_set_id_list.push(receptbadgepost.recept_user_id) if !recept_user_set_id_list.include?(receptbadgepost.recept_user_id)
-              - else
-                【無効】
-              = user_info.name
-          - if user_info.nil?
+              .pull-right= receptbadgepost.count
+        - @users.each do |user|
+          - next if (!user.activeflg || recept_user_set_id_list.include?(user.id))
+          %tr
+            %td 受信
+            %td= user.name
+            %td= user.bumon.name
             %td
-          - else
-            %td= @bumonname_hash.has_key?(user_info.bumon_id)? @bumonname_hash[user_info.bumon_id] : ""
-          %td= @badgename_hash.has_key?(receptbadgepost.badge_id)? @badgename_hash[receptbadgepost.badge_id] : ""
-          %td= receptbadgepost.create_month
-          %td= receptbadgepost.count
-      - @users.each do |user|
-        - next if (!user.activeflg || recept_user_set_id_list.include?(user.id))
-        %tr
-          %td 受信
-          %td= user.name
-          %td= user.bumon.name
-          %td
-          %td
-          %td 0
+            %td
+            %td
+              .pull-right 0

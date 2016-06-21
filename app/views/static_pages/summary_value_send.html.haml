@@ -1,34 +1,37 @@
 - provide(:title, '（送信）バリューバッジユーザー別集計')
-.summary
-  %h2 （送信）バリューバッジユーザー別集計
-  = form_for @form, url: summary_value_send_path, method: :get do |f|
-    %div{:style => "display:inline-flex"}
-      = f.date_select :summary_start_date
-      ～
-      \#{f.date_select :summary_end_date}
-      %p= f.submit '集計実行', class: "btn btn-success", data: { disable_with: "集計中..."}
-  %br/
-  - if !@users.nil?
-    %table{:border => ""}
-      %tr{:bgcolor => "green"}
-        %th
-          %font{:color => "white"} 部門名
-        %th
-          %font{:color => "white"} ユーザー名
-        %th
-          %font{:color => "white"} バッジ数
-      - @sentbadgeposts.each do |sentbadgepost|
-        %tr
-          - user_info = @userinfo_hash[sentbadgepost.sent_user_id] if @userinfo_hash.has_key?(sentbadgepost.sent_user_id)
-          - if user_info.nil?
-            %td
-          - else
-            %td= @bumonname_hash.has_key?(user_info.bumon_id)? @bumonname_hash[user_info.bumon_id] : ""
-          - if user_info.nil?
-            %td
-          - else
-            %td
-              - unless user_info.activeflg?
-                【無効】
-              = user_info.name
-          %td= sentbadgepost.count
+.one_column_container
+  .summary
+    %h2 （送信）バリューバッジユーザー別集計
+    = form_for @form, url: summary_value_send_path, method: :get do |f|
+      %div{:style => "display:inline-flex"}
+        = f.date_select :summary_start_date
+        ～
+        \#{f.date_select :summary_end_date}
+        %p= f.submit '集計実行', class: "btn btn-success", data: { disable_with: "集計中..."}
+    %br/
+    - if !@users.nil?
+      .one_column_container_medium
+        %table.table
+          %tr{:bgcolor => "green"}
+            %th
+              %font{:color => "white"} 部門名
+            %th
+              %font{:color => "white"} ユーザー名
+            %th
+              %font.pull-right{:color => "white"} バッジ数
+          - @sentbadgeposts.each do |sentbadgepost|
+            %tr
+              - user_info = @userinfo_hash[sentbadgepost.sent_user_id] if @userinfo_hash.has_key?(sentbadgepost.sent_user_id)
+              - if user_info.nil?
+                %td
+              - else
+                %td= @bumonname_hash.has_key?(user_info.bumon_id)? @bumonname_hash[user_info.bumon_id] : ""
+              - if user_info.nil?
+                %td
+              - else
+                %td
+                  - unless user_info.activeflg?
+                    【無効】
+                  = user_info.name
+              %td
+                .pull-right= sentbadgepost.count
