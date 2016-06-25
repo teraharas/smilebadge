@@ -31,8 +31,8 @@
           %p= "今までに " + current_user.sent_badgeposts.count.to_s + "個のバッジを贈りました。"
       .col-md-7
         - if current_user.sent_badgeposts.count >= 1
-          / 過去30日間に獲得したバッジグラフ表示
-          = high_chart("radar", @feedgraph_recept30days)
+          / 今までにに獲得したバッジグラフ表示
+          = high_chart("radar", @graph_recept)
         - else
           .graph_blank
             %h3 まずはバッジを1個贈ってみよう！

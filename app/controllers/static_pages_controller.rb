@@ -1,21 +1,21 @@
 class StaticPagesController < ApplicationController
   before_action :logged_in_user, only: [:ranking]
   before_action :logged_in_adminuser, only: [:summary]
-  
+
   def home
     if logged_in?
       redirect_to :action => "login_top"
     end
   end
-  
+
   def login_top
     if logged_in?
       @feedbadgeposts = Badgepost.limit(10).where(recept_user_id: current_user.id).where("created_at > ?", 30.days.ago).order(created_at: :desc)
-      # 30日間に獲得したバッジのグラフ
-      @feedgraph_recept30days = get_graph(current_user.id, "", "30DAYS_RECEPT")
+      # 今までに獲得したバッジのグラフ
+      @graph_recept = get_graph(current_user.id, "", "ALL_RECEPT")
     end
   end
-  
+
   # 部門別ランキング
   def ranking
     userjoin = User.arel_table
@@ -31,7 +31,7 @@ class StaticPagesController < ApplicationController
     bumons = Bumon.where(activeflg: true)
     @bumonname_hash = get_name_hash(bumons)
   end
-  
+
   def summary
     if params[:summary_form] == nil
       # 検索未入力時（初回表示時）
@@ -63,7 +63,7 @@ class StaticPagesController < ApplicationController
       end
     end
   end
-  
+
   def summary_recept_badge_user
     if params[:summary_form] == nil
       # 検索未入力時（初回表示時）
@@ -82,7 +82,7 @@ class StaticPagesController < ApplicationController
                             .order('badge_id, count DESC, recept_user_id')
     end
   end
-  
+
   def summary_value_send
     if params[:summary_form] == nil
       # 検索未入力時（初回表示時）
@@ -103,7 +103,7 @@ class StaticPagesController < ApplicationController
                             .group(:sent_user_id).order('count DESC, sent_user_id')
     end
   end
-  
+
   def summary_value_bumon_send
     if params[:summary_form] == nil
       # 検索未入力時（初回表示時）
@@ -130,7 +130,7 @@ class StaticPagesController < ApplicationController
                       .order('count DESC').order(:bumon_id)
     end
   end
-  
+
   private
     def find_params
       params.require(:summary_form).permit(:summary_start_date, :summary_end_date)
@@ -147,7 +147,7 @@ class StaticPagesController < ApplicationController
       @form.summary_start_date = summary_start_date
       @form.summary_end_date = summary_end_date
     end
-    
+
     def set_master_data
       # まず、ユーザーをすべて取得（ユーザーと部門名を取得）
       @users = User.all
@@ -168,7 +168,7 @@ class StaticPagesController < ApplicationController
       bumons = Bumon.where(activeflg: true)
       @bumonname_hash = get_name_hash(bumons)
     end
-  
+
     def get_user_hash(users)
       results = users.map{|user| [user.id, user]}
       Hash[results]
@@ -178,5 +178,5 @@ class StaticPagesController < ApplicationController
       results = objects.map{|object| [object.id, object.name]}
       Hash[results]
     end
-    
+
 end
