@@ -4,12 +4,12 @@ class Badge < ActiveRecord::Base
     validates :outputnumber, presence: true,
                         numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to:10 },
                         uniqueness: { case_sensitive: false }
-    
+
     # --- Default scope ---
-    default_scope -> { order(id: :asc) }
-                        
+    default_scope -> { order(outputnumber: :asc) }
+
     # 画像アップロード
     mount_uploader :image, ImageUploader
-    
+
     has_many :badgeposts, :class_name => "Badgepost", :foreign_key => "badge_id"
 end
