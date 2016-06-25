@@ -48,10 +48,20 @@ module UsersHelper
   
       data = Array.new
       
-      @badgeposts.each do |badgepost|
-        data.push([badgepost.name, badgepost.cnt])
+      if @badgeposts != []
+        badges = Badge.where(activeflg: true)
+        badges.each do |badge|
+          badgesetflg = false
+          @badgeposts.each do |badgepost|
+            if badge.name == badgepost.name
+              data.push([badgepost.name, badgepost.cnt])
+              badgesetflg = true
+            end
+          end
+          data.push([badge.name, 0]) unless badgesetflg
+        end
       end
-      
+
       @graph = LazyHighCharts::HighChart.new('graph') do |f|
         # グラフタイトル
         if type == "30DAYS_RECEPT"
