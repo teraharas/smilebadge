@@ -4,6 +4,9 @@ class Badge < ActiveRecord::Base
     validates :outputnumber, presence: true,
                         numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to:10 },
                         uniqueness: { case_sensitive: false }
+    
+    # --- Default scope ---
+    default_scope -> { order(id: :asc) }
                         
     # 画像アップロード
     mount_uploader :image, ImageUploader
